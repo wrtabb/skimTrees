@@ -1,0 +1,57 @@
+
+# DO NOT DELETE
+
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TFile.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TDirectoryFile.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TDirectory.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TNamed.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TObject.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/Rtypes.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/RConfig.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/RVersion.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/DllImport.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/Rtypeinfo.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/snprintf.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/strlcpy.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TGenericClassInfo.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TSchemaHelper.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TStorage.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TVersionCheck.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/Riosfwd.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TBuffer.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TString.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TMathBase.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TList.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TSeqCollection.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TCollection.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TIterator.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TDatime.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TUUID.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TMap.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/THashTable.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TUrl.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TTree.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TBranch.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TObjArray.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TAttFill.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TDataType.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TDictionary.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/Property.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/ESTLType.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TAttLine.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TAttMarker.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TArrayD.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TArray.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TArrayI.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TClass.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TObjString.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TVirtualTreePlayer.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TChain.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TSystem.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TInetAddress.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TTimer.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TSysEvtHandler.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TQObject.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/TTime.h
+./debug_C.so: /home/hep/ikrav/work/software2018/root_v5.34.18/include/cintdictversion.h /home/hep/ikrav/work/software2018/root_v5.34.18/include/RVersion.h
+debug_C__ROOTBUILDVERSION= 5.34/18

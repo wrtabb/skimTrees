@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+ntuplesGeneralLocation="/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3"
+skimTag="0001fix"
+
+# This name will be part of log file names, so it should be appropriate
+sampleShortName=(
+    QCD_Pt-120to170_EMEnriched
+    QCD_Pt-300toInf
+    DoubleEG_RunHver3
+)
+
+sampleLocation=(
+    QCD_Pt-120to170_EMEnriched_TuneCUETP8M1_13TeV_pythia8/crab_QCDEMEnriched_Pt120to170   # QCD_Pt-120to170_EMEnriched
+    QCD_Pt-300toInf_EMEnriched_TuneCUETP8M1_13TeV_pythia8                                 # QCD_Pt-300toInf
+    DoubleEG/crab_DoubleEG_RunHver3                                                       # DoubleEG_RunHver3
+)
+
+# Choose number of sections to be appropriate for the total
+# number and size of input ntuple files
+numberOfSections=(
+    4 # QCD_Pt-120to170_EMEnriched total files: 316
+    1 # QCD_Pt-300toInf total files: 93
+    1 # DoubleEG_RunHver3 total files 31
+)
+
+# For MC we want usually to preserve the event count by
+# saving info for each event, even if it is minimal info, because
+# we need to know the event count for sample normalizations (use true).
+# For data we can drop events of no interest (use false).
+preserveEventCount=(
+    true # QCD_Pt-120to170_EMEnriched
+    true # QCD_Pt-300toInf
+    false # DoubleEG_RunHver3
+)
+
+for index in ${!sampleLocation[*]}; do 
+    echo "Submit jobs for sample ${sampleShortName[$index]} at ${sampleLocation[$index]} with numberOfSections=${numberOfSections[$index]} sections and ${preserveEventCount[$index]}"
+    condor_submit \
+	sampleShortName=${sampleShortName[$index]} \
+	ntuplesGeneralLocation=${ntuplesGeneralLocation} \
+	sampleLocation=${sampleLocation[$index]} \
+	skimTag=${skimTag} \
+	numberOfSections=${numberOfSections[$index]} \
+	preserveEventCount=${preserveEventCount[$index]}  \
+	skimControlScript.condor
+done

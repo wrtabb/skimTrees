@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+#
+# Arguments expected
+#   $1 general location of ntuples for given production
+#   $2 sample name with no / 
+#   $3 subdirectory(s) inside of the sample directory
+#   $4 section number of this section
+#   $5 total number of sections for this sample
+
+# A few generic messages
+echo "Start processing at " $(date)
+hostname
+pwd
+ls -l
+
+# Set up software and environment
+echo "Set up environment"
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+### If  home directory is available
+# cd /home/hep/ikrav/releases-git/DrellYanDMDY_13TeV/CMSSW_8_0_26/src
+# eval `scramv1 runtime -sh`
+# cd -
+### If home directory is not available
+export SCRAM_ARCH=slc6_amd64_gcc530
+scramv1 project CMSSW CMSSW_8_0_26
+cd CMSSW_8_0_26/src
+eval `scramv1 runtime -sh`
+cd -
+
+# Run skimming for the sample
+echo "Run the filtering script"
+echo "./filterOneSampleDyDecay.py $1 $2 $3 $4 $5"
+./filterOneSampleDyDecay.py $1 $2 $3 $4 $5
+
+echo "Ending processing at " $(date)

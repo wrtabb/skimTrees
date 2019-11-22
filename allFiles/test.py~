@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+import math
+
+numberOfSections = int('3')
+rootfiles = [
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_1.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_10.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_11.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_12.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_2.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_3.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_4.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_5.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_6.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_7.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_8.root'
+'/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3//WWTo2L2Nu_13TeV-powheg/ntuple_skim_9.root'
+]
+
+numberOfFiles = len(rootfiles)
+filesPerSection = math.ceil( numberOfFiles / numberOfSections )
+fileIndexBegin = sectionNumber * filesPerSection
+
+for fileIndex in range(fileIndexBegin,100):
+    print rootfiles[fileIndex]

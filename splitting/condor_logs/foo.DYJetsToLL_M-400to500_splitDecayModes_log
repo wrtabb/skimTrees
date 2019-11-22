@@ -1,0 +1,36 @@
+000 (17004.000.000) 2019-11-20 09:25:50 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_48907_b66a_3>
+...
+040 (17004.000.000) 2019-11-20 09:26:15 Started transferring input files
+	Transferring to host: <129.93.182.232:9618?addrs=129.93.182.232-9618+[2600-900-6-1102-d267-e5ff-fef9-1caa]-9618&alias=red-c1907.unl.edu&noUDP&sock=starter_44293_2ce2_168667>
+...
+040 (17004.000.000) 2019-11-20 09:26:15 Finished transferring input files
+...
+001 (17004.000.000) 2019-11-20 09:26:16 Job executing on host: <129.93.182.232:9618?addrs=129.93.182.232-9618+[2600-900-6-1102-d267-e5ff-fef9-1caa]-9618&alias=red-c1907.unl.edu&noUDP&sock=startd_44254_243f_3>
+...
+006 (17004.000.000) 2019-11-20 09:31:28 Image size of job updated: 41
+	41  -  MemoryUsage of job (MB)
+	42720  -  ResidentSetSize of job (KB)
+...
+006 (17004.000.000) 2019-11-20 09:36:28 Image size of job updated: 140
+	140  -  MemoryUsage of job (MB)
+	143896  -  ResidentSetSize of job (KB)
+...
+040 (17004.000.000) 2019-11-20 09:38:49 Started transferring output files
+...
+040 (17004.000.000) 2019-11-20 09:38:49 Finished transferring output files
+...
+005 (17004.000.000) 2019-11-20 09:38:50 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:01:49, Sys 0 00:00:34  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:01:49, Sys 0 00:00:34  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	202889  -  Run Bytes Sent By Job
+	41540  -  Run Bytes Received By Job
+	202889  -  Total Bytes Sent By Job
+	41540  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :      667        1  11343765 
+	   Memory (MB)          :      131     1000      4006 
+...

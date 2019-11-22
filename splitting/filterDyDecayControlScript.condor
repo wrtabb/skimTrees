@@ -1,0 +1,15 @@
+executable = filterOneSampleDyDecay.sh
+universe   = Docker 
+
+error      = condor_logs/err.$(sampleShortName)_splitDecayModes_$(Process)
+output     = condor_logs/out.$(sampleShortName)_splitDecayModes_$(Process)
+log        = condor_logs/foo.$(sampleShortName)_splitDecayModes_log
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = filterOneSampleDyDecay.py,filterOnDyDecay.C,DYTreeVars.h
++WantDocker = True
+docker_image ="unlhcc/osg-wn-el6"
+use_x509userproxy = True
+
+Arguments = $(ntuplesGeneralLocation) $(sampleName) $(sampleSubdir) $(Process) $(numberOfSections)
+Queue $(numberOfSections)

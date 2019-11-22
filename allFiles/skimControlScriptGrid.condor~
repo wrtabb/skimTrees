@@ -1,0 +1,17 @@
+executable = processOneSample.sh
+use_x509userproxy = true
++Owner = undefined
+grid_resource  = condor red.unl.edu red.unl.edu:9619
+request_memory = 2000000 
+Universe = grid
+
+error      = condor_logs/err.$(sampleShortName)_$(skimTag)_$(Process)
+output     = condor_logs/out.$(sampleShortName)_$(skimTag)_$(Process)
+log        = condor_logs/foo.$(sampleShortName)_$(skimTag)_log
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = processOneSample.py,skimGoodEvents.C
++WantDocker = True
+
+Arguments = $(ntuplesGeneralLocation) $(sampleLocation) $(skimTag) $(Process) $(numberOfSections) $(preserveEventCount)
+Queue $(numberOfSections)

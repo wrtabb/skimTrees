@@ -1,0 +1,11 @@
+executable = processOneSample.sh
+universe   = vanilla
+error      = condor_logs/err.$(sampleShortName)_$(skimTag)_$(Process)
+output     = condor_logs/out.$(sampleShortName)_$(skimTag)_$(Process)
+log        = condor_logs/foo.$(sampleShortName)_$(skimTag)_log
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = processOneSample.py,skimGoodEvents.C
+
+Arguments = $(ntuplesGeneralLocation) $(sampleLocation) $(skimTag) $(Process) $(numberOfSections) $(preserveEventCount)
+Queue $(numberOfSections)

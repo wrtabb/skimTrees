@@ -1,0 +1,333 @@
+#include <stdio.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include "TFile.h"
+#include "TTree.h"
+#include "TChain.h"
+#include "TSystem.h"
+
+const bool useSmallEventNumber = false;
+const int smallEventNumber = 1000;
+
+const TString sampleBaseDir = "/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3";
+
+const TString rootDirName = "recoTree";
+const TString treeName = "DYTree";
+const TString treeNameFull = TString::Format("%s/%s",rootDirName.Data(), treeName.Data());
+
+const TString signalHLTType = "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*";
+const float ptMin = 15;
+const float etaMax = 2.5;
+
+// Main function
+void skimGoodEvents(TString pathToFileIn,
+		    TString shortFileNameIn,
+		    TString skimDirTag,
+		    bool preserveEventCount = true){
+
+  // A few info messages
+  if( useSmallEventNumber)
+    printf("Debug mode: will process only %d events\n", smallEventNumber);
+
+  if( preserveEventCount == true ){
+    printf("This processing will preserve event count\n");
+  }else{
+    printf("This processing will skip events that do not pass selection\n");
+  }
+
+  //
+  // Open the input file and find the tree
+  //
+  TString fullFileNameIn = TString::Format("%s/%s", pathToFileIn.Data(), shortFileNameIn.Data());
+  printf("Open input file %s\n", fullFileNameIn.Data());
+  TFile *fin = new TFile(fullFileNameIn);
+  if( fin == 0 ){
+    printf("Input file does not exist, tried %s\n", fullFileNameIn.Data());
+    return;
+  }
+  TTree *treeIn = (TTree*)fin->Get(treeNameFull);
+  if( treeIn == 0 ){
+    printf("Input tree is not found in the file\n");
+    return;
+  }
+
+  //
+  // Define variables
+  //
+  static const int MPSIZE = 2000;
+  // Global quantities
+  int runNum;
+  unsigned long long evtNum;
+  int lumiBlock;
+  double PUweight;
+  int Nelectrons;
+  int nVertices;
+
+  // Pileup
+  unsigned int nPileUp;
+
+  // Trigger quantities
+  int HLT_ntrig;
+  int HLT_trigType[MPSIZE];
+  int HLT_trigFired[MPSIZE];
+  std::vector<std::string> HLT_trigName;
+  std::vector<std::string> *pHLT_trigName = &HLT_trigName;
+
+  // Electron quantities
+  double Electron_Energy[MPSIZE];
+  double Electron_pT[MPSIZE];
+  double Electron_Px[MPSIZE];
+  double Electron_Py[MPSIZE];
+  double Electron_Pz[MPSIZE];
+  double Electron_eta[MPSIZE];
+  double Electron_phi[MPSIZE];
+  int Electron_charge[MPSIZE];
+  double Electron_etaSC[MPSIZE];
+  double Electron_phiSC[MPSIZE];
+  double Electron_dxy[MPSIZE];
+  double Electron_dz[MPSIZE];
+  double Electron_EnergySC[MPSIZE];
+  double Electron_etSC[MPSIZE];
+  bool Electron_passMediumID[MPSIZE];
+
+  // Global GEN quantities
+  double GENEvt_weight;
+  double GENEvt_QScale;
+  double GENEvt_x1;
+  double GENEvt_x2;
+  double GENEvt_alphaQCD;
+  double GENEvt_alphaQED;
+
+  // 
+  // Define branches for input tree
+  // 
+  TBranch * b_runNum;
+  TBranch * b_evtNum;
+  TBranch * b_lumiBlock;
+  TBranch * b_PUweight;
+  TBranch * b_Nelectrons;
+  TBranch * b_nVertices;
+
+  // Pileup
+  TBranch * b_nPileUp;
+
+  // Trigger quantities
+  TBranch * b_HLT_ntrig;
+  TBranch * b_HLT_trigType;
+  TBranch * b_HLT_trigFired;
+
+  // Electron quantities
+  TBranch *  b_Electron_Energy;
+  TBranch *  b_Electron_pT;
+  TBranch *  b_Electron_Px;
+  TBranch *  b_Electron_Py;
+  TBranch *  b_Electron_Pz;
+  TBranch *  b_Electron_eta;
+  TBranch *  b_Electron_phi;
+  TBranch *  b_Electron_charge;
+  TBranch *  b_Electron_etaSC;
+  TBranch *  b_Electron_phiSC;
+  TBranch *  b_Electron_dxy;
+  TBranch *  b_Electron_dz;
+  TBranch *  b_Electron_EnergySC;
+  TBranch *  b_Electron_etSC;
+  TBranch *  b_Electron_passMediumID;
+
+  // Global GEN quantities
+  TBranch *  b_GENEvt_weight;
+  TBranch *  b_GENEvt_QScale;
+  TBranch *  b_GENEvt_x1;
+  TBranch *  b_GENEvt_x2;
+  TBranch *  b_GENEvt_alphaQCD;
+  TBranch *  b_GENEvt_alphaQED;
+
+
+  //
+  // Set up branches for input tree
+  //
+  treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
+  treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
+  treeIn->SetBranchAddress("lumiBlock" , &lumiBlock , &b_lumiBlock);
+  treeIn->SetBranchAddress("PUweight"  , &PUweight  , &b_PUweight);
+  treeIn->SetBranchAddress("Nelectrons", &Nelectrons, &b_Nelectrons);
+  treeIn->SetBranchAddress("nVertices" , &nVertices , &b_nVertices);
+
+  treeIn->SetBranchAddress("nPileUp"   ,&nPileUp    , &b_nPileUp);
+
+  treeIn->SetBranchAddress("HLT_ntrig", &HLT_ntrig, &b_HLT_ntrig);
+  treeIn->SetBranchAddress("HLT_trigType", &HLT_trigType, &b_HLT_trigType);
+  treeIn->SetBranchAddress("HLT_trigFired", &HLT_trigFired, &b_HLT_trigFired);
+  treeIn->SetBranchAddress("HLT_trigName", &pHLT_trigName);
+
+  // Electron quantities
+  treeIn->SetBranchAddress("Electron_Energy"      ,&Electron_Energy      , &b_Electron_Energy      );
+  treeIn->SetBranchAddress("Electron_pT"          ,&Electron_pT          , &b_Electron_pT          );
+  treeIn->SetBranchAddress("Electron_Px"          ,&Electron_Px          , &b_Electron_Px          );
+  treeIn->SetBranchAddress("Electron_Py"          ,&Electron_Py          , &b_Electron_Py          );
+  treeIn->SetBranchAddress("Electron_Pz"          ,&Electron_Pz          , &b_Electron_Pz          );
+  treeIn->SetBranchAddress("Electron_eta"         ,&Electron_eta         , &b_Electron_eta         );
+  treeIn->SetBranchAddress("Electron_phi"         ,&Electron_phi         , &b_Electron_phi         );
+  treeIn->SetBranchAddress("Electron_charge"      ,&Electron_charge      , &b_Electron_charge      );
+  treeIn->SetBranchAddress("Electron_etaSC"       ,&Electron_etaSC       , &b_Electron_etaSC       );
+  treeIn->SetBranchAddress("Electron_phiSC"       ,&Electron_phiSC       , &b_Electron_phiSC       );
+  treeIn->SetBranchAddress("Electron_dxy"         ,&Electron_dxy         , &b_Electron_dxy         );
+  treeIn->SetBranchAddress("Electron_dz"          ,&Electron_dz          , &b_Electron_dz          );
+  treeIn->SetBranchAddress("Electron_EnergySC"    ,&Electron_EnergySC    , &b_Electron_EnergySC    );
+  treeIn->SetBranchAddress("Electron_etSC"        ,&Electron_etSC        , &b_Electron_etSC        );
+  treeIn->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID, &b_Electron_passMediumID);
+
+  // Global GEN quantities
+  treeIn->SetBranchAddress("GENEvt_weight"        ,&GENEvt_weight        , &b_GENEvt_weight  );
+  treeIn->SetBranchAddress("GENEvt_QScale"        ,&GENEvt_QScale        , &b_GENEvt_QScale  );
+  treeIn->SetBranchAddress("GENEvt_x1"            ,&GENEvt_x1            , &b_GENEvt_x1      );
+  treeIn->SetBranchAddress("GENEvt_x2"            ,&GENEvt_x2            , &b_GENEvt_x2      );
+  treeIn->SetBranchAddress("GENEvt_alphaQCD"      ,&GENEvt_alphaQCD      , &b_GENEvt_alphaQCD);
+  treeIn->SetBranchAddress("GENEvt_alphaQED"      ,&GENEvt_alphaQED      , &b_GENEvt_alphaQED);
+
+
+  // Note: we cannot write directly to hadoop, the file system does not support
+  // writing of a root file from a script. So instead, we create it locally
+  // and later copy it.
+  TString fileNameOutTmp = "test.root";
+  printf("Create a temporary skim file locally\n");
+  TFile* fout = new TFile(fileNameOutTmp, "RECREATE");
+  TDirectory *dirOut = fout->mkdir(rootDirName);
+  dirOut->cd();
+  TTree* treeOut = new TTree(treeName, "Skimmed tree");
+
+  // Configure the tree
+  treeOut->Branch("runNum",&runNum,"runNum/I");
+  treeOut->Branch("evtNum",&evtNum,"evtNum/l");
+  treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
+  treeOut->Branch("PUweight",&PUweight,"PUweight/D");
+  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
+  treeOut->Branch("nVertices",&nVertices,"nVertices/I");
+
+  treeOut->Branch("nPileUp",&nPileUp,"nPileUp/I");
+
+  // if( sampleType == MC_SIGNAL )
+  //    treeOut->Branch("PDFWeights", &PDFWeights);
+
+  // Trigger quantities
+  treeOut->Branch("HLT_ntrig"     , &HLT_ntrig,"HLT_ntrig/I");
+  treeOut->Branch("HLT_trigType" , &HLT_trigType,"HLT_trigType[HLT_ntrig]/I");
+  treeOut->Branch("HLT_trigFired", &HLT_trigFired,"HLT_trigFired[HLT_ntrig]/I");
+  treeOut->Branch("HLT_trigName"  , &HLT_trigName);
+
+  treeOut->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
+  treeOut->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
+  treeOut->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
+  treeOut->Branch("Electron_Py", &Electron_Py, "Electron_Py[Nelectrons]/D");
+  treeOut->Branch("Electron_Pz", &Electron_Pz, "Electron_Pz[Nelectrons]/D");
+  treeOut->Branch("Electron_eta", &Electron_eta, "Electron_eta[Nelectrons]/D");
+  treeOut->Branch("Electron_phi", &Electron_phi, "Electron_phi[Nelectrons]/D");
+  treeOut->Branch("Electron_charge", &Electron_charge, "Electron_charge[Nelectrons]/I");
+  treeOut->Branch("Electron_etaSC", &Electron_etaSC, "Electron_etaSC[Nelectrons]/D");
+  treeOut->Branch("Electron_phiSC", &Electron_phiSC, "Electron_phiSC[Nelectrons]/D");
+  treeOut->Branch("Electron_dxy", &Electron_dxy, "Electron_dxy[Nelectrons]/D");
+  treeOut->Branch("Electron_dz", &Electron_dz, "Electron_dz[Nelectrons]/D");
+  treeOut->Branch("Electron_EnergySC", &Electron_EnergySC, "Electron_EnergySC[Nelectrons]/D");
+  treeOut->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
+  treeOut->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
+
+  // Global GEN quantities
+  treeOut->Branch("GENEvt_weight",&GENEvt_weight,"GENEvt_weight/D");
+  treeOut->Branch("GENEvt_QScale",&GENEvt_QScale,"GENEvt_QScale/D");
+  treeOut->Branch("GENEvt_x1",&GENEvt_x1,"GENEvt_x1/D");
+  treeOut->Branch("GENEvt_x2",&GENEvt_x2,"GENEvt_x2/D");
+  treeOut->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
+  treeOut->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
+
+  // 
+  // Loop over events
+  //
+
+  Long64_t nEntries = treeIn->GetEntries();
+  Long64_t nEvents = nEntries;
+  if( useSmallEventNumber )
+    nEvents = smallEventNumber;
+
+  printf("Start the event loop over %lld events\n", nEvents);
+  for(Long64_t iEvent = 0; iEvent < nEvents; iEvent++){
+
+    treeIn->GetEntry(iEvent);
+    if( iEvent%(nEvents/100) == 0 ){
+      printf("\rLooping over events progress %.1f%%", (iEvent*100./nEvents)); fflush(stdout);
+    }
+
+    // Check if this event passes the skim selection criteria
+    // HLT check
+    bool passHLT = false;
+    for(uint iHLT=0; iHLT < pHLT_trigName->size(); iHLT++){
+      TString trigName = pHLT_trigName->at(iHLT);
+      if(trigName.CompareTo(signalHLTType)==0 && HLT_trigFired[iHLT]==1){ // compareTo returns 0 for exact match
+	passHLT = true;
+      }
+    } // end loop over HLT trigger lines
+    
+    // Check if this event has at least two electrons that pass ID and
+    // loose kinematic cuts
+    int nGoodElectrons = 0;
+    for(int iEle=0;iEle<Nelectrons;iEle++){
+      if( Electron_pT[iEle] > ptMin && abs(Electron_eta[iEle]) < etaMax
+	  && Electron_passMediumID[iEle]==1 ) {
+	nGoodElectrons++;
+      }
+    } // end loop over electrons
+    bool passEnoughGoodElectrons = false;
+    if( nGoodElectrons >= 2 )
+      passEnoughGoodElectrons = true;
+
+    if( ! (passHLT && passEnoughGoodElectrons) ) {
+      // Event fails the skimming criteria, but if event count is needed for normalization, 
+      // save only the general quantities but empty the electrons array
+      if( preserveEventCount ){
+	Nelectrons = 0;
+	treeOut->Fill();
+      }
+    } else {
+      // Event passed the skimming criteria
+      treeOut->Fill();
+    }
+
+  }
+  printf("\rLooping over events completed               \n");
+
+  treeOut->Write();
+  delete treeIn;
+  fin->Close();
+
+  //
+  // Set up output directory, file name, and move the skim file there
+  //
+  TString dirNameOut = TString::Format("%s/skims_%s", pathToFileIn.Data(), 
+				       skimDirTag.Data() );
+  printf("Create output directory\n %s\n", dirNameOut.Data());
+  // The following directory creation comes from sys/stat.h:
+  mode_t dirMode = S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH; // Supposed to result in drwxr-xr-x. directory permissions
+  mkdir(dirNameOut.Data(), dirMode);
+  // Create short file name
+  TString shortFileNameOut = shortFileNameIn;
+  TString suffixOut = TString::Format("_skim_%s.root",skimDirTag.Data());
+  shortFileNameOut.ReplaceAll(".root", suffixOut.Data());
+  TString fullFileNameOut = TString::Format("%s/%s", dirNameOut.Data(), shortFileNameOut.Data());
+  if( useSmallEventNumber )
+    fullFileNameOut.ReplaceAll("_skim.root","_skim_debig.root");
+  // Copy the output skim into the appropriate location, close file before copying
+  fout->Close();
+  // Copy the file to the final location and remove the temporary local file
+  printf("Create output file\n   %s\n", fullFileNameOut.Data());
+  // Path for grid ftp starts with /user while the mounted areas look like /mnt/hadoop/user",
+  // so build the ftp path appropriately
+  TPRegexp r1("store(.*)");
+  TString reducedFileNameOut = fullFileNameOut(r1);
+  TString gridCopyCommand = TString::Format("gfal-copy file:////%s gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/%s",
+					    fileNameOutTmp.Data(), reducedFileNameOut.Data());
+  //TString copyCommand = TString::Format("cp %s %s", fileNameOutTmp.Data(), fullFileNameOut.Data());
+  gSystem->Exec(gridCopyCommand.Data());
+  TString removeCommand = TString::Format("rm %s", fileNameOutTmp.Data());
+  gSystem->Exec(removeCommand.Data());
+
+  return;
+}

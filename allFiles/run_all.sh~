@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "Starting run at " $(date)
+echo "Sample " $1
+echo "Section " $2
+
+# pwd
+# ls -la

@@ -1,0 +1,12 @@
+executable = filterOneSampleGenMass.sh
+universe   = vanilla
+
+error      = condor_logs/err.$(sampleShortName)_massFilter_$(Process)
+output     = condor_logs/out.$(sampleShortName)_massFilter_$(Process)
+log        = condor_logs/foo.$(sampleShortName)_massFilter_log
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = filterOneSampleGenMass.py,filterOnGenMass.C
+
+Arguments = $(ntuplesGeneralLocation) $(sampleName) $(sampleSubdir) $(sampleSuffixOut) $(sampleType) $(Process) $(numberOfSections)
+Queue $(numberOfSections)
