@@ -1,0 +1,323 @@
+#!/usr/bin/env bash    
+    dir='/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6'
+    break='----------------------------------------------------'
+    skim='skims_0002'
+    
+
+    echo $break
+    echo DYLL_M10to50/EE/v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/MuMu/v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/TauTau/v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/EE/v2
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/v2/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/v2/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/MuMu/v2
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/v2/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/v2/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/TauTau/v2
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/v2/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/v2/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/EE/ext1v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/ext1v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/EE/ext1v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/MuMu/ext1v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/ext1v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/MuMu/ext1v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M10to50/TauTau/ext1v1
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/ext1v1/*.root | wc -l
+    ls $dir/DYLL_M10to50/DYLL_M10to50/TauTau/ext1v1/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M50to100/EE
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/EE/base/*.root | wc -l
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/EE/base/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M50to100/MuMu
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/MuMu/base/*.root | wc -l
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/MuMu/base/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M50to100/TauTau
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/TauTau/base/*.root | wc -l
+    ls $dir/DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/TauTau/base/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M100to200/EE
+    ls $dir/DYLL_M100to200/DYLL_M100to200/EE/*.root | wc -l
+    ls $dir/DYLL_M100to200/DYLL_M100to200/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M100to200/MuMu
+    ls $dir/DYLL_M100to200/DYLL_M100to200/MuMu/*.root | wc -l
+    ls $dir/DYLL_M100to200/DYLL_M100to200/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M100to200/TauTau
+    ls $dir/DYLL_M100to200/DYLL_M100to200/TauTau/*.root | wc -l
+    ls $dir/DYLL_M100to200/DYLL_M100to200/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M200to400/EE
+    ls $dir/DYLL_M200to400/DYLL_M200to400/EE/*.root | wc -l
+    ls $dir/DYLL_M200to400/DYLL_M200to400/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M200to400/MuMu
+    ls $dir/DYLL_M200to400/DYLL_M200to400/MuMu/*.root | wc -l
+    ls $dir/DYLL_M200to400/DYLL_M200to400/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M200to400/TauTau
+    ls $dir/DYLL_M200to400/DYLL_M200to400/TauTau/*.root | wc -l
+    ls $dir/DYLL_M200to400/DYLL_M200to400/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M400to500/EE
+    ls $dir/DYLL_M400to500/DYLL_M400to500/EE/*.root | wc -l
+    ls $dir/DYLL_M400to500/DYLL_M400to500/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M400to500/MuMu
+    ls $dir/DYLL_M400to500/DYLL_M400to500/MuMu/*.root | wc -l
+    ls $dir/DYLL_M400to500/DYLL_M400to500/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M400to500/TauTau
+    ls $dir/DYLL_M400to500/DYLL_M400to500/TauTau/*.root | wc -l
+    ls $dir/DYLL_M400to500/DYLL_M400to500/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M500to700/EE
+    ls $dir/DYLL_M500to700/DYLL_M500to700/EE/*.root | wc -l
+    ls $dir/DYLL_M500to700/DYLL_M500to700/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M500to700/MuMu
+    ls $dir/DYLL_M500to700/DYLL_M500to700/MuMu/*.root | wc -l
+    ls $dir/DYLL_M500to700/DYLL_M500to700/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M500to700/TauTau
+    ls $dir/DYLL_M500to700/DYLL_M500to700/TauTau/*.root | wc -l
+    ls $dir/DYLL_M500to700/DYLL_M500to700/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M700to800/EE
+    ls $dir/DYLL_M700to800/DYLL_M700to800/EE/*.root | wc -l
+    ls $dir/DYLL_M700to800/DYLL_M700to800/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M700to800/MuMu
+    ls $dir/DYLL_M700to800/DYLL_M700to800/MuMu/*.root | wc -l
+    ls $dir/DYLL_M700to800/DYLL_M700to800/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M700to800/TauTau
+    ls $dir/DYLL_M700to800/DYLL_M700to800/TauTau/*.root | wc -l
+    ls $dir/DYLL_M700to800/DYLL_M700to800/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M800to1000/EE
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/EE/*.root | wc -l
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M800to1000/MuMu
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/MuMu/*.root | wc -l
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M800to1000/TauTau
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/TauTau/*.root | wc -l
+    ls $dir/DYLL_M800to1000/DYLL_M800to1000/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1000to1500/EE
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/EE/*.root | wc -l
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1000to1500/MuMu
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/MuMu/*.root | wc -l
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1000to1500/TauTau
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/TauTau/*.root | wc -l
+    ls $dir/DYLL_M1000to1500/DYLL_M1000to1500/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1500to2000/EE
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/EE/*.root | wc -l
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1500to2000/MuMu
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/MuMu/*.root | wc -l
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M1500to2000/TauTau
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/TauTau/*.root | wc -l
+    ls $dir/DYLL_M1500to2000/DYLL_M1500to2000/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M2000to3000/EE
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/EE/*.root | wc -l
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/EE/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M2000to3000/MuMu
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/MuMu/*.root | wc -l
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/MuMu/$skim/*.root | wc -l
+    echo $break
+    echo DYLL_M2000to3000/TauTau
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/TauTau/*.root | wc -l
+    ls $dir/DYLL_M2000to3000/DYLL_M2000to3000/TauTau/$skim/*.root | wc -l
+    echo $break
+    echo WW
+    ls $dir/WW/*.root | wc -l
+    ls $dir/WW/$skim/*.root | wc -l
+    echo $break
+    echo WZ
+    ls $dir/WZ/*.root | wc -l
+    ls $dir/WZ/$skim/*.root | wc -l
+    echo $break
+    echo ZZ
+    ls $dir/ZZ/*.root | wc -l
+    ls $dir/ZZ/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M50to120
+    ls $dir/ZToEE_M50to120/*.root | wc -l
+    ls $dir/ZToEE_M50to120/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M120to200
+    ls $dir/ZToEE_M120to200/*.root | wc -l
+    ls $dir/ZToEE_M120to200/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M200to400
+    ls $dir/ZToEE_M200to400/*.root | wc -l
+    ls $dir/ZToEE_M200to400/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M400to800
+    ls $dir/ZToEE_M400to800/*.root | wc -l
+    ls $dir/ZToEE_M400to800/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M800to1400
+    ls $dir/ZToEE_M800to1400/*.root | wc -l
+    ls $dir/ZToEE_M800to1400/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M1400to2300
+    ls $dir/ZToEE_M1400to2300/*.root | wc -l
+    ls $dir/ZToEE_M1400to2300/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M2300to3500
+    ls $dir/ZToEE_M2300to3500/*.root | wc -l
+    ls $dir/ZToEE_M2300to3500/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M3500to4500
+    ls $dir/ZToEE_M3500to4500/*.root | wc -l
+    ls $dir/ZToEE_M3500to4500/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M4500to6000
+    ls $dir/ZToEE_M4500to6000/*.root | wc -l
+    ls $dir/ZToEE_M4500to6000/$skim/*.root | wc -l
+    echo $break
+    echo ZToEE_M6000toInf
+    ls $dir/ZToEE_M6000toInf/*.root | wc -l
+    ls $dir/ZToEE_M6000toInf/$skim/*.root | wc -l
+    echo $break
+    echo ttbar
+    ls $dir/ttbar/*.root | wc -l
+    ls $dir/ttbar/$skim/*.root | wc -l
+    echo $break
+    echo ttbarBackup
+    ls $dir/ttbarBackup/*.root | wc -l
+    ls $dir/ttbarBackup/$skim/*.root | wc -l
+    echo $break
+    echo ttbar_M0to700
+    ls $dir/ttbar_truncated_M0To700/*.root | wc -l
+    ls $dir/ttbar_truncated_M0To700/$skim/*.root | wc -l
+    echo $break
+    echo ttbarBackup_M0to700
+    ls $dir/ttbarBackup_truncated_M0To700/*.root | wc -l
+    ls $dir/ttbarBackup_truncated_M0To700/$skim/*.root | wc -l
+    echo $break
+    echo ttbar_M700to1000
+    ls $dir/ttbar_M700to1000/*.root | wc -l
+    ls $dir/ttbar_M700to1000/$skim/*.root | wc -l
+    echo $break
+    echo ttbar_M1000toInf
+    ls $dir/ttbar_M1000toInf/*.root | wc -l
+    ls $dir/ttbar_M1000toInf/$skim/*.root | wc -l
+    echo $break
+    echo ST_tW
+    ls $dir/ST_tW/*.root | wc -l
+    ls $dir/ST_tW/$skim/*.root | wc -l
+    echo $break
+    echo ST_tbarW
+    ls $dir/ST_tbarW/*.root | wc -l
+    ls $dir/ST_tbarW/$skim/*.root | wc -l
+    echo $break
+    echo WJetsToLNu
+    ls $dir/WJetsToLNu_amcatnlo/*.root | wc -l
+    ls $dir/WJetsToLNu_amcatnlo/$skim/*.root | wc -l
+    echo $break
+    echo WJetsToLNu_ext
+    ls $dir/WJetsToLNu_amcatnlo_ext/*.root | wc -l
+    ls $dir/WJetsToLNu_amcatnlo_ext/$skim/*.root | wc -l
+    echo $break
+    echo WJetsToLNu_ext2v5
+    ls $dir/WJetsToLNu_amcatnlo_ext2v5/*.root | wc -l
+    ls $dir/WJetsToLNu_amcatnlo_ext2v5/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_B
+    ls $dir/SingleMuon_Run2016B/*.root | wc -l
+    ls $dir/SingleMuon_Run2016B/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_C
+    ls $dir/SingleMuon_Run2016C/*.root | wc -l
+    ls $dir/SingleMuon_Run2016C/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_D
+    ls $dir/SingleMuon_Run2016D/*.root | wc -l
+    ls $dir/SingleMuon_Run2016D/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_E
+    ls $dir/SingleMuon_Run2016E/*.root | wc -l
+    ls $dir/SingleMuon_Run2016E/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_F
+    ls $dir/SingleMuon_Run2016F/*.root | wc -l
+    ls $dir/SingleMuon_Run2016F/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_G
+    ls $dir/SingleMuon_Run2016G/*.root | wc -l
+    ls $dir/SingleMuon_Run2016G/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_Hver2
+    ls $dir/SingleMuon_Run2016Hver2/*.root | wc -l
+    ls $dir/SingleMuon_Run2016Hver2/$skim/*.root | wc -l
+    echo $break
+    echo SingleMuon_Hver3
+    ls $dir/SingleMuon_Run2016Hver3/*.root | wc -l
+    ls $dir/SingleMuon_Run2016Hver3/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunB
+    ls $dir/crab_DoubleEG_RunB/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunB/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunC
+    ls $dir/crab_DoubleEG_RunC/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunC/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunD
+    ls $dir/crab_DoubleEG_RunD/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunD/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunE
+    ls $dir/crab_DoubleEG_RunE/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunE/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunF
+    ls $dir/crab_DoubleEG_RunF/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunF/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunG
+    ls $dir/crab_DoubleEG_RunG/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunG/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunHver2
+    ls $dir/crab_DoubleEG_RunHver2/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunHver2/$skim/*.root | wc -l
+    echo $break
+    echo DoubleEG_RunHver3
+    ls $dir/crab_DoubleEG_RunHver3/*.root | wc -l
+    ls $dir/crab_DoubleEG_RunHver3/$skim/*.root | wc -l
+    echo $break
