@@ -11,8 +11,6 @@
 const bool useSmallEventNumber = false;
 const int smallEventNumber = 1000;
 
-const TString sampleBaseDir = "/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/ikrav/DrellYan_13TeV_2016/v2p3";
-
 const TString rootDirName = "recoTree";
 const TString treeName = "DYTree";
 const TString treeNameFull = TString::Format("%s/%s",rootDirName.Data(), treeName.Data());
@@ -75,6 +73,39 @@ void skimGoodEvents(TString pathToFileIn,
   std::vector<std::string> HLT_trigName;
   std::vector<std::string> *pHLT_trigName = &HLT_trigName;
 
+  int    nMuon;
+  int    Nmuons;
+  double PVz;
+  double Muon_pT[MPSIZE];
+  double Muon_Px[MPSIZE];
+  double Muon_Py[MPSIZE];
+  double Muon_Pz[MPSIZE];
+  double Muon_eta[MPSIZE];
+  double Muon_phi[MPSIZE];
+  int    Muon_charge[MPSIZE];
+  double Muon_dxy[MPSIZE];
+  double Muon_dz[MPSIZE];
+  bool   Muon_passTightID[MPSIZE];
+
+  double Muon_PfChargedHadronIsoR04[MPSIZE];
+  double Muon_PfNeutralHadronIsoR04[MPSIZE];
+  double Muon_PfGammaIsoR04[MPSIZE];
+  double Muon_PFSumPUIsoR04[MPSIZE];
+  double Muon_trkiso[MPSIZE];
+
+  std::vector<double> vtxTrkCkt1Pt;
+  std::vector<double>*pvtxTrkCkt1Pt = &vtxTrkCkt1Pt;
+
+  std::vector<double> vtxTrkCkt2Pt;
+  std::vector<double>*pvtxTrkCkt2Pt = &vtxTrkCkt2Pt;
+
+  std::vector<double> vtxTrkChi2;
+  std::vector<double>*pvtxTrkChi2 = &vtxTrkChi2;
+
+  std::vector<double> vtxTrkNdof;
+  std::vector<double>*pvtxTrkNdof = &vtxTrkNdof;
+
+
   // Electron quantities
   double Electron_Energy[MPSIZE];
   double Electron_pT[MPSIZE];
@@ -100,15 +131,52 @@ void skimGoodEvents(TString pathToFileIn,
   double GENEvt_alphaQCD;
   double GENEvt_alphaQED;
 
+  double _prefiringweight;
+  double _prefiringweightup;
+  double _prefiringweightdown;
+
+  double GENLepton_eta;
+  double GENLepton_phi;
+  double GENLepton_pT;
+  int GENLepton_ID;
+  int GENLepton_isHardProcess;
+  int GENLepton_fromHardProcessFinalState;
+
   // 
   // Define branches for input tree
   // 
+  TBranch*b_nMuon;
+  TBranch*b_Nmuons;
+  TBranch*b_PVz;
+  TBranch*b_Muon_pT;
+  TBranch*b_Muon_Px;
+  TBranch*b_Muon_Py;
+  TBranch*b_Muon_Pz;
+  TBranch*b_Muon_eta;
+  TBranch*b_Muon_phi;
+  TBranch*b_Muon_charge;
+  TBranch*b_Muon_dxy;
+  TBranch*b_Muon_dz;
+  TBranch*b_Muon_passTightID;
+
+  TBranch*b_Muon_PfChargedHadronIsoR04;
+  TBranch*b_Muon_PfNeutralHadronIsoR04;
+  TBranch*b_Muon_PfGammaIsoR04;
+  TBranch*b_Muon_PFSumPUIsoR04;
+  TBranch*b_Muon_trkiso;
+
+
   TBranch * b_runNum;
   TBranch * b_evtNum;
   TBranch * b_lumiBlock;
   TBranch * b_PUweight;
   TBranch * b_Nelectrons;
   TBranch * b_nVertices;
+
+  // Prefiring weights
+  TBranch * b__prefiringweight;
+  TBranch * b__prefiringweightup;
+  TBranch * b__prefiringweightdown;
 
   // Pileup
   TBranch * b_nPileUp;
@@ -143,10 +211,48 @@ void skimGoodEvents(TString pathToFileIn,
   TBranch *  b_GENEvt_alphaQCD;
   TBranch *  b_GENEvt_alphaQED;
 
+  TBranch*b_GENLepton_eta;
+  TBranch*b_GENLepton_phi;
+  TBranch*b_GENLepton_pT;
+  TBranch*b_GENLepton_ID;
+  TBranch*b_GENLepton_isHardProcess;
+  TBranch*b_GENLepton_fromHardProcessFinalState;
 
   //
   // Set up branches for input tree
   //
+  treeIn->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
+  treeIn->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
+  treeIn->SetBranchAddress("PVz",&PVz,&b_PVz);
+  treeIn->SetBranchAddress("Muon_pT",&Muon_pT,&b_Muon_pT);
+  treeIn->SetBranchAddress("Muon_Px",&Muon_Px,&b_Muon_Px);
+  treeIn->SetBranchAddress("Muon_Py",&Muon_Py,&b_Muon_Py);
+  treeIn->SetBranchAddress("Muon_Pz",&Muon_Pz,&b_Muon_Pz);
+  treeIn->SetBranchAddress("Muon_eta",&Muon_eta,&b_Muon_eta);
+  treeIn->SetBranchAddress("Muon_phi",&Muon_phi,&b_Muon_phi);
+  treeIn->SetBranchAddress("Muon_charge",&Muon_charge,&b_Muon_charge);
+  treeIn->SetBranchAddress("Muon_dxy",&Muon_dxy,&b_Muon_dxy);
+  treeIn->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
+  treeIn->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
+
+  treeIn->SetBranchAddress("vtxTrkCkt1Pt", &pvtxTrkCkt1Pt);
+  treeIn->SetBranchAddress("vtxTrkCkt2Pt", &pvtxTrkCkt2Pt);
+  treeIn->SetBranchAddress("vtxTrkChi2",   &pvtxTrkChi2);
+  treeIn->SetBranchAddress("vtxTrkNdof",   &pvtxTrkNdof);
+
+  treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
+                           &b_Muon_PfChargedHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
+                           &b_Muon_PfNeutralHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
+  treeIn->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
+  treeIn->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
+
+
+  treeIn->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
+  treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
+  treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
+
   treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
   treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
   treeIn->SetBranchAddress("lumiBlock" , &lumiBlock , &b_lumiBlock);
@@ -195,6 +301,13 @@ void skimGoodEvents(TString pathToFileIn,
     treeIn->SetBranchAddress("GENEvt_x2"            ,&GENEvt_x2            , &b_GENEvt_x2      );
     treeIn->SetBranchAddress("GENEvt_alphaQCD"      ,&GENEvt_alphaQCD      , &b_GENEvt_alphaQCD);
     treeIn->SetBranchAddress("GENEvt_alphaQED"      ,&GENEvt_alphaQED      , &b_GENEvt_alphaQED);
+
+  treeIn->SetBranchAddress("GENLepton_eta",&GENLepton_eta,&b_GENLepton_eta);
+  treeIn->SetBranchAddress("GENLepton_phi",&GENLepton_phi,&b_GENLepton_phi);
+  treeIn->SetBranchAddress("GENLepton_pT",&GENLepton_pT,&b_GENLepton_pT);
+  treeIn->SetBranchAddress("GENLepton_ID",&GENLepton_ID,&b_GENLepton_ID);
+  treeIn->SetBranchAddress("GENLepton_isHardProcess",&GENLepton_isHardProcess,&b_GENLepton_isHardProcess);
+  treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,&b_GENLepton_fromHardProcessFinalState);
   }
 
   // Note: we cannot write directly to hadoop, the file system does not support
@@ -208,6 +321,37 @@ void skimGoodEvents(TString pathToFileIn,
   TTree* treeOut = new TTree(treeName, "Skimmed tree");
 
   // Configure the tree
+  treeOut->Branch("nMuon",&nMuon,"nMuon/I");
+  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
+  treeOut->Branch("PVz",&PVz,"PVz/D");
+  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT/D");
+  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px/D");
+  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py/D");
+  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz/D");
+  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta/D");
+  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi/D");
+  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge/I");
+  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy/D");
+  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz/D");
+  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
+
+  treeOut->Branch("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
+                 "Muon_PfChargedHadronIsoR04/D");
+  treeOut->Branch("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
+                 "Muon_PfNeutralHadronIsoR04/D");
+  treeOut->Branch("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04/D");
+  treeOut->Branch("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04/D");
+  treeOut->Branch("Muon_trkiso", Muon_trkiso, "Muon_trkiso/D");
+
+  treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
+  treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
+  treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
+  treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+
+  treeOut->Branch("_prefiringweight", &_prefiringweight,"_prefiringweight/D");
+  treeOut->Branch("_prefiringweightup", &_prefiringweightup,"_prefiringweightup/D");
+  treeOut->Branch("_prefiringweightdown", &_prefiringweightdown,"_prefiringweightdown/D");
+
   treeOut->Branch("runNum",&runNum,"runNum/I");
   treeOut->Branch("evtNum",&evtNum,"evtNum/l");
   treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
@@ -250,6 +394,13 @@ void skimGoodEvents(TString pathToFileIn,
     treeOut->Branch("GENEvt_x2",&GENEvt_x2,"GENEvt_x2/D");
     treeOut->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
     treeOut->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
+
+    treeOut->Branch("GENLepton_eta",&GENLepton_eta,"GENLepton_eta/D");
+    treeOut->Branch("GENLepton_phi",&GENLepton_phi,"GENLepton_phi/D");
+    treeOut->Branch("GENLepton_pT",&GENLepton_pT,"GENLepton_pT/D");
+    treeOut->Branch("GENLepton_ID",&GENLepton_ID,"GENLepton_ID/I");
+    treeOut->Branch("GENLepton_isHardProcess",&GENLepton_isHardProcess,"GENLepton_isHardProcess/I");
+    treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState/I");
   }
 
   // 
@@ -265,9 +416,9 @@ void skimGoodEvents(TString pathToFileIn,
   for(Long64_t iEvent = 0; iEvent < nEvents; iEvent++){
 
     treeIn->GetEntry(iEvent);
-    if( iEvent%(nEvents/100) == 0 ){
-      printf("\rLooping over events progress %.1f%%", (iEvent*100./nEvents)); fflush(stdout);
-    }
+    //if( iEvent%(nEvents/100) == 0 ){
+    //  printf("\rLooping over events progress %.1f%%", (iEvent*100./nEvents)); fflush(stdout);
+   // }
 
     // Check if this event passes the skim selection criteria
     // HLT check
@@ -335,7 +486,7 @@ void skimGoodEvents(TString pathToFileIn,
   // so build the ftp path appropriately
   TPRegexp r1("store(.*)");
   TString reducedFileNameOut = fullFileNameOut(r1);
-  TString gridCopyCommand = TString::Format("gfal-copy -p file:////${PWD}/%s gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/%s",
+  TString gridCopyCommand = TString::Format("eval `scram unsetenv -sh`; gfal-copy -p file:////${PWD}/%s gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/%s",
 					    fileNameOutTmp.Data(), reducedFileNameOut.Data());
   printf("\n\n File name tmp listing:\n");
   TString checkFileCommand = TString::Format("ls -l ${PWD}/%s",fileNameOutTmp.Data() );

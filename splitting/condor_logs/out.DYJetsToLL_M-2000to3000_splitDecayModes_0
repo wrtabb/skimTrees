@@ -1,20 +1,25 @@
-Start processing at  Wed Nov 20 15:27:43 UTC 2019
-wrtabb-17010.0-red-c1907.unl.edu
-/var/lib/condor/execute/dir_11020
-total 60
--rw-r--r-- 1 wrtabb hep  4226 Nov 20 15:27 DYTreeVars.h
--rw-r--r-- 1 wrtabb hep     0 Nov 20 15:27 _condor_stderr
--rw-r--r-- 1 wrtabb hep   117 Nov 20 15:27 _condor_stdout
--rwxr-xr-x 1 wrtabb hep   954 Nov 20 15:27 condor_exec.exe
--rwxr-xr-x 1 wrtabb hep     0 Nov 20 15:27 docker_stderror
--rw-r--r-- 1 wrtabb hep 24672 Nov 20 15:27 filterOnDyDecay.C
--rwxr--r-- 1 wrtabb hep  2527 Nov 20 15:27 filterOneSampleDyDecay.py
-drwx------ 2 wrtabb hep     6 Nov 20 15:27 tmp
-drwx------ 3 wrtabb hep    17 Nov 20 15:27 var
--rw------- 1 wrtabb hep  9161 Nov 20 15:27 x509up_u5512
+Start processing at  Sun Sep 13 22:57:27 UTC 2020
+wrtabb-7699668.0-red-c7223.unl.edu
+/var/lib/condor/execute/dir_124912
+total 68
+-rw-r--r-- 1 wrtabb hep  5457 Sep 13 22:57 DYTreeVars.h
+-rw-r--r-- 1 wrtabb hep     0 Sep 13 22:57 _condor_stderr
+-rw-r--r-- 1 wrtabb hep   120 Sep 13 22:57 _condor_stdout
+-rwxr-xr-x 1 wrtabb hep   954 Sep 13 22:57 condor_exec.exe
+-rwxr-xr-x 1 wrtabb hep     0 Sep 13 22:57 docker_stderror
+-rw-r--r-- 1 wrtabb hep 27944 Sep 13 22:57 filterOnDyDecay.C
+-rwxr--r-- 1 wrtabb hep  2527 Sep 13 22:57 filterOneSampleDyDecay.py
+drwx------ 2 wrtabb hep  4096 Sep 13 22:57 tmp
+drwx------ 3 wrtabb hep  4096 Sep 13 22:57 var
+-rw------- 1 wrtabb hep  9852 Sep 13 22:57 x509up_u5512
 Set up environment
-/var/lib/condor/execute/dir_11020
+/var/lib/condor/execute/dir_124912
 Run the filtering script
-./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ 0   
-ERROR: this script expects exactly 5 arguments
-Ending processing at  Wed Nov 20 15:27:45 UTC 2019
+./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ DYLL_2000to3000 ./ 0 1
+General location of ntuples /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
+Name of the sample to process DYLL_2000to3000
+Subdirectory name of the input sample ./
+Section number     0
+Number of sections 1
+ERROR: Input directory is not found, exiting
+Ending processing at  Sun Sep 13 22:57:28 UTC 2020

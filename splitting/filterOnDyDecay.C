@@ -81,6 +81,39 @@ void filterOnDyDecay(TString pathToNtupleArea,
   //
   // Set up branches for input tree
   //
+  treeIn->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
+  treeIn->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
+  treeIn->SetBranchAddress("PVz",&PVz,&b_PVz);
+  treeIn->SetBranchAddress("Muon_pT",&Muon_pT,&b_Muon_pT);
+  treeIn->SetBranchAddress("Muon_Px",&Muon_Px,&b_Muon_Px);
+  treeIn->SetBranchAddress("Muon_Py",&Muon_Py,&b_Muon_Py);
+  treeIn->SetBranchAddress("Muon_Pz",&Muon_Pz,&b_Muon_Pz);
+  treeIn->SetBranchAddress("Muon_eta",&Muon_eta,&b_Muon_eta);
+  treeIn->SetBranchAddress("Muon_phi",&Muon_phi,&b_Muon_phi);
+  treeIn->SetBranchAddress("Muon_charge",&Muon_charge,&b_Muon_charge);
+  treeIn->SetBranchAddress("Muon_dxy",&Muon_dxy,&b_Muon_dxy);
+  treeIn->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
+  treeIn->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
+
+  treeIn->SetBranchAddress("vtxTrkCkt1Pt", &pvtxTrkCkt1Pt);
+  treeIn->SetBranchAddress("vtxTrkCkt2Pt", &pvtxTrkCkt2Pt);
+  treeIn->SetBranchAddress("vtxTrkChi2",   &pvtxTrkChi2);
+  treeIn->SetBranchAddress("vtxTrkNdof",   &pvtxTrkNdof);
+
+  treeIn->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
+  treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
+  treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
+
+  treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
+                           &b_Muon_PfChargedHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
+                           &b_Muon_PfNeutralHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
+  treeIn->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
+  treeIn->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
+
+
+
   treeIn->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
   treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
   treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
@@ -192,15 +225,16 @@ void filterOnDyDecay(TString pathToNtupleArea,
 
   printf("Start the event loop over %lld events\n", nEvents);
   for(Long64_t iEvent = 0; iEvent < nEvents; iEvent++){
-    
     treeIn->GetEntry(iEvent);
-    if( iEvent%(nEvents/100) == 0 ){
+
+    if(nEvents>100&& iEvent%(nEvents/100) == 0 ){
       printf("\rLooping over events progress %.1f%%", (iEvent*100./nEvents)); fflush(stdout);
     }
     
     // Count electrons, muons, taus, with isHardProcess flag true
     int nElectrons, nMuons, nTaus;
-    nElectrons = nMuons = nTaus = 0;
+   nElectrons = nMuons = nTaus = 0;
+
     for(int kLep=0;kLep<GENnPair;kLep++){
       if( GENLepton_isHardProcess[kLep] == 1 ){
 	if( abs(GENLepton_ID[kLep]) == PDG_E ){
@@ -216,7 +250,6 @@ void filterOnDyDecay(TString pathToNtupleArea,
       printf("Warning: found strange number of e/mu/tau from hard process: %d/%d/%d\n", 
 	     nElectrons, nMuons, nTaus);
     }
-    
     // Save the info appropriately
     if( nElectrons == 2 ){
       treeOutEE->Fill();
@@ -227,7 +260,6 @@ void filterOnDyDecay(TString pathToNtupleArea,
     }else{
       printf("Warning: have not found exactly two hard process leptons, skip event\n");
     }
-
   }
   printf("\rLooping over events completed               \n");
 
@@ -291,6 +323,34 @@ void configureOutTree(TTree *treeOut){
   treeOut->Branch("nVertices",&nVertices,"nVertices/I");
 
   treeOut->Branch("nPileUp",&nPileUp,"nPileUp/I");
+
+  treeOut->Branch("nMuon",&nMuon,"nMuon/I");
+  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
+  treeOut->Branch("PVz",&PVz,"PVz/D");
+  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT/D");
+  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px/D");
+  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py/D");
+  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz/D");
+  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta/D");
+  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi/D");
+  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge/I");
+  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy/D");
+  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz/D");
+  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
+
+  treeOut->Branch("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
+                 "Muon_PfChargedHadronIsoR04/D");
+  treeOut->Branch("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
+                 "Muon_PfNeutralHadronIsoR04/D");
+  treeOut->Branch("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04/D");
+  treeOut->Branch("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04/D");
+  treeOut->Branch("Muon_trkiso", Muon_trkiso, "Muon_trkiso/D");
+
+  treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
+  treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
+  treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
+  treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+
 
   // Trigger quantities
   treeOut->Branch("HLT_ntrig"     , &HLT_ntrig,"HLT_ntrig/I");
@@ -428,7 +488,7 @@ void copyOutputFile(TString pathToNtupleArea, TString sampleNameIn,
   // so build the ftp path appropriately
   TPRegexp r1("store(.*)");
   TString reducedFileNameOut = fullFileNameOut(r1);
-  TString gridCopyCommand = TString::Format("gfal-copy -p file:////${PWD}/%s gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/%s",
+  TString gridCopyCommand = TString::Format("eval `scram unsetenv -sh`; gfal-copy -p file:////${PWD}/%s gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/%s",
 					    fileNameOutTmp.Data(), reducedFileNameOut.Data());
   printf("Execute grid copy command\n");
   printf("%s\n", gridCopyCommand.Data());

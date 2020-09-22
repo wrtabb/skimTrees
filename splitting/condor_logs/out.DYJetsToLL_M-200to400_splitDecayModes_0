@@ -1,178 +1,25 @@
-Start processing at  Wed Nov 20 15:27:13 UTC 2019
-wrtabb-17003.0-red-c1907.unl.edu
-/var/lib/condor/execute/dir_7327
-total 64
--rw-r--r-- 1 wrtabb hep  4226 Nov 20 15:26 DYTreeVars.h
--rw-r--r-- 1 wrtabb hep     0 Nov 20 15:27 _condor_stderr
--rw-r--r-- 1 wrtabb hep   116 Nov 20 15:27 _condor_stdout
--rwxr-xr-x 1 wrtabb hep   954 Nov 20 15:26 condor_exec.exe
--rwxr-xr-x 1 wrtabb hep   928 Nov 20 15:27 docker_stderror
--rw-r--r-- 1 wrtabb hep 24672 Nov 20 15:26 filterOnDyDecay.C
--rwxr--r-- 1 wrtabb hep  2527 Nov 20 15:26 filterOneSampleDyDecay.py
-drwx------ 2 wrtabb hep     6 Nov 20 15:26 tmp
-drwx------ 3 wrtabb hep    17 Nov 20 15:26 var
--rw------- 1 wrtabb hep  9161 Nov 20 15:26 x509up_u5512
+Start processing at  Sun Sep 13 22:57:14 UTC 2020
+wrtabb-7699655.0-red-c7223.unl.edu
+/var/lib/condor/execute/dir_121214
+total 68
+-rw-r--r-- 1 wrtabb hep  5457 Sep 13 22:57 DYTreeVars.h
+-rw-r--r-- 1 wrtabb hep     0 Sep 13 22:57 _condor_stderr
+-rw-r--r-- 1 wrtabb hep   120 Sep 13 22:57 _condor_stdout
+-rwxr-xr-x 1 wrtabb hep   954 Sep 13 22:57 condor_exec.exe
+-rwxr-xr-x 1 wrtabb hep     0 Sep 13 22:57 docker_stderror
+-rw-r--r-- 1 wrtabb hep 27944 Sep 13 22:57 filterOnDyDecay.C
+-rwxr--r-- 1 wrtabb hep  2527 Sep 13 22:57 filterOneSampleDyDecay.py
+drwx------ 2 wrtabb hep  4096 Sep 13 22:57 tmp
+drwx------ 3 wrtabb hep  4096 Sep 13 22:57 var
+-rw------- 1 wrtabb hep  9852 Sep 13 22:57 x509up_u5512
 Set up environment
-/var/lib/condor/execute/dir_7327
+/var/lib/condor/execute/dir_121214
 Run the filtering script
-./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ DYLL_M400to500 ./ 0 1
+./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ DYLL_200to400 ./ 0 1
 General location of ntuples /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
-Name of the sample to process DYLL_M400to500
+Name of the sample to process DYLL_200to400
 Subdirectory name of the input sample ./
 Section number     0
 Number of sections 1
-Input directory exists, ok
-Found 4 files
-
-Process file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/./ntuple_skim_sig_1.root
-
-['root', '-b', '-q', 'filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_1.root")']
-   ------------------------------------------------------------
-  | Welcome to ROOT 6.06/01                http://root.cern.ch |
-  |                               (c) 1995-2014, The ROOT Team |
-  | Built for linuxx8664gcc                                    |
-  | From tag , 9 December 2015                                 |
-  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
-   ------------------------------------------------------------
-
-
-Processing filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_1.root")...
-Open input file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/.//ntuple_skim_sig_1.root
-Create a temporary skim file locally for EE
-Create a temporary skim file locally for MuMu
-Create a temporary skim file locally for TauTau
-Start the event loop over 71428 events
-Looping over events progress 0.0%Looping over events progress 1.0%Looping over events progress 2.0%Looping over events progress 3.0%Looping over events progress 4.0%Looping over events progress 5.0%Looping over events progress 6.0%Looping over events progress 7.0%Looping over events progress 8.0%Looping over events progress 9.0%Looping over events progress 10.0%Looping over events progress 11.0%Looping over events progress 12.0%Looping over events progress 13.0%Looping over events progress 14.0%Looping over events progress 15.0%Looping over events progress 16.0%Looping over events progress 17.0%Looping over events progress 18.0%Looping over events progress 19.0%Looping over events progress 20.0%Looping over events progress 21.0%Looping over events progress 22.0%Looping over events progress 23.0%Looping over events progress 24.0%Looping over events progress 25.0%Looping over events progress 26.0%Looping over events progress 27.0%Looping over events progress 28.0%Looping over events progress 29.0%Looping over events progress 30.0%Looping over events progress 31.0%Looping over events progress 32.0%Looping over events progress 33.0%Looping over events progress 34.0%Looping over events progress 35.0%Looping over events progress 36.0%Looping over events progress 37.0%Looping over events progress 38.0%Looping over events progress 39.0%Looping over events progress 40.0%Looping over events progress 41.0%Looping over events progress 42.0%Looping over events progress 43.0%Looping over events progress 44.0%Looping over events progress 45.0%Looping over events progress 46.0%Looping over events progress 47.0%Looping over events progress 48.0%Looping over events progress 49.0%Looping over events progress 50.0%Looping over events progress 51.0%Looping over events progress 52.0%Looping over events progress 53.0%Looping over events progress 54.0%Looping over events progress 55.0%Looping over events progress 56.0%Looping over events progress 57.0%Looping over events progress 58.0%Looping over events progress 59.0%Looping over events progress 60.0%Looping over events progress 61.0%Looping over events progress 62.0%Looping over events progress 63.0%Looping over events progress 64.0%Looping over events progress 65.0%Looping over events progress 66.0%Looping over events progress 67.0%Looping over events progress 68.0%Looping over events progress 69.0%Looping over events progress 70.0%Looping over events progress 71.0%Looping over events progress 72.0%Looping over events progress 73.0%Looping over events progress 74.0%Looping over events progress 75.0%Looping over events progress 76.0%Looping over events progress 77.0%Looping over events progress 78.0%Looping over events progress 79.0%Looping over events progress 80.0%Looping over events progress 81.0%Looping over events progress 82.0%Looping over events progress 83.0%Looping over events progress 84.0%Looping over events progress 85.0%Looping over events progress 86.0%Looping over events progress 87.0%Looping over events progress 88.0%Looping over events progress 89.0%Looping over events progress 90.0%Looping over events progress 91.0%Looping over events progress 92.0%Looping over events progress 93.0%Looping over events progress 94.0%Looping over events progress 95.0%Looping over events progress 96.0%Looping over events progress 97.0%Looping over events progress 98.0%Looping over events progress 99.0%Looping over events progress 100.0%Copying 18757832 bytes file://///var/lib/condor/execute/dir_7327/testEE.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_1.root
-Copying 16353552 bytes file://///var/lib/condor/execute/dir_7327/testMuMu.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_1.root
-Copying 19391894 bytes file://///var/lib/condor/execute/dir_7327/testTauTau.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_1.root
-Looping over events completed               
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_1.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testEE.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_1.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_1.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testMuMu.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_1.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_1.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testTauTau.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_1.root
-
-Any errors? (Make sure also to check stderr log)
-None
-
-Process file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/./ntuple_skim_sig_2.root
-
-['root', '-b', '-q', 'filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_2.root")']
-   ------------------------------------------------------------
-  | Welcome to ROOT 6.06/01                http://root.cern.ch |
-  |                               (c) 1995-2014, The ROOT Team |
-  | Built for linuxx8664gcc                                    |
-  | From tag , 9 December 2015                                 |
-  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
-   ------------------------------------------------------------
-
-
-Processing filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_2.root")...
-Open input file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/.//ntuple_skim_sig_2.root
-Create a temporary skim file locally for EE
-Create a temporary skim file locally for MuMu
-Create a temporary skim file locally for TauTau
-Start the event loop over 73090 events
-Looping over events progress 0.0%Looping over events progress 1.0%Looping over events progress 2.0%Looping over events progress 3.0%Looping over events progress 4.0%Looping over events progress 5.0%Looping over events progress 6.0%Looping over events progress 7.0%Looping over events progress 8.0%Looping over events progress 9.0%Looping over events progress 10.0%Looping over events progress 11.0%Looping over events progress 12.0%Looping over events progress 13.0%Looping over events progress 14.0%Looping over events progress 15.0%Looping over events progress 16.0%Looping over events progress 17.0%Looping over events progress 18.0%Looping over events progress 19.0%Looping over events progress 20.0%Looping over events progress 21.0%Looping over events progress 22.0%Looping over events progress 23.0%Looping over events progress 24.0%Looping over events progress 25.0%Looping over events progress 26.0%Looping over events progress 27.0%Looping over events progress 28.0%Looping over events progress 29.0%Looping over events progress 30.0%Looping over events progress 31.0%Looping over events progress 32.0%Looping over events progress 33.0%Looping over events progress 34.0%Looping over events progress 35.0%Looping over events progress 36.0%Looping over events progress 37.0%Looping over events progress 38.0%Looping over events progress 39.0%Looping over events progress 40.0%Looping over events progress 40.9%Looping over events progress 41.9%Looping over events progress 42.9%Looping over events progress 43.9%Looping over events progress 44.9%Looping over events progress 45.9%Looping over events progress 46.9%Looping over events progress 47.9%Looping over events progress 48.9%Looping over events progress 49.9%Looping over events progress 50.9%Looping over events progress 51.9%Looping over events progress 52.9%Looping over events progress 53.9%Looping over events progress 54.9%Looping over events progress 55.9%Looping over events progress 56.9%Looping over events progress 57.9%Looping over events progress 58.9%Looping over events progress 59.9%Looping over events progress 60.9%Looping over events progress 61.9%Looping over events progress 62.9%Looping over events progress 63.9%Looping over events progress 64.9%Looping over events progress 65.9%Looping over events progress 66.9%Looping over events progress 67.9%Looping over events progress 68.9%Looping over events progress 69.9%Looping over events progress 70.9%Looping over events progress 71.9%Looping over events progress 72.9%Looping over events progress 73.9%Looping over events progress 74.9%Looping over events progress 75.9%Looping over events progress 76.9%Looping over events progress 77.9%Looping over events progress 78.9%Looping over events progress 79.9%Looping over events progress 80.9%Looping over events progress 81.9%Looping over events progress 82.9%Looping over events progress 83.9%Looping over events progress 84.9%Looping over events progress 85.9%Looping over events progress 86.9%Looping over events progress 87.9%Looping over events progress 88.9%Looping over events progress 89.9%Looping over events progress 90.9%Looping over events progress 91.9%Looping over events progress 92.9%Looping over events progress 93.9%Looping over events progress 94.9%Looping over events progress 95.9%Looping over events progress 96.9%Looping over events progress 97.9%Looping over events progress 98.9%Looping over events progress 99.9%Copying 19273199 bytes file://///var/lib/condor/execute/dir_7327/testEE.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_2.root
-Copying 16733563 bytes file://///var/lib/condor/execute/dir_7327/testMuMu.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_2.root
-Copying 19777365 bytes file://///var/lib/condor/execute/dir_7327/testTauTau.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_2.root
-Looping over events completed               
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_2.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testEE.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_2.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_2.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testMuMu.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_2.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_2.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testTauTau.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_2.root
-
-Any errors? (Make sure also to check stderr log)
-None
-
-Process file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/./ntuple_skim_sig_3.root
-
-['root', '-b', '-q', 'filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_3.root")']
-   ------------------------------------------------------------
-  | Welcome to ROOT 6.06/01                http://root.cern.ch |
-  |                               (c) 1995-2014, The ROOT Team |
-  | Built for linuxx8664gcc                                    |
-  | From tag , 9 December 2015                                 |
-  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
-   ------------------------------------------------------------
-
-
-Processing filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_3.root")...
-Open input file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/.//ntuple_skim_sig_3.root
-Create a temporary skim file locally for EE
-Create a temporary skim file locally for MuMu
-Create a temporary skim file locally for TauTau
-Start the event loop over 87858 events
-Looping over events progress 0.0%Looping over events progress 1.0%Looping over events progress 2.0%Looping over events progress 3.0%Looping over events progress 4.0%Looping over events progress 5.0%Looping over events progress 6.0%Looping over events progress 7.0%Looping over events progress 8.0%Looping over events progress 9.0%Looping over events progress 10.0%Looping over events progress 11.0%Looping over events progress 12.0%Looping over events progress 13.0%Looping over events progress 14.0%Looping over events progress 15.0%Looping over events progress 16.0%Looping over events progress 17.0%Looping over events progress 18.0%Looping over events progress 19.0%Looping over events progress 20.0%Looping over events progress 21.0%Looping over events progress 22.0%Looping over events progress 23.0%Looping over events progress 24.0%Looping over events progress 25.0%Looping over events progress 26.0%Looping over events progress 27.0%Looping over events progress 28.0%Looping over events progress 29.0%Looping over events progress 30.0%Looping over events progress 31.0%Looping over events progress 32.0%Looping over events progress 33.0%Looping over events progress 34.0%Looping over events progress 35.0%Looping over events progress 36.0%Looping over events progress 37.0%Looping over events progress 38.0%Looping over events progress 39.0%Looping over events progress 40.0%Looping over events progress 41.0%Looping over events progress 42.0%Looping over events progress 43.0%Looping over events progress 44.0%Looping over events progress 45.0%Looping over events progress 46.0%Looping over events progress 47.0%Looping over events progress 48.0%Looping over events progress 49.0%Looping over events progress 50.0%Looping over events progress 51.0%Looping over events progress 52.0%Looping over events progress 53.0%Looping over events progress 54.0%Looping over events progress 55.0%Looping over events progress 56.0%Looping over events progress 57.0%Looping over events progress 58.0%Looping over events progress 59.0%Looping over events progress 60.0%Looping over events progress 61.0%Looping over events progress 62.0%Looping over events progress 63.0%Looping over events progress 64.0%Looping over events progress 65.0%Looping over events progress 66.0%Looping over events progress 67.0%Looping over events progress 68.0%Looping over events progress 69.0%Looping over events progress 70.0%Looping over events progress 71.0%Looping over events progress 72.0%Looping over events progress 73.0%Looping over events progress 74.0%Looping over events progress 75.0%Looping over events progress 75.9%Looping over events progress 76.9%Looping over events progress 77.9%Looping over events progress 78.9%Looping over events progress 79.9%Looping over events progress 80.9%Looping over events progress 81.9%Looping over events progress 82.9%Looping over events progress 83.9%Looping over events progress 84.9%Looping over events progress 85.9%Looping over events progress 86.9%Looping over events progress 87.9%Looping over events progress 88.9%Looping over events progress 89.9%Looping over events progress 90.9%Looping over events progress 91.9%Looping over events progress 92.9%Looping over events progress 93.9%Looping over events progress 94.9%Looping over events progress 95.9%Looping over events progress 96.9%Looping over events progress 97.9%Looping over events progress 98.9%Looping over events progress 99.9%Copying 23016511 bytes file://///var/lib/condor/execute/dir_7327/testEE.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_3.root
-Copying 20261534 bytes file://///var/lib/condor/execute/dir_7327/testMuMu.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_3.root
-Copying 23835734 bytes file://///var/lib/condor/execute/dir_7327/testTauTau.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_3.root
-Looping over events completed               
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_3.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testEE.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_3.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_3.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testMuMu.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_3.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_3.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testTauTau.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_3.root
-
-Any errors? (Make sure also to check stderr log)
-None
-
-Process file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/./ntuple_skim_sig_4.root
-
-['root', '-b', '-q', 'filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_4.root")']
-   ------------------------------------------------------------
-  | Welcome to ROOT 6.06/01                http://root.cern.ch |
-  |                               (c) 1995-2014, The ROOT Team |
-  | Built for linuxx8664gcc                                    |
-  | From tag , 9 December 2015                                 |
-  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |
-   ------------------------------------------------------------
-
-
-Processing filterOnDyDecay.C+("/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/","DYLL_M400to500","./","ntuple_skim_sig_4.root")...
-Open input file /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/.//ntuple_skim_sig_4.root
-Create a temporary skim file locally for EE
-Create a temporary skim file locally for MuMu
-Create a temporary skim file locally for TauTau
-Start the event loop over 54886 events
-Looping over events progress 0.0%Looping over events progress 1.0%Looping over events progress 2.0%Looping over events progress 3.0%Looping over events progress 4.0%Looping over events progress 5.0%Looping over events progress 6.0%Looping over events progress 7.0%Looping over events progress 8.0%Looping over events progress 9.0%Looping over events progress 10.0%Looping over events progress 11.0%Looping over events progress 12.0%Looping over events progress 13.0%Looping over events progress 14.0%Looping over events progress 15.0%Looping over events progress 16.0%Looping over events progress 17.0%Looping over events progress 18.0%Looping over events progress 19.0%Looping over events progress 20.0%Looping over events progress 21.0%Looping over events progress 22.0%Looping over events progress 23.0%Looping over events progress 24.0%Looping over events progress 25.0%Looping over events progress 26.0%Looping over events progress 27.0%Looping over events progress 28.0%Looping over events progress 29.0%Looping over events progress 30.0%Looping over events progress 31.0%Looping over events progress 31.9%Looping over events progress 32.9%Looping over events progress 33.9%Looping over events progress 34.9%Looping over events progress 35.9%Looping over events progress 36.9%Looping over events progress 37.9%Looping over events progress 38.9%Looping over events progress 39.9%Looping over events progress 40.9%Looping over events progress 41.9%Looping over events progress 42.9%Looping over events progress 43.9%Looping over events progress 44.9%Looping over events progress 45.9%Looping over events progress 46.9%Looping over events progress 47.9%Looping over events progress 48.9%Looping over events progress 49.9%Looping over events progress 50.9%Looping over events progress 51.9%Looping over events progress 52.9%Looping over events progress 53.9%Looping over events progress 54.9%Looping over events progress 55.9%Looping over events progress 56.9%Looping over events progress 57.9%Looping over events progress 58.9%Looping over events progress 59.9%Looping over events progress 60.9%Looping over events progress 61.9%Looping over events progress 62.9%Looping over events progress 63.9%Looping over events progress 64.9%Looping over events progress 65.9%Looping over events progress 66.9%Looping over events progress 67.9%Looping over events progress 68.9%Looping over events progress 69.9%Looping over events progress 70.9%Looping over events progress 71.9%Looping over events progress 72.9%Looping over events progress 73.9%Looping over events progress 74.9%Looping over events progress 75.9%Looping over events progress 76.9%Looping over events progress 77.9%Looping over events progress 78.9%Looping over events progress 79.9%Looping over events progress 80.9%Looping over events progress 81.9%Looping over events progress 82.9%Looping over events progress 83.9%Looping over events progress 84.9%Looping over events progress 85.9%Looping over events progress 86.9%Looping over events progress 87.9%Looping over events progress 88.9%Looping over events progress 89.9%Looping over events progress 90.9%Looping over events progress 91.9%Looping over events progress 92.9%Looping over events progress 93.9%Looping over events progress 94.9%Looping over events progress 95.8%Looping over events progress 96.8%Looping over events progress 97.8%Looping over events progress 98.8%Looping over events progress 99.8%Copying 14402634 bytes file://///var/lib/condor/execute/dir_7327/testEE.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_4.root
-Copying 12687010 bytes file://///var/lib/condor/execute/dir_7327/testMuMu.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_4.root
-Copying 14790025 bytes file://///var/lib/condor/execute/dir_7327/testTauTau.root => gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_4.root
-Looping over events completed               
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_4.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testEE.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/EE/.//ntuple_skim_sig_4.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_4.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testMuMu.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/MuMu/.//ntuple_skim_sig_4.root
-Create output file
-   /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_4.root
-Execute grid copy command
-gfal-copy -p file:////${PWD}/testTauTau.root gsiftp://red-gridftp.unl.edu//user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6//DYLL_M400to500/DYLL_M400to500/TauTau/.//ntuple_skim_sig_4.root
-
-Any errors? (Make sure also to check stderr log)
-None
-Ending processing at  Wed Nov 20 15:35:22 UTC 2019
+ERROR: Input directory is not found, exiting
+Ending processing at  Sun Sep 13 22:57:15 UTC 2020

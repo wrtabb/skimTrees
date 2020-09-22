@@ -1,36 +1,30 @@
-000 (17005.000.000) 2019-11-20 09:25:50 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_48907_b66a_3>
+000 (7699659.000.000) 2020-09-13 17:19:42 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3165077_2402_3>
 ...
-040 (17005.000.000) 2019-11-20 09:26:16 Started transferring input files
-	Transferring to host: <129.93.182.232:9618?addrs=129.93.182.232-9618+[2600-900-6-1102-d267-e5ff-fef9-1caa]-9618&alias=red-c1907.unl.edu&noUDP&sock=starter_44293_2ce2_168668>
+040 (7699659.000.000) 2020-09-13 17:57:18 Started transferring input files
+	Transferring to host: <129.93.182.251:9618?addrs=129.93.182.251-9618+[2600-900-6-1102-b226-28ff-fe2c-340]-9618&alias=red-c7223.unl.edu&noUDP&sock=starter_76138_dbd1_13523>
 ...
-040 (17005.000.000) 2019-11-20 09:26:16 Finished transferring input files
+040 (7699659.000.000) 2020-09-13 17:57:18 Finished transferring input files
 ...
-001 (17005.000.000) 2019-11-20 09:26:17 Job executing on host: <129.93.182.232:9618?addrs=129.93.182.232-9618+[2600-900-6-1102-d267-e5ff-fef9-1caa]-9618&alias=red-c1907.unl.edu&noUDP&sock=startd_44254_243f_3>
+001 (7699659.000.000) 2020-09-13 17:57:19 Job executing on host: <129.93.182.251:9618?addrs=129.93.182.251-9618+[2600-900-6-1102-b226-28ff-fe2c-340]-9618&alias=red-c7223.unl.edu&noUDP&sock=startd_76102_3878_3>
 ...
-006 (17005.000.000) 2019-11-20 09:31:28 Image size of job updated: 35
-	35  -  MemoryUsage of job (MB)
-	36076  -  ResidentSetSize of job (KB)
+040 (7699659.000.000) 2020-09-13 17:57:23 Started transferring output files
 ...
-006 (17005.000.000) 2019-11-20 09:36:28 Image size of job updated: 127
-	127  -  MemoryUsage of job (MB)
-	130108  -  ResidentSetSize of job (KB)
+040 (7699659.000.000) 2020-09-13 17:57:23 Finished transferring output files
 ...
-040 (17005.000.000) 2019-11-20 09:39:11 Started transferring output files
-...
-040 (17005.000.000) 2019-11-20 09:39:11 Finished transferring output files
-...
-005 (17005.000.000) 2019-11-20 09:39:11 Job terminated.
+005 (7699659.000.000) 2020-09-13 17:57:23 Job terminated.
 	(1) Normal termination (return value 0)
-		Usr 0 00:01:29, Sys 0 00:00:25  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
-		Usr 0 00:01:29, Sys 0 00:00:25  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
-	210147  -  Run Bytes Sent By Job
-	41540  -  Run Bytes Received By Job
-	210147  -  Total Bytes Sent By Job
-	41540  -  Total Bytes Received By Job
+	1373  -  Run Bytes Sent By Job
+	46734  -  Run Bytes Received By Job
+	1373  -  Total Bytes Sent By Job
+	46734  -  Total Bytes Received By Job
 	Partitionable Resources :    Usage  Request Allocated 
-	   Cpus                 :     0.02        1         1 
-	   Disk (KB)            :   674           1  11343765 
-	   Memory (MB)          :   127        1000      4006 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :      476        1    604774 
+	   Memory (MB)          :              1000      1000 
+
+	Job terminated of its own accord at 2020-09-13T22:57:22Z.
 ...

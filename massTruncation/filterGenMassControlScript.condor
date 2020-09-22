@@ -1,5 +1,5 @@
 executable = filterOneSampleGenMass.sh
-universe   = docker 
+universe   = Docker 
 
 error      = condor_logs/err.$(sampleShortName)_massFilter_$(Process)
 output     = condor_logs/out.$(sampleShortName)_massFilter_$(Process)
@@ -9,7 +9,7 @@ when_to_transfer_output = ON_EXIT
 transfer_input_files = filterOneSampleGenMass.py,filterOnGenMass.C
 +WantDocker = True
 docker_image ="unlhcc/osg-wn-el6"
-use_x509userproxy = true
+use_x509userproxy = True
 
 Arguments = $(ntuplesGeneralLocation) $(sampleName) $(sampleSubdir) $(sampleSuffixOut) $(sampleType) $(Process) $(numberOfSections)
 Queue $(numberOfSections)

@@ -16,6 +16,26 @@ double PUweight;
 int Nelectrons;
 int nVertices;
 
+int    nMuon;
+int    Nmuons;
+double PVz;
+double Muon_pT[MPSIZE];
+double Muon_Px[MPSIZE];
+double Muon_Py[MPSIZE];
+double Muon_Pz[MPSIZE];
+double Muon_eta[MPSIZE];
+double Muon_phi[MPSIZE];
+int    Muon_charge[MPSIZE];
+double Muon_dxy[MPSIZE];
+double Muon_dz[MPSIZE];
+bool   Muon_passTightID[MPSIZE];
+
+double Muon_PfChargedHadronIsoR04[MPSIZE];
+double Muon_PfNeutralHadronIsoR04[MPSIZE];
+double Muon_PfGammaIsoR04[MPSIZE];
+double Muon_PFSumPUIsoR04[MPSIZE];
+double Muon_trkiso[MPSIZE];
+
 Int_t nPileUp;
 
 // Trigger quantities
@@ -24,6 +44,18 @@ int HLT_trigType[MPSIZE];
 int HLT_trigFired[MPSIZE];
 std::vector<std::string> HLT_trigName;
 std::vector<std::string> *pHLT_trigName = &HLT_trigName;
+
+std::vector<double> vtxTrkCkt1Pt;
+std::vector<double>*pvtxTrkCkt1Pt = &vtxTrkCkt1Pt;
+
+std::vector<double> vtxTrkCkt2Pt;
+std::vector<double>*pvtxTrkCkt2Pt = &vtxTrkCkt2Pt;
+
+std::vector<double> vtxTrkChi2;
+std::vector<double>*pvtxTrkChi2 = &vtxTrkChi2;
+
+std::vector<double> vtxTrkNdof;
+std::vector<double>*pvtxTrkNdof = &vtxTrkNdof;
 
 // Electron quantities
 double Electron_Energy[MPSIZE];
@@ -154,5 +186,24 @@ TBranch *  b_GENEvt_x2;
 TBranch *  b_GENEvt_alphaQCD;
 TBranch *  b_GENEvt_alphaQED;
 
+TBranch*b_nMuon;
+TBranch*b_Nmuons;
+TBranch*b_PVz;
+TBranch*b_Muon_pT;
+TBranch*b_Muon_Px;
+TBranch*b_Muon_Py;
+TBranch*b_Muon_Pz;
+TBranch*b_Muon_eta;
+TBranch*b_Muon_phi;
+TBranch*b_Muon_charge;
+TBranch*b_Muon_dxy;
+TBranch*b_Muon_dz;
+TBranch*b_Muon_passTightID;
+
+TBranch*b_Muon_PfChargedHadronIsoR04;
+TBranch*b_Muon_PfNeutralHadronIsoR04;
+TBranch*b_Muon_PfGammaIsoR04;
+TBranch*b_Muon_PFSumPUIsoR04;
+TBranch*b_Muon_trkiso;
 
 #endif
