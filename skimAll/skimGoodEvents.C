@@ -165,7 +165,6 @@ void skimGoodEvents(TString pathToFileIn,
   TBranch*b_Muon_PFSumPUIsoR04;
   TBranch*b_Muon_trkiso;
 
-
   TBranch * b_runNum;
   TBranch * b_evtNum;
   TBranch * b_lumiBlock;

@@ -1,118 +1,111 @@
-000 (7699645.000.000) 2020-09-13 17:19:41 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3165077_2402_3>
+000 (16627889.000.000) 2021-05-17 15:44:51 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3291224_7d7e>
 ...
-000 (7699645.001.000) 2020-09-13 17:19:41 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3165077_2402_3>
+000 (16627889.001.000) 2021-05-17 15:44:51 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3291224_7d7e>
 ...
-000 (7699645.002.000) 2020-09-13 17:19:42 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3165077_2402_3>
+000 (16627889.002.000) 2021-05-17 15:44:51 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3291224_7d7e>
 ...
-040 (7699645.000.000) 2020-09-13 17:31:31 Started transferring input files
-	Transferring to host: <129.93.183.11:9618?addrs=129.93.183.11-9618+[2600-900-6-1102-20a-f7ff-fecd-c540]-9618&alias=red-c7113.unl.edu&noUDP&sock=slot1_5_3505_56e8_24569>
+040 (16627889.000.000) 2021-05-17 15:45:05 Started transferring input files
+	Transferring to host: <129.93.183.139:9618?addrs=129.93.183.139-9618+[2600-900-6-1102-ae85-3dff-fea0-6a54]-9618&alias=red-c5105.unl.edu&noUDP&sock=slot1_30_10901_7d94_26795>
 ...
-040 (7699645.000.000) 2020-09-13 17:31:31 Finished transferring input files
+040 (16627889.000.000) 2021-05-17 15:45:05 Finished transferring input files
 ...
-001 (7699645.000.000) 2020-09-13 17:31:32 Job executing on host: <129.93.183.11:9618?addrs=129.93.183.11-9618+[2600-900-6-1102-20a-f7ff-fecd-c540]-9618&alias=red-c7113.unl.edu&noUDP&sock=startd_3469_0620>
+040 (16627889.001.000) 2021-05-17 15:45:05 Started transferring input files
+	Transferring to host: <129.93.183.9:9618?addrs=129.93.183.9-9618+[2600-900-6-1102-20a-f7ff-fecf-f180]-9618&alias=red-c7111.unl.edu&noUDP&sock=slot1_9_12990_6149_29534>
 ...
-040 (7699645.001.000) 2020-09-13 17:32:40 Started transferring input files
-	Transferring to host: <129.93.182.191:9618?addrs=129.93.182.191-9618+[2600-900-6-1102-b226-28ff-fe2e-9fe0]-9618&alias=red-c7203.unl.edu&noUDP&sock=starter_6160_06f4_24554>
+040 (16627889.001.000) 2021-05-17 15:45:05 Finished transferring input files
 ...
-040 (7699645.001.000) 2020-09-13 17:32:40 Finished transferring input files
+040 (16627889.002.000) 2021-05-17 15:45:05 Started transferring input files
+	Transferring to host: <129.93.183.59:9618?addrs=129.93.183.59-9618+[2600-900-6-1102-266e-96ff-fe33-1550]-9618&alias=red-c5717.unl.edu&noUDP&sock=slot1_6_10916_0f35_28425>
 ...
-040 (7699645.002.000) 2020-09-13 17:32:41 Started transferring input files
-	Transferring to host: <129.93.182.191:9618?addrs=129.93.182.191-9618+[2600-900-6-1102-b226-28ff-fe2e-9fe0]-9618&alias=red-c7203.unl.edu&noUDP&sock=starter_6160_06f4_24555>
+040 (16627889.002.000) 2021-05-17 15:45:05 Finished transferring input files
 ...
-040 (7699645.002.000) 2020-09-13 17:32:41 Finished transferring input files
+001 (16627889.000.000) 2021-05-17 15:45:06 Job executing on host: <129.93.183.139:9618?addrs=129.93.183.139-9618+[2600-900-6-1102-ae85-3dff-fea0-6a54]-9618&alias=red-c5105.unl.edu&noUDP&sock=startd_10865_1094>
 ...
-001 (7699645.001.000) 2020-09-13 17:32:41 Job executing on host: <129.93.182.191:9618?addrs=129.93.182.191-9618+[2600-900-6-1102-b226-28ff-fe2e-9fe0]-9618&alias=red-c7203.unl.edu&noUDP&sock=startd_6124_2213_3>
+001 (16627889.001.000) 2021-05-17 15:45:06 Job executing on host: <129.93.183.9:9618?addrs=129.93.183.9-9618+[2600-900-6-1102-20a-f7ff-fecf-f180]-9618&alias=red-c7111.unl.edu&noUDP&sock=startd_12956_511c>
 ...
-001 (7699645.002.000) 2020-09-13 17:32:42 Job executing on host: <129.93.182.191:9618?addrs=129.93.182.191-9618+[2600-900-6-1102-b226-28ff-fe2e-9fe0]-9618&alias=red-c7203.unl.edu&noUDP&sock=startd_6124_2213_3>
+001 (16627889.002.000) 2021-05-17 15:45:06 Job executing on host: <129.93.183.59:9618?addrs=129.93.183.59-9618+[2600-900-6-1102-266e-96ff-fe33-1550]-9618&alias=red-c5717.unl.edu&noUDP&sock=startd_10881_0a18>
 ...
-006 (7699645.000.000) 2020-09-13 17:36:41 Image size of job updated: 367
-	367  -  MemoryUsage of job (MB)
-	376224  -  ResidentSetSize of job (KB)
+006 (16627889.001.000) 2021-05-17 15:45:13 Image size of job updated: 2
+	2  -  MemoryUsage of job (MB)
+	2788  -  ResidentSetSize of job (KB)
 ...
-006 (7699645.001.000) 2020-09-13 17:37:51 Image size of job updated: 149
-	149  -  MemoryUsage of job (MB)
-	153392  -  ResidentSetSize of job (KB)
+006 (16627889.002.000) 2021-05-17 15:45:13 Image size of job updated: 3
+	3  -  MemoryUsage of job (MB)
+	3808  -  ResidentSetSize of job (KB)
 ...
-006 (7699645.002.000) 2020-09-13 17:37:52 Image size of job updated: 137
-	137  -  MemoryUsage of job (MB)
-	140696  -  ResidentSetSize of job (KB)
+006 (16627889.000.000) 2021-05-17 15:45:14 Image size of job updated: 11
+	11  -  MemoryUsage of job (MB)
+	12088  -  ResidentSetSize of job (KB)
 ...
-006 (7699645.002.000) 2020-09-13 17:42:52 Image size of job updated: 152
-	152  -  MemoryUsage of job (MB)
-	155924  -  ResidentSetSize of job (KB)
+040 (16627889.001.000) 2021-05-17 15:45:14 Started transferring output files
 ...
-006 (7699645.001.000) 2020-09-13 17:52:53 Image size of job updated: 212
-	212  -  MemoryUsage of job (MB)
-	217816  -  ResidentSetSize of job (KB)
+040 (16627889.001.000) 2021-05-17 15:45:14 Finished transferring output files
 ...
-006 (7699645.002.000) 2020-09-13 17:57:53 Image size of job updated: 153
-	153  -  MemoryUsage of job (MB)
-	157272  -  ResidentSetSize of job (KB)
+040 (16627889.002.000) 2021-05-17 15:45:14 Started transferring output files
 ...
-006 (7699645.002.000) 2020-09-13 18:13:32 Image size of job updated: 289
-	289  -  MemoryUsage of job (MB)
-	296160  -  ResidentSetSize of job (KB)
+040 (16627889.002.000) 2021-05-17 15:45:14 Finished transferring output files
 ...
-040 (7699645.002.000) 2020-09-13 18:13:32 Started transferring output files
-...
-040 (7699645.002.000) 2020-09-13 18:13:32 Finished transferring output files
-...
-005 (7699645.002.000) 2020-09-13 18:13:33 Job terminated.
+005 (16627889.001.000) 2021-05-17 15:45:15 Job terminated.
 	(1) Normal termination (return value 0)
-		Usr 0 00:18:16, Sys 0 00:01:48  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
-		Usr 0 00:18:16, Sys 0 00:01:48  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
-	645366  -  Run Bytes Sent By Job
-	46734  -  Run Bytes Received By Job
-	645366  -  Total Bytes Sent By Job
-	46734  -  Total Bytes Received By Job
+	1368  -  Run Bytes Sent By Job
+	47836  -  Run Bytes Received By Job
+	1368  -  Total Bytes Sent By Job
+	47836  -  Total Bytes Received By Job
 	Partitionable Resources :    Usage  Request Allocated 
 	   Cpus                 :        0        1         1 
-	   Disk (KB)            :     1105        1    844196 
-	   Memory (MB)          :      289     1000      1000 
+	   Disk (KB)            :      476       40    707275 
+	   Memory (MB)          :        2     1000      1000 
 
-	Job terminated of its own accord at 2020-09-13T23:13:32Z.
+	Job terminated of its own accord at 2021-05-17T20:45:13Z.
 ...
-040 (7699645.001.000) 2020-09-13 18:16:49 Started transferring output files
-...
-040 (7699645.001.000) 2020-09-13 18:16:49 Finished transferring output files
-...
-005 (7699645.001.000) 2020-09-13 18:16:50 Job terminated.
+005 (16627889.002.000) 2021-05-17 15:45:17 Job terminated.
 	(1) Normal termination (return value 0)
-		Usr 0 00:20:02, Sys 0 00:01:55  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
-		Usr 0 00:20:02, Sys 0 00:01:55  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
-	653216  -  Run Bytes Sent By Job
-	46734  -  Run Bytes Received By Job
-	653216  -  Total Bytes Sent By Job
-	46734  -  Total Bytes Received By Job
+	1366  -  Run Bytes Sent By Job
+	47836  -  Run Bytes Received By Job
+	1366  -  Total Bytes Sent By Job
+	47836  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.18        1         1 
+	   Disk (KB)            :   476          40    944107 
+	   Memory (MB)          :     3        1000      1000 
+
+	Job terminated of its own accord at 2021-05-17T20:45:13Z.
+...
+040 (16627889.000.000) 2021-05-17 15:45:21 Started transferring output files
+...
+040 (16627889.000.000) 2021-05-17 15:45:21 Finished transferring output files
+...
+005 (16627889.000.000) 2021-05-17 15:45:22 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	1366  -  Run Bytes Sent By Job
+	47836  -  Run Bytes Received By Job
+	1366  -  Total Bytes Sent By Job
+	47836  -  Total Bytes Received By Job
 	Partitionable Resources :    Usage  Request Allocated 
 	   Cpus                 :        0        1         1 
-	   Disk (KB)            :     1113        1    844196 
-	   Memory (MB)          :      149     1000      1000 
+	   Disk (KB)            :      476       40    844995 
+	   Memory (MB)          :       11     1000      1000 
 
-	Job terminated of its own accord at 2020-09-13T23:16:49Z.
+	Job terminated of its own accord at 2021-05-17T20:45:21Z.
 ...
-040 (7699645.000.000) 2020-09-13 18:22:40 Started transferring output files
+009 (16627887.002.000) 2021-05-17 15:47:11 Job was aborted.
+	via condor_rm (by user wrtabb)
 ...
-040 (7699645.000.000) 2020-09-13 18:22:40 Finished transferring output files
+009 (16627887.001.000) 2021-05-17 15:47:14 Job was aborted.
+	via condor_rm (by user wrtabb)
 ...
-005 (7699645.000.000) 2020-09-13 18:22:42 Job terminated.
-	(1) Normal termination (return value 0)
-		Usr 0 00:23:56, Sys 0 00:02:13  -  Run Remote Usage
-		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
-		Usr 0 00:23:56, Sys 0 00:02:13  -  Total Remote Usage
-		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
-	653256  -  Run Bytes Sent By Job
-	46734  -  Run Bytes Received By Job
-	653256  -  Total Bytes Sent By Job
-	46734  -  Total Bytes Received By Job
-	Partitionable Resources :    Usage  Request Allocated 
-	   Cpus                 :     0.01        1         1 
-	   Disk (KB)            :  1112           1    716855 
-	   Memory (MB)          :   367        1000      1000 
-
-	Job terminated of its own accord at 2020-09-13T23:22:38Z.
+009 (16627887.000.000) 2021-05-17 15:47:20 Job was aborted.
+	via condor_rm (by user wrtabb)
 ...

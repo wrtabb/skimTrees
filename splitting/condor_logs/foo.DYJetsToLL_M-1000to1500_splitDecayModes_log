@@ -1,30 +1,72 @@
-000 (7699664.000.000) 2020-09-13 17:19:42 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3165077_2402_3>
+000 (16627890.000.000) 2021-05-17 15:44:51 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3291224_7d7e>
 ...
-040 (7699664.000.000) 2020-09-13 17:57:23 Started transferring input files
-	Transferring to host: <129.93.182.251:9618?addrs=129.93.182.251-9618+[2600-900-6-1102-b226-28ff-fe2c-340]-9618&alias=red-c7223.unl.edu&noUDP&sock=starter_76138_dbd1_13531>
+040 (16627890.000.000) 2021-05-17 15:45:05 Started transferring input files
+	Transferring to host: <129.93.182.81:9618?addrs=129.93.182.81-9618+[2600-900-6-1102-a6ba-dbff-fe0b-6427]-9618&alias=red-c1201.unl.edu&noUDP&sock=slot1_9_28702_e7c8_5974>
 ...
-040 (7699664.000.000) 2020-09-13 17:57:23 Finished transferring input files
+040 (16627890.000.000) 2021-05-17 15:45:05 Finished transferring input files
 ...
-001 (7699664.000.000) 2020-09-13 17:57:24 Job executing on host: <129.93.182.251:9618?addrs=129.93.182.251-9618+[2600-900-6-1102-b226-28ff-fe2c-340]-9618&alias=red-c7223.unl.edu&noUDP&sock=startd_76102_3878_3>
+001 (16627890.000.000) 2021-05-17 15:45:06 Job executing on host: <129.93.182.81:9618?addrs=129.93.182.81-9618+[2600-900-6-1102-a6ba-dbff-fe0b-6427]-9618&alias=red-c1201.unl.edu&noUDP&sock=startd_2959_34d3>
 ...
-040 (7699664.000.000) 2020-09-13 17:57:26 Started transferring output files
+006 (16627890.000.000) 2021-05-17 15:45:14 Image size of job updated: 2
+	2  -  MemoryUsage of job (MB)
+	2960  -  ResidentSetSize of job (KB)
 ...
-040 (7699664.000.000) 2020-09-13 17:57:26 Finished transferring output files
+040 (16627890.000.000) 2021-05-17 15:45:16 Started transferring output files
 ...
-005 (7699664.000.000) 2020-09-13 17:57:27 Job terminated.
+040 (16627890.000.000) 2021-05-17 15:45:16 Finished transferring output files
+...
+005 (16627890.000.000) 2021-05-17 15:45:18 Job terminated.
 	(1) Normal termination (return value 0)
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
 		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
-	1377  -  Run Bytes Sent By Job
-	46734  -  Run Bytes Received By Job
-	1377  -  Total Bytes Sent By Job
-	46734  -  Total Bytes Received By Job
+	1374  -  Run Bytes Sent By Job
+	47836  -  Run Bytes Received By Job
+	1374  -  Total Bytes Sent By Job
+	47836  -  Total Bytes Received By Job
 	Partitionable Resources :    Usage  Request Allocated 
-	   Cpus                 :     0.04        1         1 
-	   Disk (KB)            :   476           1    604774 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :      476       40    389264 
+	   Memory (MB)          :        2     1000      1000 
+
+	Job terminated of its own accord at 2021-05-17T20:45:15Z.
+...
+000 (16627898.000.000) 2021-05-17 16:32:40 Job submitted from host: <129.93.239.166:9618?addrs=129.93.239.166-9618+[2600-900-6-1101-290-faff-feb8-f318]-9618&alias=t3.unl.edu&noUDP&sock=schedd_3291224_7d7e>
+...
+022 (16627898.000.000) 2021-05-17 16:32:53 Job disconnected, attempting to reconnect
+    Socket between submit and execute hosts closed unexpectedly
+    Trying to reconnect to slot1_9@red-c0907.unl.edu <129.93.182.24:9618?addrs=129.93.182.24-9618+[2600-900-6-1102-862b-2bff-fe2b-ec5]-9618&alias=red-c0907.unl.edu&noUDP&sock=startd_4698_0405>
+...
+024 (16627898.000.000) 2021-05-17 16:33:01 Job reconnection failed
+    Job not found at execution machine
+    Can not reconnect to slot1_9@red-c0907.unl.edu, rescheduling job
+...
+040 (16627898.000.000) 2021-05-17 16:33:14 Started transferring input files
+	Transferring to host: <129.93.183.83:9618?addrs=129.93.183.83-9618+[2600-900-6-1102-20f-53ff-fe0e-4644]-9618&alias=red-c2107.unl.edu&noUDP&sock=slot1_8_45654_1f7a_24732>
+...
+040 (16627898.000.000) 2021-05-17 16:33:14 Finished transferring input files
+...
+001 (16627898.000.000) 2021-05-17 16:33:15 Job executing on host: <129.93.183.83:9618?addrs=129.93.183.83-9618+[2600-900-6-1102-20f-53ff-fe0e-4644]-9618&alias=red-c2107.unl.edu&noUDP&sock=startd_45613_4d73>
+...
+040 (16627898.000.000) 2021-05-17 16:33:22 Started transferring output files
+...
+040 (16627898.000.000) 2021-05-17 16:33:22 Finished transferring output files
+...
+005 (16627898.000.000) 2021-05-17 16:33:23 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	1374  -  Run Bytes Sent By Job
+	47836  -  Run Bytes Received By Job
+	1374  -  Total Bytes Sent By Job
+	47836  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.01        1         1 
+	   Disk (KB)            :   476          40    895470 
 	   Memory (MB)          :              1000      1000 
 
-	Job terminated of its own accord at 2020-09-13T22:57:26Z.
+	Job terminated of its own accord at 2021-05-17T21:33:22Z.
 ...

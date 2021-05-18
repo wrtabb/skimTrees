@@ -1,19 +1,19 @@
-Start processing at  Sun Sep 13 22:56:48 UTC 2020
-wrtabb-7699651.4-red-c7223.unl.edu
-/var/lib/condor/execute/dir_113758
-total 68
--rw-r--r-- 1 wrtabb hep  5457 Sep 13 22:56 DYTreeVars.h
--rw-r--r-- 1 wrtabb hep     0 Sep 13 22:56 _condor_stderr
--rw-r--r-- 1 wrtabb hep   120 Sep 13 22:56 _condor_stdout
--rwxr-xr-x 1 wrtabb hep   954 Sep 13 22:56 condor_exec.exe
--rwxr-xr-x 1 wrtabb hep     0 Sep 13 22:56 docker_stderror
--rw-r--r-- 1 wrtabb hep 27944 Sep 13 22:56 filterOnDyDecay.C
--rwxr--r-- 1 wrtabb hep  2527 Sep 13 22:56 filterOneSampleDyDecay.py
-drwx------ 2 wrtabb hep  4096 Sep 13 22:56 tmp
-drwx------ 3 wrtabb hep  4096 Sep 13 22:56 var
--rw------- 1 wrtabb hep  9852 Sep 13 22:56 x509up_u5512
+Start processing at  Mon May 17 21:32:56 UTC 2021
+wrtabb-16627891.4-red-c5721.unl.edu
+/var/lib/condor/execute/dir_9757
+total 60
+-rw-r--r-- 1 wrtabb hep  6028 May 17 21:32 DYTreeVars.h
+-rw-r--r-- 1 wrtabb hep     0 May 17 21:32 _condor_stderr
+-rw-r--r-- 1 wrtabb hep   119 May 17 21:32 _condor_stdout
+-rwxr-xr-x 1 wrtabb hep   954 May 17 21:32 condor_exec.exe
+-rw-r--r-- 1 wrtabb hep     0 May 17 21:32 docker_stderror
+-rw-r--r-- 1 wrtabb hep 28373 May 17 21:32 filterOnDyDecay.C
+-rwxr--r-- 1 wrtabb hep  2597 May 17 21:32 filterOneSampleDyDecay.py
+drwxrwxrwt 2 wrtabb hep     6 May 17 21:32 tmp
+drwxrwxrwt 3 wrtabb hep    16 May 17 21:32 var
+-rw------- 1 wrtabb hep  9884 May 17 21:32 x509up_u5512
 Set up environment
-/var/lib/condor/execute/dir_113758
+/var/lib/condor/execute/dir_9757
 Run the filtering script
 ./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ DYLL_50toInf_truncated_M50To100 base 4 15
 General location of ntuples /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
@@ -22,4 +22,4 @@ Subdirectory name of the input sample base
 Section number     4
 Number of sections 15
 ERROR: Input directory is not found, exiting
-Ending processing at  Sun Sep 13 22:56:48 UTC 2020
+Ending processing at  Mon May 17 21:32:59 UTC 2021

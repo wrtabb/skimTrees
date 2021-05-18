@@ -108,6 +108,18 @@ double GENEvt_x2;
 double GENEvt_alphaQCD;
 double GENEvt_alphaQED;
 
+// GEN Others
+int nGenOthers;
+double GenOthers_phi[MPSIZE];
+double GenOthers_eta[MPSIZE];
+double GenOthers_pT[MPSIZE];
+double GenOthers_Px[MPSIZE];
+double GenOthers_Py[MPSIZE];
+double GenOthers_Pz[MPSIZE];
+double GenOthers_E[MPSIZE];
+int GenOthers_ID[MPSIZE];
+int GenOthers_isHardProcess[MPSIZE];
+
 double _prefiringweight;
 double _prefiringweightup;
 double _prefiringweightdown;
@@ -186,6 +198,7 @@ TBranch *  b_GENEvt_x2;
 TBranch *  b_GENEvt_alphaQCD;
 TBranch *  b_GENEvt_alphaQED;
 
+// Muons
 TBranch*b_nMuon;
 TBranch*b_Nmuons;
 TBranch*b_PVz;
@@ -206,4 +219,15 @@ TBranch*b_Muon_PfGammaIsoR04;
 TBranch*b_Muon_PFSumPUIsoR04;
 TBranch*b_Muon_trkiso;
 
+// Gen Others
+TBranch*b_nGenOthers;
+TBranch*b_GenOthers_phi;
+TBranch*b_GenOthers_eta;
+TBranch*b_GenOthers_pT;
+TBranch*b_GenOthers_Px;
+TBranch*b_GenOthers_Py;
+TBranch*b_GenOthers_Pz;
+TBranch*b_GenOthers_E;
+TBranch*b_GenOthers_ID;
+TBranch*b_GenOthers_isHardProcess;
 #endif

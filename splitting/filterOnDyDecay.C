@@ -114,10 +114,6 @@ void filterOnDyDecay(TString pathToNtupleArea,
 
 
 
-  treeIn->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
-  treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
-  treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
-
   treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
   treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
   treeIn->SetBranchAddress("lumiBlock" , &lumiBlock , &b_lumiBlock);
@@ -184,12 +180,21 @@ void filterOnDyDecay(TString pathToNtupleArea,
   treeIn->SetBranchAddress("GENEvt_alphaQCD"                                  ,&GENEvt_alphaQCD                                  , &b_GENEvt_alphaQCD                                  );
   treeIn->SetBranchAddress("GENEvt_alphaQED"                                  ,&GENEvt_alphaQED                                  , &b_GENEvt_alphaQED                                  );
 
+  // GEN other
+  treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
+  treeIn->SetBranchAddress("GenOthers_phi", &GenOthers_phi,&b_GenOthers_phi);
+  treeIn->SetBranchAddress("GenOthers_eta", &GenOthers_eta,&b_GenOthers_eta);
+  treeIn->SetBranchAddress("GenOthers_pT",  &GenOthers_pT, &b_GenOthers_pT);
+  treeIn->SetBranchAddress("GenOthers_Px",  &GenOthers_Px, &b_GenOthers_Px);
+  treeIn->SetBranchAddress("GenOthers_Py",  &GenOthers_Py, &b_GenOthers_Py);
+  treeIn->SetBranchAddress("GenOthers_Pz",  &GenOthers_Pz, &b_GenOthers_Pz);
+  treeIn->SetBranchAddress("GenOthers_E",   &GenOthers_E,  &b_GenOthers_E );
+  treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
+  treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess);
+
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
   // and later copy it.
-
-  // Create files, trees, and configure trees, for the three decay modes
-
   TString fileNameOutTmpEE = "testEE.root";
   printf("Create a temporary skim file locally for EE\n");
   TFile* foutEE = new TFile(fileNameOutTmpEE, "RECREATE");
@@ -310,20 +315,6 @@ int mkpath(char* file_path, mode_t mode) {
 
 void configureOutTree(TTree *treeOut){
 
-  // Configure the tree
-  treeOut->Branch("_prefiringweight", &_prefiringweight,"_prefiringweight/D");
-  treeOut->Branch("_prefiringweightup", &_prefiringweightup,"_prefiringweightup/D");
-  treeOut->Branch("_prefiringweightdown", &_prefiringweightdown,"_prefiringweightdown/D");
-
-  treeOut->Branch("runNum",&runNum,"runNum/I");
-  treeOut->Branch("evtNum",&evtNum,"evtNum/l");
-  treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
-  treeOut->Branch("PUweight",&PUweight,"PUweight/D");
-  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
-  treeOut->Branch("nVertices",&nVertices,"nVertices/I");
-
-  treeOut->Branch("nPileUp",&nPileUp,"nPileUp/I");
-
   treeOut->Branch("nMuon",&nMuon,"nMuon/I");
   treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
   treeOut->Branch("PVz",&PVz,"PVz/D");
@@ -350,6 +341,19 @@ void configureOutTree(TTree *treeOut){
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
   treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+
+  treeOut->Branch("runNum",&runNum,"runNum/I");
+  treeOut->Branch("evtNum",&evtNum,"evtNum/l");
+  treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
+  treeOut->Branch("PUweight",&PUweight,"PUweight/D");
+  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
+  treeOut->Branch("nVertices",&nVertices,"nVertices/I");
+
+  treeOut->Branch("_prefiringweight", &_prefiringweight,"_prefiringweight/D");
+  treeOut->Branch("_prefiringweightup", &_prefiringweightup,"_prefiringweightup/D");
+  treeOut->Branch("_prefiringweightdown", &_prefiringweightdown,"_prefiringweightdown/D");
+
+  treeOut->Branch("nPileUp",&nPileUp,"nPileUp/I");
 
 
   // Trigger quantities

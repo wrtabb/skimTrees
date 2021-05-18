@@ -343,8 +343,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
   treeIn->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
   treeIn->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
-//--------------------------------------------------------------------
-
 
   treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
   treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
@@ -412,7 +410,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("GENEvt_alphaQCD"                                  ,&GENEvt_alphaQCD                                  , &b_GENEvt_alphaQCD                                  );
   treeIn->SetBranchAddress("GENEvt_alphaQED"                                  ,&GENEvt_alphaQED                                  , &b_GENEvt_alphaQED                                  );
 
-  // GEN other
   treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
   treeIn->SetBranchAddress("GenOthers_phi", &GenOthers_phi,&b_GenOthers_phi);
   treeIn->SetBranchAddress("GenOthers_eta", &GenOthers_eta,&b_GenOthers_eta);
@@ -462,7 +459,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
   treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
 
-  // Configure the tree
   treeOut->Branch("runNum",&runNum,"runNum/I");
   treeOut->Branch("evtNum",&evtNum,"evtNum/l");
   treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
