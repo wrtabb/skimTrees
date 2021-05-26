@@ -25,8 +25,8 @@ print "Section number     {}".format(sectionNumber)
 print "Number of sections {}".format(numberOfSections)
 
 # Construct name of the input directory and check if the input directory exists
-#fullSampleDirName = generalNtupleLocation + "/" + sampleToProcessDir + "/" + sampleSubdir
-fullSampleDirName = generalNtupleLocation + "/" + sampleToProcessDir
+fullSampleDirName = generalNtupleLocation + "/" + sampleToProcessDir + "/" + sampleSubdir
+
 if( os.path.isdir(fullSampleDirName) ):
     print "Input directory exists, ok"
 else:

@@ -22,16 +22,16 @@ sampleName=(
 #	DYLL_M10to50                                 
 #	DYLL_M10to50                                 
 #	DYLL_M10to50                                 
-	DYLL_50toInf_truncated_M50To100
-	DYLL_100to200
-	DYLL_200to400
-	DYLL_400to500
-	DYLL_500to700
-	DYLL_700to800
-	DYLL_800to1000
-	DYLL_1000to1500
-	DYLL_1500to2000
-	DYLL_2000to3000
+	DYLL_M50toInf_truncated_M50To100
+	DYLL_M100to200
+	DYLL_M200to400
+	DYLL_M400to500
+	DYLL_M500to700
+	DYLL_M700to800
+	DYLL_M800to1000
+	DYLL_M1000to1500
+	DYLL_M1500to2000
+	DYLL_M2000to3000
 )
 
 sampleSubdir=(
