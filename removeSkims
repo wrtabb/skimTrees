@@ -3,6 +3,9 @@
 # This will recursively delete all skimmed ntuples
 # This is useful if a mistake was made in creating them and they need to be remade
 # Be careful that the directories listed here are the right ones before running this code
+# I am leaving the line to remove the files commented out so that this script will not 
+# accidentally be run
+# Remove the comment on line 97 to use this
 
 base_directory=/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
 skim_name=/skims_0001
@@ -91,5 +94,5 @@ file_list=(
 
 for index in ${!file_list[*]}; do
 	echo "Removing directory: ${file_list[$index]}${skim_name}"
-	rm -r ${base_directory}${file_list[$index]}${skim_name}
+	# rm -r ${base_directory}${file_list[$index]}${skim_name}
 done
