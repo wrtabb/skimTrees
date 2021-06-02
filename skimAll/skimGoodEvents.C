@@ -103,21 +103,21 @@ void skimGoodEvents(TString pathToFileIn,
   treeIn->SetBranchAddress("HLT_trigName", &pHLT_trigName);
 
   // Electron quantities
-  treeIn->SetBranchAddress("Electron_Energy"      ,&Electron_Energy      , &b_Electron_Energy      );
-  treeIn->SetBranchAddress("Electron_pT"          ,&Electron_pT          , &b_Electron_pT          );
-  treeIn->SetBranchAddress("Electron_Px"          ,&Electron_Px          , &b_Electron_Px          );
-  treeIn->SetBranchAddress("Electron_Py"          ,&Electron_Py          , &b_Electron_Py          );
-  treeIn->SetBranchAddress("Electron_Pz"          ,&Electron_Pz          , &b_Electron_Pz          );
-  treeIn->SetBranchAddress("Electron_eta"         ,&Electron_eta         , &b_Electron_eta         );
-  treeIn->SetBranchAddress("Electron_phi"         ,&Electron_phi         , &b_Electron_phi         );
-  treeIn->SetBranchAddress("Electron_charge"      ,&Electron_charge      , &b_Electron_charge      );
-  treeIn->SetBranchAddress("Electron_etaSC"       ,&Electron_etaSC       , &b_Electron_etaSC       );
-  treeIn->SetBranchAddress("Electron_phiSC"       ,&Electron_phiSC       , &b_Electron_phiSC       );
-  treeIn->SetBranchAddress("Electron_dxy"         ,&Electron_dxy         , &b_Electron_dxy         );
-  treeIn->SetBranchAddress("Electron_dz"          ,&Electron_dz          , &b_Electron_dz          );
-  treeIn->SetBranchAddress("Electron_EnergySC"    ,&Electron_EnergySC    , &b_Electron_EnergySC    );
-  treeIn->SetBranchAddress("Electron_etSC"        ,&Electron_etSC        , &b_Electron_etSC        );
-  treeIn->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID, &b_Electron_passMediumID);
+  treeIn->SetBranchAddress("Electron_Energy",&Electron_Energy,&b_Electron_Energy);
+  treeIn->SetBranchAddress("Electron_pT",&Electron_pT,&b_Electron_pT);
+  treeIn->SetBranchAddress("Electron_Px",&Electron_Px,&b_Electron_Px);
+  treeIn->SetBranchAddress("Electron_Py",&Electron_Py,&b_Electron_Py);
+  treeIn->SetBranchAddress("Electron_Pz",&Electron_Pz,&b_Electron_Pz);
+  treeIn->SetBranchAddress("Electron_eta",&Electron_eta,&b_Electron_eta);
+  treeIn->SetBranchAddress("Electron_phi",&Electron_phi,&b_Electron_phi);
+  treeIn->SetBranchAddress("Electron_charge",&Electron_charge,&b_Electron_charge);
+  treeIn->SetBranchAddress("Electron_etaSC",&Electron_etaSC,&b_Electron_etaSC);
+  treeIn->SetBranchAddress("Electron_phiSC",&Electron_phiSC,&b_Electron_phiSC);
+  treeIn->SetBranchAddress("Electron_dxy",&Electron_dxy,&b_Electron_dxy);
+  treeIn->SetBranchAddress("Electron_dz",&Electron_dz,&b_Electron_dz);
+  treeIn->SetBranchAddress("Electron_EnergySC",&Electron_EnergySC,&b_Electron_EnergySC);
+  treeIn->SetBranchAddress("Electron_etSC",&Electron_etSC,&b_Electron_etSC);
+  treeIn->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID,&b_Electron_passMediumID);
 
   // Global GEN quantities
   // Check if GEN info is present. It won't be there for data events, for example
@@ -131,20 +131,34 @@ void skimGoodEvents(TString pathToFileIn,
   }
   if( hasGenInfo ){
     treeIn->Branch("GENnPair",&GENnPair,"GENnPair/I");
-    treeIn->SetBranchAddress("GENEvt_weight"        ,&GENEvt_weight        , &b_GENEvt_weight  );
-    treeIn->SetBranchAddress("GENEvt_QScale"        ,&GENEvt_QScale        , &b_GENEvt_QScale  );
-    treeIn->SetBranchAddress("GENEvt_x1"            ,&GENEvt_x1            , &b_GENEvt_x1      );
-    treeIn->SetBranchAddress("GENEvt_x2"            ,&GENEvt_x2            , &b_GENEvt_x2      );
-    treeIn->SetBranchAddress("GENEvt_alphaQCD"      ,&GENEvt_alphaQCD      , &b_GENEvt_alphaQCD);
-    treeIn->SetBranchAddress("GENEvt_alphaQED"      ,&GENEvt_alphaQED      , &b_GENEvt_alphaQED);
+    treeIn->SetBranchAddress("GENEvt_weight",&GENEvt_weight,&b_GENEvt_weight);
+    treeIn->SetBranchAddress("GENEvt_QScale",&GENEvt_QScale,&b_GENEvt_QScale);
+    treeIn->SetBranchAddress("GENEvt_x1",&GENEvt_x1,&b_GENEvt_x1);
+    treeIn->SetBranchAddress("GENEvt_x2",&GENEvt_x2,&b_GENEvt_x2);
+    treeIn->SetBranchAddress("GENEvt_alphaQCD",&GENEvt_alphaQCD,&b_GENEvt_alphaQCD);
+    treeIn->SetBranchAddress("GENEvt_alphaQED",&GENEvt_alphaQED,&b_GENEvt_alphaQED);
 
-  treeIn->SetBranchAddress("GENLepton_eta",&GENLepton_eta,&b_GENLepton_eta);
-  treeIn->SetBranchAddress("GENLepton_phi",&GENLepton_phi,&b_GENLepton_phi);
-  treeIn->SetBranchAddress("GENLepton_pT",&GENLepton_pT,&b_GENLepton_pT);
-  treeIn->SetBranchAddress("GENLepton_ID",&GENLepton_ID,&b_GENLepton_ID);
-  treeIn->SetBranchAddress("GENLepton_isHardProcess",&GENLepton_isHardProcess,&b_GENLepton_isHardProcess);
-  treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,&b_GENLepton_fromHardProcessFinalState);
+    treeIn->SetBranchAddress("GENLepton_eta",&GENLepton_eta,&b_GENLepton_eta);
+    treeIn->SetBranchAddress("GENLepton_phi",&GENLepton_phi,&b_GENLepton_phi);
+    treeIn->SetBranchAddress("GENLepton_pT",&GENLepton_pT,&b_GENLepton_pT);
+    treeIn->SetBranchAddress("GENLepton_ID",&GENLepton_ID,&b_GENLepton_ID);
+    treeIn->SetBranchAddress("GENLepton_isHardProcess",&GENLepton_isHardProcess,&b_GENLepton_isHardProcess);
+    treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,&b_GENLepton_fromHardProcessFinalState);
+    treeIn->SetBranchAddress("GENLepton_isPromptFinalState",&GENLepton_isPromptFinalState,&b_GENLepton_isPromptFinalState);
   }
+
+  //Gen others
+  treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
+  treeIn->SetBranchAddress("GenOthers_phi", &GenOthers_phi,&b_GenOthers_phi);
+  treeIn->SetBranchAddress("GenOthers_eta", &GenOthers_eta,&b_GenOthers_eta);
+  treeIn->SetBranchAddress("GenOthers_pT",  &GenOthers_pT, &b_GenOthers_pT);
+  treeIn->SetBranchAddress("GenOthers_Px",  &GenOthers_Px, &b_GenOthers_Px);
+  treeIn->SetBranchAddress("GenOthers_Py",  &GenOthers_Py, &b_GenOthers_Py);
+  treeIn->SetBranchAddress("GenOthers_Pz",  &GenOthers_Pz, &b_GenOthers_Pz);
+  treeIn->SetBranchAddress("GenOthers_E",   &GenOthers_E,  &b_GenOthers_E );
+  treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
+  treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess);
+  treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState, &b_GenOthers_isPromptFinalState);
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
@@ -238,7 +252,21 @@ void skimGoodEvents(TString pathToFileIn,
     treeOut->Branch("GENLepton_ID",&GENLepton_ID,"GENLepton_ID/I");
     treeOut->Branch("GENLepton_isHardProcess",&GENLepton_isHardProcess,"GENLepton_isHardProcess/I");
     treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState/I");
+    treeOut->Branch("GENLepton_isPromptFinalState", &GENLepton_isPromptFinalState,"GENLepton_isPromptFinalState[GENnPair]/I");
   }
+
+  //Gen others
+  treeOut->Branch("nGenOthers",&nGenOthers,"nGenOthers/I");
+  treeOut->Branch("GenOthers_phi",&GenOthers_phi,"GenOthers_phi[nGenOthers]/D");
+  treeOut->Branch("GenOthers_eta",&GenOthers_eta,"GenOthers_eta[nGenOthers]/D");
+  treeOut->Branch("GenOthers_pT",&GenOthers_pT,"GenOthers_pT[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Px",&GenOthers_Px,"GenOthers_Px[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Py",&GenOthers_Py,"GenOthers_Py[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Pz",&GenOthers_Pz,"GenOthers_Pz[nGenOthers]/D");
+  treeOut->Branch("GenOthers_E",&GenOthers_E,"GenOthers_E[nGenOthers]/D");
+  treeOut->Branch("GenOthers_ID",&GenOthers_ID,"GenOthers_ID[nGenOthers]/I");
+  treeOut->Branch("GenOthers_isHardProcess",&GenOthers_isHardProcess,"GenOthers_isHardProcess[nGenOthers]/I");
+  treeOut->Branch("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState,"GenOthers_isPromptFinalState[nGenOthers]/I");
 
   // 
   // Loop over events

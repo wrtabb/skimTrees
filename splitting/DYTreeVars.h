@@ -119,6 +119,7 @@ double GenOthers_Pz[MPSIZE];
 double GenOthers_E[MPSIZE];
 int GenOthers_ID[MPSIZE];
 int GenOthers_isHardProcess[MPSIZE];
+int GenOthers_isPromptFinalState[MPSIZE];
 
 double _prefiringweight;
 double _prefiringweightup;
@@ -230,4 +231,5 @@ TBranch*b_GenOthers_Pz;
 TBranch*b_GenOthers_E;
 TBranch*b_GenOthers_ID;
 TBranch*b_GenOthers_isHardProcess;
+TBranch * b_GenOthers_isPromptFinalState;
 #endif

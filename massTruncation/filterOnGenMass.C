@@ -89,8 +89,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   std::vector<std::string> HLT_trigName;
   std::vector<std::string> *pHLT_trigName = &HLT_trigName;
 
-
-  //-----Newly Added-----// 
+  // Muon quantities
   int    nMuon;
   int    Nmuons;
   double PVz;
@@ -104,7 +103,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   double Muon_dxy[MPSIZE];
   double Muon_dz[MPSIZE];
   bool   Muon_passTightID[MPSIZE];
-
   double Muon_PfChargedHadronIsoR04[MPSIZE];
   double Muon_PfNeutralHadronIsoR04[MPSIZE];
   double Muon_PfGammaIsoR04[MPSIZE];
@@ -142,7 +140,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   double Electron_etSC[MPSIZE]; //no muon
   bool Electron_passMediumID[MPSIZE];
 
-  // GEN quantities
+  // GENLepton quantities
   int GENnPair;
   double GENLepton_phi[MPSIZE];
   double GENLepton_eta[MPSIZE];
@@ -188,6 +186,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   double GenOthers_E[MPSIZE];
   int GenOthers_ID[MPSIZE];
   int GenOthers_isHardProcess[MPSIZE];
+  int GenOthers_isPromptFinalState[MPSIZE];
 
   double _prefiringweight;
   double _prefiringweightup;
@@ -307,12 +306,13 @@ void filterOnGenMass(TString pathToNtupleArea,
   TBranch * b_GenOthers_E ;
   TBranch * b_GenOthers_ID;
   TBranch * b_GenOthers_isHardProcess;
+  TBranch * b_GenOthers_isPromptFinalState;
 
   //
   // Set up branches for input tree
   //
-  //-----------------------New Branches----------------------------//
 
+  //Muons
   treeIn->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
   treeIn->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
   treeIn->SetBranchAddress("PVz",&PVz,&b_PVz);
@@ -327,6 +327,14 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
   treeIn->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
 
+  treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04, 
+                           &b_Muon_PfChargedHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04, 
+                           &b_Muon_PfNeutralHadronIsoR04);
+  treeIn->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
+  treeIn->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
+  treeIn->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
+
   treeIn->SetBranchAddress("vtxTrkCkt1Pt", &pvtxTrkCkt1Pt);
   treeIn->SetBranchAddress("vtxTrkCkt2Pt", &pvtxTrkCkt2Pt);
   treeIn->SetBranchAddress("vtxTrkChi2",   &pvtxTrkChi2);
@@ -335,14 +343,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
   treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
   treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
-
-  treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04, 
-                           &b_Muon_PfChargedHadronIsoR04);
-  treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04, 
-                           &b_Muon_PfNeutralHadronIsoR04);
-  treeIn->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
-  treeIn->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
-  treeIn->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
 
   treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
   treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
@@ -375,7 +375,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("Electron_etSC"        ,&Electron_etSC        , &b_Electron_etSC        );
   treeIn->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID, &b_Electron_passMediumID);
 
-    // GEN quantities
+    // GEN leptons
   treeIn->SetBranchAddress("GENnPair"                                         ,&GENnPair                                         , &b_GENnPair                                         );
   treeIn->SetBranchAddress("GENLepton_phi"                                    ,&GENLepton_phi                                    , &b_GENLepton_phi                                    );
   treeIn->SetBranchAddress("GENLepton_eta"                                    ,&GENLepton_eta                                    , &b_GENLepton_eta                                    );
@@ -410,6 +410,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("GENEvt_alphaQCD"                                  ,&GENEvt_alphaQCD                                  , &b_GENEvt_alphaQCD                                  );
   treeIn->SetBranchAddress("GENEvt_alphaQED"                                  ,&GENEvt_alphaQED                                  , &b_GENEvt_alphaQED                                  );
 
+  //Gen others
   treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
   treeIn->SetBranchAddress("GenOthers_phi", &GenOthers_phi,&b_GenOthers_phi);
   treeIn->SetBranchAddress("GenOthers_eta", &GenOthers_eta,&b_GenOthers_eta);
@@ -420,6 +421,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("GenOthers_E",   &GenOthers_E,  &b_GenOthers_E );
   treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
   treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess); 
+  treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState, &b_GenOthers_isPromptFinalState); 
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
@@ -430,8 +432,8 @@ void filterOnGenMass(TString pathToNtupleArea,
   TDirectory *dirOut = fout->mkdir(rootDirName);
   dirOut->cd();
   TTree* treeOut = new TTree(treeName, "Skimmed tree");
-  //---------------------New Branches-----------------------------------//
 
+  //Muons
   treeOut->Branch("nMuon",&nMuon,"nMuon/I");
   treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
   treeOut->Branch("PVz",&PVz,"PVz/D");
@@ -481,6 +483,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("HLT_trigFired", &HLT_trigFired,"HLT_trigFired[HLT_ntrig]/I");
   treeOut->Branch("HLT_trigName"  , &HLT_trigName);
 
+  //Electrons
   treeOut->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
   treeOut->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
   treeOut->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
@@ -497,6 +500,7 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
   treeOut->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
 
+  //Gen leptons
   treeOut->Branch("GENnPair",&GENnPair,"GENnPair/I");
   treeOut->Branch("GENLepton_phi", &GENLepton_phi,"GENLepton_phi[GENnPair]/D");
   treeOut->Branch("GENLepton_eta", &GENLepton_eta,"GENLepton_eta[GENnPair]/D");
@@ -531,6 +535,18 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
   treeOut->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
   
+  //Gen others
+  treeOut->Branch("nGenOthers",&nGenOthers,"nGenOthers/I");
+  treeOut->Branch("GenOthers_phi",&GenOthers_phi,"GenOthers_phi[nGenOthers]/D");
+  treeOut->Branch("GenOthers_eta",&GenOthers_eta,"GenOthers_eta[nGenOthers]/D");
+  treeOut->Branch("GenOthers_pT",&GenOthers_pT,"GenOthers_pT[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Px",&GenOthers_Px,"GenOthers_Px[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Py",&GenOthers_Py,"GenOthers_Py[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Pz",&GenOthers_Pz,"GenOthers_Pz[nGenOthers]/D");
+  treeOut->Branch("GenOthers_E",&GenOthers_E,"GenOthers_E[nGenOthers]/D");
+  treeOut->Branch("GenOthers_ID",&GenOthers_ID,"GenOthers_ID[nGenOthers]/I");
+  treeOut->Branch("GenOthers_isHardProcess",&GenOthers_isHardProcess,"GenOthers_isHardProcess[nGenOthers]/I"); 
+  treeOut->Branch("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState,"GenOthers_isPromptFinalState[nGenOthers]/I"); 
   // 
   // Loop over events
   //

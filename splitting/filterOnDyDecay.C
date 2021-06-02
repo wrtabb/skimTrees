@@ -191,6 +191,7 @@ void filterOnDyDecay(TString pathToNtupleArea,
   treeIn->SetBranchAddress("GenOthers_E",   &GenOthers_E,  &b_GenOthers_E );
   treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
   treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess);
+  treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState, &b_GenOthers_isPromptFinalState);
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
@@ -411,6 +412,19 @@ void configureOutTree(TTree *treeOut){
   treeOut->Branch("GENEvt_x2",&GENEvt_x2,"GENEvt_x2/D");
   treeOut->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
   treeOut->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
+
+  //Gen others
+  treeOut->Branch("nGenOthers",&nGenOthers,"nGenOthers/I");
+  treeOut->Branch("GenOthers_phi",&GenOthers_phi,"GenOthers_phi[nGenOthers]/D");
+  treeOut->Branch("GenOthers_eta",&GenOthers_eta,"GenOthers_eta[nGenOthers]/D");
+  treeOut->Branch("GenOthers_pT",&GenOthers_pT,"GenOthers_pT[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Px",&GenOthers_Px,"GenOthers_Px[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Py",&GenOthers_Py,"GenOthers_Py[nGenOthers]/D");
+  treeOut->Branch("GenOthers_Pz",&GenOthers_Pz,"GenOthers_Pz[nGenOthers]/D");
+  treeOut->Branch("GenOthers_E",&GenOthers_E,"GenOthers_E[nGenOthers]/D");
+  treeOut->Branch("GenOthers_ID",&GenOthers_ID,"GenOthers_ID[nGenOthers]/I");
+  treeOut->Branch("GenOthers_isHardProcess",&GenOthers_isHardProcess,"GenOthers_isHardProcess[nGenOthers]/I");
+  treeOut->Branch("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState,"GenOthers_isPromptFinalState[nGenOthers]/I");
 
   return;
 }
