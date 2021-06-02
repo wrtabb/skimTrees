@@ -130,6 +130,7 @@ void skimGoodEvents(TString pathToFileIn,
     printf("No GEN info is found in the input file, so it won't be saved in the output root files\n");
   }
   if( hasGenInfo ){
+    treeIn->Branch("GENnPair",&GENnPair,"GENnPair/I");
     treeIn->SetBranchAddress("GENEvt_weight"        ,&GENEvt_weight        , &b_GENEvt_weight  );
     treeIn->SetBranchAddress("GENEvt_QScale"        ,&GENEvt_QScale        , &b_GENEvt_QScale  );
     treeIn->SetBranchAddress("GENEvt_x1"            ,&GENEvt_x1            , &b_GENEvt_x1      );
@@ -223,6 +224,7 @@ void skimGoodEvents(TString pathToFileIn,
 
   // Global GEN quantities
   if( hasGenInfo ){
+    treeOut->Branch("GENnPair",&GENnPair,"GENnPair/I");
     treeOut->Branch("GENEvt_weight",&GENEvt_weight,"GENEvt_weight/D");
     treeOut->Branch("GENEvt_QScale",&GENEvt_QScale,"GENEvt_QScale/D");
     treeOut->Branch("GENEvt_x1",&GENEvt_x1,"GENEvt_x1/D");
