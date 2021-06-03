@@ -3,9 +3,9 @@
 ntuplesGeneralLocation="/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/"
 
 sampleShortName=(
-#	DYJetsToLL_M-10to50_v1 #
-#	DYJetsToLL_M-10to50_v2 #
-#	DYJetsToLL_M-10to50_ext1v1 #
+	DYJetsToLL_M-10to50_v1 #
+	DYJetsToLL_M-10to50_v2 #
+	DYJetsToLL_M-10to50_ext1v1 #
 	DYJetsToLL_M-50to100  
 	DYJetsToLL_M-100to200
 	DYJetsToLL_M-200to400
@@ -19,9 +19,9 @@ sampleShortName=(
 )
 
 sampleName=(
-#	DYLL_M10to50                                 
-#	DYLL_M10to50                                 
-#	DYLL_M10to50                                 
+	DYLL_M10to50                                 
+	DYLL_M10to50                                 
+	DYLL_M10to50                                 
 	DYLL_M50toInf_truncated_M50To100
 	DYLL_M100to200
 	DYLL_M200to400
@@ -35,9 +35,9 @@ sampleName=(
 )
 
 sampleSubdir=(
-#	v1     # DYLL_M10to50_v1
-#	v2     # DYLL_M10to50_v2
-#	ext1v1 # DYLL_M10to50_ext1v1
+	v1     # DYLL_M10to50_v1
+	v2     # DYLL_M10to50_v2
+	ext1v1 # DYLL_M10to50_ext1v1
 	base   # DYLL_M50to100
 	./     # DYLL_M100to200
 	./     # DYLL_M200to400
@@ -51,9 +51,9 @@ sampleSubdir=(
 )
 
 numberOfSections=(
-#	3  # M10to50_v1 242
-#	8  # M10to50_v2 765
-#	5  # M10to50_ext1v1 472 
+	3  # M10to50_v1 242
+	8  # M10to50_v2 765
+	5  # M10to50_ext1v1 472 
 	15 # M50to100 1451
 	3  # M100to200 219
 	1  # M200to400 81

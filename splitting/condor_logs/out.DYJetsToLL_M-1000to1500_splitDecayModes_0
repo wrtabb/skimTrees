@@ -1,19 +1,19 @@
-Start processing at  Thu May 20 19:27:52 UTC 2021
-wrtabb-16637502.0-red-c1616.unl.edu
-/var/lib/condor/execute/dir_21156
-total 60
--rw-r--r-- 1 wrtabb hep  6028 May 20 19:27 DYTreeVars.h
--rw-r--r-- 1 wrtabb hep     0 May 20 19:27 _condor_stderr
--rw-r--r-- 1 wrtabb hep   120 May 20 19:27 _condor_stdout
--rwxr-xr-x 1 wrtabb hep   954 May 20 19:27 condor_exec.exe
--rwxr-xr-x 1 wrtabb hep     0 May 20 19:27 docker_stderror
--rw-r--r-- 1 wrtabb hep 28373 May 20 19:27 filterOnDyDecay.C
--rwxr--r-- 1 wrtabb hep  2528 May 20 19:27 filterOneSampleDyDecay.py
-drwx------ 2 wrtabb hep     6 May 20 19:27 tmp
-drwx------ 3 wrtabb hep    25 May 20 19:27 var
--rw------- 1 wrtabb hep  9917 May 20 19:27 x509up_u5512
+Start processing at  Thu Jun 3 17:47:35 UTC 2021
+wrtabb-16647085.0-red-c1209.unl.edu
+/var/lib/condor/execute/dir_25092
+total 64
+-rw-r--r-- 1 wrtabb hep  6112 Jun  3 17:47 DYTreeVars.h
+-rw-r--r-- 1 wrtabb hep     0 Jun  3 17:47 _condor_stderr
+-rw-r--r-- 1 wrtabb hep   119 Jun  3 17:47 _condor_stdout
+-rwxr-xr-x 1 wrtabb hep   954 Jun  3 17:47 condor_exec.exe
+-rw-r--r-- 1 wrtabb hep     0 Jun  3 17:47 docker_stderror
+-rw-r--r-- 1 wrtabb hep 29436 Jun  3 17:47 filterOnDyDecay.C
+-rwxr--r-- 1 wrtabb hep  2528 Jun  3 17:47 filterOneSampleDyDecay.py
+drwxrwxrwt 2 wrtabb hep     6 Jun  3 17:47 tmp
+drwxrwxrwt 3 wrtabb hep    17 Jun  3 17:47 var
+-rw------- 1 wrtabb hep  9917 Jun  3 17:47 x509up_u5512
 Set up environment
-/var/lib/condor/execute/dir_21156
+/var/lib/condor/execute/dir_25092
 Run the filtering script
 ./filterOneSampleDyDecay.py /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/ DYLL_M1000to1500 ./ 0 1
 General location of ntuples /mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
@@ -408,4 +408,4 @@ eval `scram unsetenv -sh`; gfal-copy -p file:////${PWD}/testTauTau.root gsiftp:/
 
 Any errors? (Make sure also to check stderr log)
 None
-Ending processing at  Thu May 20 19:33:05 UTC 2021
+Ending processing at  Thu Jun 3 17:52:10 UTC 2021
