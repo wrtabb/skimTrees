@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+ntuplesGeneralLocation="/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/"
+
+sampleLocation1=(
+	DYLL_M50toInf_truncated_M50To100/base
+    	ttbar_truncated_M0To700
+    	ttbarBackup_truncated_M0To700
+)
+sampleLocation2=(
+	DYLL_M50toInf/base
+    	ttbar
+    	ttbarBackup
+)
+
+
+for index in ${!sampleLocation2[*]}; do 
+	echo "Comparing: "
+	echo ${ntuplesGeneralLocation}${sampleLocation1[$index]}
+	echo "And:"
+	echo ${ntuplesGeneralLocation}${sampleLocation2[$index]}
+	cd ${ntuplesGeneralLocation}${sampleLocation1[$index]}
+	ls -l *.root | wc -l
+	cd ${ntuplesGeneralLocation}${sampleLocation2[$index]}
+	ls -l *.root | wc -l
+done

@@ -173,7 +173,7 @@ void skimGoodEvents(TString pathToFileIn,
   // Configure the tree
   // Muons
   treeOut->Branch("nMuon",&nMuon,"nMuon/I");
-  treeOut->Branch("Nmuons",&Nmuons,"Nmuons[nMuon]/I");
+  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
   treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
   treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
   treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
@@ -183,7 +183,7 @@ void skimGoodEvents(TString pathToFileIn,
   treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
   treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
   treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
-  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
+  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID[nMuon]/I");
 
   treeOut->Branch("Muon_PfChargedHadronIsoR04", &Muon_PfChargedHadronIsoR04,
                  "Muon_PfChargedHadronIsoR04[nMuon]/D");
