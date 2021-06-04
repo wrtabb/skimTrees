@@ -171,32 +171,33 @@ void skimGoodEvents(TString pathToFileIn,
   TTree* treeOut = new TTree(treeName, "Skimmed tree");
 
   // Configure the tree
+  // Muons
   treeOut->Branch("nMuon",&nMuon,"nMuon/I");
-  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
-  treeOut->Branch("PVz",&PVz,"PVz/D");
-  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT/D");
-  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px/D");
-  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py/D");
-  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz/D");
-  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta/D");
-  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi/D");
-  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge/I");
-  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy/D");
-  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz/D");
+  treeOut->Branch("Nmuons",&Nmuons,"Nmuons[nMuon]/I");
+  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
+  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
+  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
+  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
+  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta[nMuon]/D");
+  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi[nMuon]/D");
+  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
+  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
+  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
   treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
 
-  treeOut->Branch("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
-                 "Muon_PfChargedHadronIsoR04/D");
-  treeOut->Branch("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
-                 "Muon_PfNeutralHadronIsoR04/D");
-  treeOut->Branch("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04/D");
-  treeOut->Branch("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04/D");
-  treeOut->Branch("Muon_trkiso", Muon_trkiso, "Muon_trkiso/D");
+  treeOut->Branch("Muon_PfChargedHadronIsoR04", &Muon_PfChargedHadronIsoR04,
+                 "Muon_PfChargedHadronIsoR04[nMuon]/D");
+  treeOut->Branch("Muon_PfNeutralHadronIsoR04", &Muon_PfNeutralHadronIsoR04,
+                 "Muon_PfNeutralHadronIsoR04[nMuon]/D");
+  treeOut->Branch("Muon_PfGammaIsoR04", &Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04[nMuon]/D");
+  treeOut->Branch("Muon_PFSumPUIsoR04", &Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04[nMuon]/D");
+  treeOut->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
 
   treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
   treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+  treeOut->Branch("PVz",&PVz,"PVz/D");
 
   treeOut->Branch("_prefiringweight", &_prefiringweight,"_prefiringweight/D");
   treeOut->Branch("_prefiringweightup", &_prefiringweightup,"_prefiringweightup/D");
@@ -206,7 +207,6 @@ void skimGoodEvents(TString pathToFileIn,
   treeOut->Branch("evtNum",&evtNum,"evtNum/l");
   treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
   treeOut->Branch("PUweight",&PUweight,"PUweight/D");
-  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
   treeOut->Branch("nVertices",&nVertices,"nVertices/I");
 
   treeOut->Branch("nPileUp",&nPileUp,"nPileUp/I");
@@ -220,6 +220,8 @@ void skimGoodEvents(TString pathToFileIn,
   treeOut->Branch("HLT_trigFired", &HLT_trigFired,"HLT_trigFired[HLT_ntrig]/I");
   treeOut->Branch("HLT_trigName"  , &HLT_trigName);
 
+  //Electrons
+  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
   treeOut->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
   treeOut->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
   treeOut->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
@@ -246,12 +248,12 @@ void skimGoodEvents(TString pathToFileIn,
     treeOut->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
     treeOut->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
 
-    treeOut->Branch("GENLepton_eta",&GENLepton_eta,"GENLepton_eta/D");
-    treeOut->Branch("GENLepton_phi",&GENLepton_phi,"GENLepton_phi/D");
-    treeOut->Branch("GENLepton_pT",&GENLepton_pT,"GENLepton_pT/D");
-    treeOut->Branch("GENLepton_ID",&GENLepton_ID,"GENLepton_ID/I");
-    treeOut->Branch("GENLepton_isHardProcess",&GENLepton_isHardProcess,"GENLepton_isHardProcess/I");
-    treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState/I");
+    treeOut->Branch("GENLepton_eta",&GENLepton_eta,"GENLepton_eta[GENnPair]/D");
+    treeOut->Branch("GENLepton_phi",&GENLepton_phi,"GENLepton_phi[GENnPair]/D");
+    treeOut->Branch("GENLepton_pT",&GENLepton_pT,"GENLepton_pT[GENnPair]/D");
+    treeOut->Branch("GENLepton_ID",&GENLepton_ID,"GENLepton_ID[GENnPair]/I");
+    treeOut->Branch("GENLepton_isHardProcess",&GENLepton_isHardProcess,"GENLepton_isHardProcess[GENnPair]/I");
+    treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState[GENnPair]/I");
     treeOut->Branch("GENLepton_isPromptFinalState", &GENLepton_isPromptFinalState,"GENLepton_isPromptFinalState[GENnPair]/I");
   }
 
