@@ -448,13 +448,13 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz/D");
   treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
 
-  treeOut->Branch("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04, 
+  treeOut->Branch("Muon_PfChargedHadronIsoR04", &Muon_PfChargedHadronIsoR04, 
                  "Muon_PfChargedHadronIsoR04/D");
-  treeOut->Branch("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04, 
+  treeOut->Branch("Muon_PfNeutralHadronIsoR04", &Muon_PfNeutralHadronIsoR04, 
                  "Muon_PfNeutralHadronIsoR04/D");
-  treeOut->Branch("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04/D");
-  treeOut->Branch("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04/D");
-  treeOut->Branch("Muon_trkiso", Muon_trkiso, "Muon_trkiso/D");
+  treeOut->Branch("Muon_PfGammaIsoR04", &Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04/D");
+  treeOut->Branch("Muon_PFSumPUIsoR04", &Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04/D");
+  treeOut->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso/D");
 
   treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);

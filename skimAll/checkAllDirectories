@@ -89,7 +89,7 @@ sampleLocation=(
 for index in ${!sampleLocation[*]}; do 
 	if [ -d ${ntuplesGeneralLocation}${sampleLocation[$index]}${skimTag} ]
 	then
-		echo ${ntuplesGeneralLocation}${sampleLocation[$index]}
+		echo ${sampleLocation[$index]}
 		cd ${ntuplesGeneralLocation}${sampleLocation[$index]}${skimTag}
 		ls -l *.root | wc -l
 		cd ../

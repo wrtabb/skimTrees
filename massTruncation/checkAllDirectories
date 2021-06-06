@@ -16,9 +16,9 @@ sampleLocation2=(
 
 for index in ${!sampleLocation2[*]}; do 
 	echo "Comparing: "
-	echo ${ntuplesGeneralLocation}${sampleLocation1[$index]}
+	echo ${sampleLocation1[$index]}
 	echo "And:"
-	echo ${ntuplesGeneralLocation}${sampleLocation2[$index]}
+	echo ${sampleLocation2[$index]}
 	cd ${ntuplesGeneralLocation}${sampleLocation1[$index]}
 	ls -l *.root | wc -l
 	cd ${ntuplesGeneralLocation}${sampleLocation2[$index]}

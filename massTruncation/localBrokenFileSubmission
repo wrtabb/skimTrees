@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# If there are just a few files which were not properly skimmed
+# I can use this script to submit those individual files locally
+# rather than submitting to Condor again
+
+path=/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6
+sampleName=(
+       ttbar
+       ttbar
+       ttbarBackup
+       ttbarBackup
+       ttbarBackup
+)
+
+suffix=_truncated
+sampletype=(
+	SAMPLE_TT
+	SAMPLE_TT
+	SAMPLE_TT
+	SAMPLE_TT
+	SAMPLE_TT
+)
+
+shortName=(
+	ntuple_skim_19.root
+	ntuple_skim_546.root
+	ntuple_skim_381.root
+	ntuple_skim_831.root
+	ntuple_skim_864.root
+) 
+
+for index in ${!sampleName[*]}; do
+root -l << EOF
+.L filterOnGenMass.C
+TString rPath = "${path}"
+TString rSampleName = "${sampleName[index]}"
+TString rSubdir = ""
+TString rShortName = "${shortName[index]}"
+TString rSuffix = "_truncated"
+SampleType rSampletype = SAMPLE_TT
+filterOnGenMass(rPath,rSampleName,rSubdir,rShortName,rSuffix,rSampletype)
+EOF
+done
