@@ -410,6 +410,7 @@ void configureOutTree(TTree *treeOut){
   treeOut->Branch("GENLepton_fromHardProcessDecayed",&GENLepton_fromHardProcessDecayed,"GENLepton_fromHardProcessDecayed[GENnPair]/I");
   treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState[GENnPair]/I");
   treeOut->Branch("GENLepton_isMostlyLikePythia6Status3", &GENLepton_isMostlyLikePythia6Status3, "GENLepton_isMostlyLikePythia6Status3[GENnPair]/I");
+
   treeOut->Branch("GENEvt_weight",&GENEvt_weight,"GENEvt_weight/D");
   treeOut->Branch("GENEvt_QScale",&GENEvt_QScale,"GENEvt_QScale/D");
   treeOut->Branch("GENEvt_x1",&GENEvt_x1,"GENEvt_x1/D");

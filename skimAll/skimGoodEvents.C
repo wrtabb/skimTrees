@@ -145,7 +145,6 @@ void skimGoodEvents(TString pathToFileIn,
     treeIn->SetBranchAddress("GENLepton_isHardProcess",&GENLepton_isHardProcess,&b_GENLepton_isHardProcess);
     treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,&b_GENLepton_fromHardProcessFinalState);
     treeIn->SetBranchAddress("GENLepton_isPromptFinalState",&GENLepton_isPromptFinalState,&b_GENLepton_isPromptFinalState);
-  }
 
   //Gen others
   treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
@@ -159,6 +158,8 @@ void skimGoodEvents(TString pathToFileIn,
   treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
   treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess);
   treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState, &b_GenOthers_isPromptFinalState);
+  }
+
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
@@ -255,7 +256,6 @@ void skimGoodEvents(TString pathToFileIn,
     treeOut->Branch("GENLepton_isHardProcess",&GENLepton_isHardProcess,"GENLepton_isHardProcess[GENnPair]/I");
     treeOut->Branch("GENLepton_fromHardProcessFinalState",&GENLepton_fromHardProcessFinalState,"GENLepton_fromHardProcessFinalState[GENnPair]/I");
     treeOut->Branch("GENLepton_isPromptFinalState", &GENLepton_isPromptFinalState,"GENLepton_isPromptFinalState[GENnPair]/I");
-  }
 
   //Gen others
   treeOut->Branch("nGenOthers",&nGenOthers,"nGenOthers/I");
@@ -269,6 +269,8 @@ void skimGoodEvents(TString pathToFileIn,
   treeOut->Branch("GenOthers_ID",&GenOthers_ID,"GenOthers_ID[nGenOthers]/I");
   treeOut->Branch("GenOthers_isHardProcess",&GenOthers_isHardProcess,"GenOthers_isHardProcess[nGenOthers]/I");
   treeOut->Branch("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState,"GenOthers_isPromptFinalState[nGenOthers]/I");
+  }
+
 
   // 
   // Loop over events
