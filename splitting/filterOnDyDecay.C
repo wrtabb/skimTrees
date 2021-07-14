@@ -33,7 +33,7 @@ enum DecayMode {
 // Function to create all subdirectories on the way to the given file name
 // if they don't exist.
 int mkpath(char* file_path, mode_t mode);
-void configureOutTree(TTree *treeOut);
+void configureOutTree(TTree *treeOut,DecayMode lepType);
 void copyOutputFile(TString pathToNtupleArea, TString sampleNameIn, 
 		    TString sampleSubdirIn, TString shortFileNameIn, 
 		    TString fileNameOutTmp,
@@ -202,7 +202,7 @@ void filterOnDyDecay(TString pathToNtupleArea,
   TDirectory *dirOutEE = foutEE->mkdir(rootDirName);
   dirOutEE->cd();
   TTree* treeOutEE = new TTree(treeName, "Skimmed tree for DY to EE");
-  configureOutTree(treeOutEE);
+  configureOutTree(treeOutEE,MODE_EE);
 
   TString fileNameOutTmpMuMu = "testMuMu.root";
   printf("Create a temporary skim file locally for MuMu\n");
@@ -210,7 +210,7 @@ void filterOnDyDecay(TString pathToNtupleArea,
   TDirectory *dirOutMuMu = foutMuMu->mkdir(rootDirName);
   dirOutMuMu->cd();
   TTree* treeOutMuMu = new TTree(treeName, "Skimmed tree for DY to MuMu");
-  configureOutTree(treeOutMuMu);
+  configureOutTree(treeOutMuMu,MODE_MUMU);
 
   TString fileNameOutTmpTauTau = "testTauTau.root";
   printf("Create a temporary skim file locally for TauTau\n");
@@ -218,7 +218,7 @@ void filterOnDyDecay(TString pathToNtupleArea,
   TDirectory *dirOutTauTau = foutTauTau->mkdir(rootDirName);
   dirOutTauTau->cd();
   TTree* treeOutTauTau = new TTree(treeName, "Skimmed tree for DY to TauTau");
-  configureOutTree(treeOutTauTau);
+  configureOutTree(treeOutTauTau,MODE_TAUTAU);
 
   // 
   // Loop over events
@@ -314,29 +314,50 @@ int mkpath(char* file_path, mode_t mode) {
   return 0;
 }
 
-void configureOutTree(TTree *treeOut){
+void configureOutTree(TTree*treeOut,DecayMode lepType){
 
-  //Muons
-  treeOut->Branch("nMuon",&nMuon,"nMuon/I");
-  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
-  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
-  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
-  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
-  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
-  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta[nMuon]/D");
-  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi[nMuon]/D");
-  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
-  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
-  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
-  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID[nMuon]/I");
+  if(lepType==MODE_MUMU||lepType==MODE_TAUTAU)
+  {
+	  treeOut->Branch("nMuon",&nMuon,"nMuon/I");
+	  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
+	  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
+	  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
+	  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
+	  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
+	  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta[nMuon]/D");
+	  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi[nMuon]/D");
+	  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
+	  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
+	  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
+	  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID[nMuon]/I");
+	  treeOut->Branch("Muon_PfChargedHadronIsoR04",&Muon_PfChargedHadronIsoR04,
+			 "Muon_PfChargedHadronIsoR04[nMuon]/D");
+	  treeOut->Branch("Muon_PfNeutralHadronIsoR04", &Muon_PfNeutralHadronIsoR04,
+			 "Muon_PfNeutralHadronIsoR04[nMuon]/D");
+	  treeOut->Branch("Muon_PfGammaIsoR04", &Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04[nMuon]/D");
+	  treeOut->Branch("Muon_PFSumPUIsoR04", &Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04[nMuon]/D");
+	  treeOut->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
+  }
 
-  treeOut->Branch("Muon_PfChargedHadronIsoR04",&Muon_PfChargedHadronIsoR04,
-                 "Muon_PfChargedHadronIsoR04[nMuon]/D");
-  treeOut->Branch("Muon_PfNeutralHadronIsoR04", &Muon_PfNeutralHadronIsoR04,
-                 "Muon_PfNeutralHadronIsoR04[nMuon]/D");
-  treeOut->Branch("Muon_PfGammaIsoR04", &Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04[nMuon]/D");
-  treeOut->Branch("Muon_PFSumPUIsoR04", &Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04[nMuon]/D");
-  treeOut->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
+  if(lepType==MODE_EE||lepType==MODE_TAUTAU)
+  {
+	  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
+	  treeOut->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
+	  treeOut->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
+	  treeOut->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
+	  treeOut->Branch("Electron_Py", &Electron_Py, "Electron_Py[Nelectrons]/D");
+	  treeOut->Branch("Electron_Pz", &Electron_Pz, "Electron_Pz[Nelectrons]/D");
+	  treeOut->Branch("Electron_eta", &Electron_eta, "Electron_eta[Nelectrons]/D");
+	  treeOut->Branch("Electron_phi", &Electron_phi, "Electron_phi[Nelectrons]/D");
+	  treeOut->Branch("Electron_charge", &Electron_charge, "Electron_charge[Nelectrons]/I");
+	  treeOut->Branch("Electron_etaSC", &Electron_etaSC, "Electron_etaSC[Nelectrons]/D");
+	  treeOut->Branch("Electron_phiSC", &Electron_phiSC, "Electron_phiSC[Nelectrons]/D");
+	  treeOut->Branch("Electron_dxy", &Electron_dxy, "Electron_dxy[Nelectrons]/D");
+	  treeOut->Branch("Electron_dz", &Electron_dz, "Electron_dz[Nelectrons]/D");
+	  treeOut->Branch("Electron_EnergySC", &Electron_EnergySC, "Electron_EnergySC[Nelectrons]/D");
+	  treeOut->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
+	  treeOut->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
+  }
 
   treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
@@ -363,23 +384,6 @@ void configureOutTree(TTree *treeOut){
   treeOut->Branch("HLT_trigFired", &HLT_trigFired,"HLT_trigFired[HLT_ntrig]/I");
   treeOut->Branch("HLT_trigName"  , &HLT_trigName);
 
-  //Electrons
-  treeOut->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
-  treeOut->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
-  treeOut->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
-  treeOut->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
-  treeOut->Branch("Electron_Py", &Electron_Py, "Electron_Py[Nelectrons]/D");
-  treeOut->Branch("Electron_Pz", &Electron_Pz, "Electron_Pz[Nelectrons]/D");
-  treeOut->Branch("Electron_eta", &Electron_eta, "Electron_eta[Nelectrons]/D");
-  treeOut->Branch("Electron_phi", &Electron_phi, "Electron_phi[Nelectrons]/D");
-  treeOut->Branch("Electron_charge", &Electron_charge, "Electron_charge[Nelectrons]/I");
-  treeOut->Branch("Electron_etaSC", &Electron_etaSC, "Electron_etaSC[Nelectrons]/D");
-  treeOut->Branch("Electron_phiSC", &Electron_phiSC, "Electron_phiSC[Nelectrons]/D");
-  treeOut->Branch("Electron_dxy", &Electron_dxy, "Electron_dxy[Nelectrons]/D");
-  treeOut->Branch("Electron_dz", &Electron_dz, "Electron_dz[Nelectrons]/D");
-  treeOut->Branch("Electron_EnergySC", &Electron_EnergySC, "Electron_EnergySC[Nelectrons]/D");
-  treeOut->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
-  treeOut->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
 
   //Gen leptons 
   treeOut->Branch("GENnPair",&GENnPair,"GENnPair/I");

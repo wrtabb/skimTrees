@@ -8,7 +8,7 @@
 #include "TSystem.h"
 #include "TLorentzVector.h"
 #include "TPRegexp.h"
-
+#include "../include/DYTreeVars.h"
 
 // Constants
 const bool useSmallEventNumber = false;
@@ -68,247 +68,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   }
 
   //
-  // Define variables
-  //
-  static const int MPSIZE = 2000;
-  // Global quantities
-  int runNum;
-  unsigned long long evtNum;
-  int lumiBlock;
-  double PUweight;
-  int Nelectrons;
-  int nVertices;
-
-  // Pileup
-  Int_t nPileUp;
-
-  // Trigger quantities
-  int HLT_ntrig;
-  int HLT_trigType[MPSIZE];
-  int HLT_trigFired[MPSIZE];
-  std::vector<std::string> HLT_trigName;
-  std::vector<std::string> *pHLT_trigName = &HLT_trigName;
-
-  // Muon quantities
-  int    nMuon;
-  int    Nmuons;
-  double PVz;
-  double Muon_pT[MPSIZE];
-  double Muon_Px[MPSIZE];
-  double Muon_Py[MPSIZE];
-  double Muon_Pz[MPSIZE]; 
-  double Muon_eta[MPSIZE];
-  double Muon_phi[MPSIZE];
-  int    Muon_charge[MPSIZE];
-  double Muon_dxy[MPSIZE];
-  double Muon_dz[MPSIZE];
-  bool   Muon_passTightID[MPSIZE];
-  double Muon_PfChargedHadronIsoR04[MPSIZE];
-  double Muon_PfNeutralHadronIsoR04[MPSIZE];
-  double Muon_PfGammaIsoR04[MPSIZE];
-  double Muon_PFSumPUIsoR04[MPSIZE];
-  double Muon_trkiso[MPSIZE];
-
-  std::vector<double> vtxTrkCkt1Pt;
-  std::vector<double>*pvtxTrkCkt1Pt = &vtxTrkCkt1Pt;
-
-  std::vector<double> vtxTrkCkt2Pt;
-  std::vector<double>*pvtxTrkCkt2Pt = &vtxTrkCkt2Pt;
-
-  std::vector<double> vtxTrkChi2;
-  std::vector<double>*pvtxTrkChi2 = &vtxTrkChi2;
-
-  std::vector<double> vtxTrkNdof;
-  std::vector<double>*pvtxTrkNdof = &vtxTrkNdof;
-//-----------------------------------------------------------------------------
-
-
-  // Electron quantities
-  double Electron_Energy[MPSIZE];  //no muon
-  double Electron_pT[MPSIZE];
-  double Electron_Px[MPSIZE];
-  double Electron_Py[MPSIZE];
-  double Electron_Pz[MPSIZE];
-  double Electron_eta[MPSIZE];
-  double Electron_phi[MPSIZE];
-  int Electron_charge[MPSIZE];
-  double Electron_etaSC[MPSIZE]; //no muon
-  double Electron_phiSC[MPSIZE]; //no muon
-  double Electron_dxy[MPSIZE];
-  double Electron_dz[MPSIZE];
-  double Electron_EnergySC[MPSIZE]; //no muon
-  double Electron_etSC[MPSIZE]; //no muon
-  bool Electron_passMediumID[MPSIZE];
-
-  // GENLepton quantities
-  int GENnPair;
-  double GENLepton_phi[MPSIZE];
-  double GENLepton_eta[MPSIZE];
-  double GENLepton_pT[MPSIZE];
-  double GENLepton_Px[MPSIZE];
-  double GENLepton_Py[MPSIZE];
-  double GENLepton_Pz[MPSIZE];
-  double GENLepton_E[MPSIZE];
-  double GENLepton_mother[MPSIZE];
-  double GENLepton_mother_pT[MPSIZE];
-  int GENLepton_charge[MPSIZE];
-  int GENLepton_status[MPSIZE];
-  int GENLepton_ID[MPSIZE];
-  int GENLepton_isPrompt[MPSIZE];
-  int GENLepton_isPromptFinalState[MPSIZE];
-  int GENLepton_isTauDecayProduct[MPSIZE];
-  int GENLepton_isPromptTauDecayProduct[MPSIZE];
-  int GENLepton_isDirectPromptTauDecayProductFinalState[MPSIZE];
-  int GENLepton_isHardProcess[MPSIZE];
-  int GENLepton_isLastCopy[MPSIZE];
-  int GENLepton_isLastCopyBeforeFSR[MPSIZE];
-  int GENLepton_isPromptDecayed[MPSIZE];
-  int GENLepton_isDecayedLeptonHadron[MPSIZE];
-  int GENLepton_fromHardProcessBeforeFSR[MPSIZE];
-  int GENLepton_fromHardProcessDecayed[MPSIZE];
-  int GENLepton_fromHardProcessFinalState[MPSIZE];
-  int GENLepton_isMostlyLikePythia6Status3[MPSIZE];
-  double GENEvt_weight;
-  double GENEvt_QScale;
-  double GENEvt_x1;
-  double GENEvt_x2;
-  double GENEvt_alphaQCD;
-  double GENEvt_alphaQED;
-
-  // GEN non-leptons
-  int nGenOthers;
-  double GenOthers_phi[MPSIZE];
-  double GenOthers_eta[MPSIZE];
-  double GenOthers_pT[MPSIZE];
-  double GenOthers_Px[MPSIZE];
-  double GenOthers_Py[MPSIZE];
-  double GenOthers_Pz[MPSIZE];
-  double GenOthers_E[MPSIZE];
-  int GenOthers_ID[MPSIZE];
-  int GenOthers_isHardProcess[MPSIZE];
-  int GenOthers_isPromptFinalState[MPSIZE];
-
-  double _prefiringweight;
-  double _prefiringweightup;
-  double _prefiringweightdown;
-
-  // 
-  // Define branches for input tree
-  // 
-  // -----------------New Branches------------------------//
-
-  TBranch*b_nMuon;
-  TBranch*b_Nmuons;
-  TBranch*b_PVz;
-  TBranch*b_Muon_pT;
-  TBranch*b_Muon_Px;
-  TBranch*b_Muon_Py;
-  TBranch*b_Muon_Pz; 
-  TBranch*b_Muon_eta;
-  TBranch*b_Muon_phi;
-  TBranch*b_Muon_charge;
-  TBranch*b_Muon_dxy;
-  TBranch*b_Muon_dz;
-  TBranch*b_Muon_passTightID;
-
-  TBranch*b_Muon_PfChargedHadronIsoR04;
-  TBranch*b_Muon_PfNeutralHadronIsoR04;
-  TBranch*b_Muon_PfGammaIsoR04;
-  TBranch*b_Muon_PFSumPUIsoR04;
-  TBranch*b_Muon_trkiso;
-
-  //TBranch*b_vtxTrkCkt1Pt;
-  //TBranch*b_vtxTrkCkt2Pt;
-  //TBranch*b_vtxTrkChi2;  
-  //TBranch*b_vtxTrkNdof;
-//--------------------------------------------------------
-
-  TBranch * b_runNum;
-  TBranch * b_evtNum;
-  TBranch * b_lumiBlock;
-  TBranch * b_PUweight;
-  TBranch * b_Nelectrons;
-  TBranch * b_nVertices;
-
-  // Prefire Weights
-  TBranch * b__prefiringweight;
-  TBranch * b__prefiringweightup;
-  TBranch * b__prefiringweightdown;
-
-  // Pileup
-  TBranch * b_nPileUp;
-
-  // Trigger quantities
-  TBranch * b_HLT_ntrig;
-  TBranch * b_HLT_trigType;
-  TBranch * b_HLT_trigFired;
-
-  // Electron quantities
-  TBranch *  b_Electron_Energy;
-  TBranch *  b_Electron_pT;
-  TBranch *  b_Electron_Px;
-  TBranch *  b_Electron_Py;
-  TBranch *  b_Electron_Pz;
-  TBranch *  b_Electron_eta;
-  TBranch *  b_Electron_phi;
-  TBranch *  b_Electron_charge;
-  TBranch *  b_Electron_etaSC;
-  TBranch *  b_Electron_phiSC;
-  TBranch *  b_Electron_dxy;
-  TBranch *  b_Electron_dz;
-  TBranch *  b_Electron_EnergySC;
-  TBranch *  b_Electron_etSC;
-  TBranch *  b_Electron_passMediumID;
-
-  // GEN quantities
-  TBranch *  b_GENnPair;
-  TBranch *  b_GENLepton_phi;
-  TBranch *  b_GENLepton_eta;
-  TBranch *  b_GENLepton_pT;
-  TBranch *  b_GENLepton_Px;
-  TBranch *  b_GENLepton_Py;
-  TBranch *  b_GENLepton_Pz;
-  TBranch *  b_GENLepton_E;
-  TBranch *  b_GENLepton_mother;
-  TBranch *  b_GENLepton_mother_pT;
-  TBranch *  b_GENLepton_charge;
-  TBranch *  b_GENLepton_status;
-  TBranch *  b_GENLepton_ID;
-  TBranch *  b_GENLepton_isPrompt;
-  TBranch *  b_GENLepton_isPromptFinalState;
-  TBranch *  b_GENLepton_isTauDecayProduct;
-  TBranch *  b_GENLepton_isPromptTauDecayProduct;
-  TBranch *  b_GENLepton_isDirectPromptTauDecayProductFinalState;
-  TBranch *  b_GENLepton_isHardProcess;
-  TBranch *  b_GENLepton_isLastCopy;
-  TBranch *  b_GENLepton_isLastCopyBeforeFSR;
-  TBranch *  b_GENLepton_isPromptDecayed;
-  TBranch *  b_GENLepton_isDecayedLeptonHadron;
-  TBranch *  b_GENLepton_fromHardProcessBeforeFSR;
-  TBranch *  b_GENLepton_fromHardProcessDecayed;
-  TBranch *  b_GENLepton_fromHardProcessFinalState;
-  TBranch *  b_GENLepton_isMostlyLikePythia6Status3;
-  TBranch *  b_GENEvt_weight;
-  TBranch *  b_GENEvt_QScale;
-  TBranch *  b_GENEvt_x1;
-  TBranch *  b_GENEvt_x2;
-  TBranch *  b_GENEvt_alphaQCD;
-  TBranch *  b_GENEvt_alphaQED;
-
-  // GEN other
-  TBranch * b_nGenOthers;
-  TBranch * b_GenOthers_phi;
-  TBranch * b_GenOthers_eta;
-  TBranch * b_GenOthers_pT;
-  TBranch * b_GenOthers_Px;
-  TBranch * b_GenOthers_Py;
-  TBranch * b_GenOthers_Pz;
-  TBranch * b_GenOthers_E ;
-  TBranch * b_GenOthers_ID;
-  TBranch * b_GenOthers_isHardProcess;
-  TBranch * b_GenOthers_isPromptFinalState;
-
-  //
   // Set up branches for input tree
   //
 
@@ -326,7 +85,6 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("Muon_dxy",&Muon_dxy,&b_Muon_dxy);
   treeIn->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
   treeIn->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
-
   treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04, 
                            &b_Muon_PfChargedHadronIsoR04);
   treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04, 
@@ -344,84 +102,104 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);
   treeIn->SetBranchAddress("_prefiringweightdown", &_prefiringweightdown, &b__prefiringweightdown);
 
-  treeIn->SetBranchAddress("runNum"    , &runNum    , &b_runNum);
-  treeIn->SetBranchAddress("evtNum"    , &evtNum    , &b_evtNum);
-  treeIn->SetBranchAddress("lumiBlock" , &lumiBlock , &b_lumiBlock);
-  treeIn->SetBranchAddress("PUweight"  , &PUweight  , &b_PUweight);
-  treeIn->SetBranchAddress("Nelectrons", &Nelectrons, &b_Nelectrons);
-  treeIn->SetBranchAddress("nVertices"    , &nVertices    , &b_nVertices);
+  treeIn->SetBranchAddress("runNum",&runNum,&b_runNum);
+  treeIn->SetBranchAddress("evtNum",&evtNum,&b_evtNum);
+  treeIn->SetBranchAddress("lumiBlock",&lumiBlock,&b_lumiBlock);
+  treeIn->SetBranchAddress("PUweight",&PUweight,&b_PUweight);
+  treeIn->SetBranchAddress("Nelectrons",&Nelectrons,&b_Nelectrons);
+  treeIn->SetBranchAddress("nVertices",&nVertices,&b_nVertices);
 
-  treeIn->SetBranchAddress("nPileUp"   ,&nPileUp    , &b_nPileUp);
+  treeIn->SetBranchAddress("nPileUp",&nPileUp,&b_nPileUp);
 
-  treeIn->SetBranchAddress("HLT_ntrig", &HLT_ntrig, &b_HLT_ntrig);
-  treeIn->SetBranchAddress("HLT_trigType", &HLT_trigType, &b_HLT_trigType);
-  treeIn->SetBranchAddress("HLT_trigFired", &HLT_trigFired, &b_HLT_trigFired);
-  treeIn->SetBranchAddress("HLT_trigName", &pHLT_trigName);
+  treeIn->SetBranchAddress("HLT_ntrig",&HLT_ntrig,&b_HLT_ntrig);
+  treeIn->SetBranchAddress("HLT_trigType",&HLT_trigType,&b_HLT_trigType);
+  treeIn->SetBranchAddress("HLT_trigFired",&HLT_trigFired,&b_HLT_trigFired);
+  treeIn->SetBranchAddress("HLT_trigName",&pHLT_trigName);
 
   // Electron quantities
-  treeIn->SetBranchAddress("Electron_Energy"      ,&Electron_Energy      , &b_Electron_Energy      );
-  treeIn->SetBranchAddress("Electron_pT"          ,&Electron_pT          , &b_Electron_pT          );
-  treeIn->SetBranchAddress("Electron_Px"          ,&Electron_Px          , &b_Electron_Px          );
-  treeIn->SetBranchAddress("Electron_Py"          ,&Electron_Py          , &b_Electron_Py          );
-  treeIn->SetBranchAddress("Electron_Pz"          ,&Electron_Pz          , &b_Electron_Pz          );
-  treeIn->SetBranchAddress("Electron_eta"         ,&Electron_eta         , &b_Electron_eta         );
-  treeIn->SetBranchAddress("Electron_phi"         ,&Electron_phi         , &b_Electron_phi         );
-  treeIn->SetBranchAddress("Electron_charge"      ,&Electron_charge      , &b_Electron_charge      );
-  treeIn->SetBranchAddress("Electron_etaSC"       ,&Electron_etaSC       , &b_Electron_etaSC       );
-  treeIn->SetBranchAddress("Electron_phiSC"       ,&Electron_phiSC       , &b_Electron_phiSC       );
-  treeIn->SetBranchAddress("Electron_dxy"         ,&Electron_dxy         , &b_Electron_dxy         );
-  treeIn->SetBranchAddress("Electron_dz"          ,&Electron_dz          , &b_Electron_dz          );
-  treeIn->SetBranchAddress("Electron_EnergySC"    ,&Electron_EnergySC    , &b_Electron_EnergySC    );
-  treeIn->SetBranchAddress("Electron_etSC"        ,&Electron_etSC        , &b_Electron_etSC        );
+  treeIn->SetBranchAddress("Electron_Energy",&Electron_Energy,&b_Electron_Energy      );
+  treeIn->SetBranchAddress("Electron_pT",&Electron_pT,&b_Electron_pT);
+  treeIn->SetBranchAddress("Electron_Px",&Electron_Px,&b_Electron_Px);
+  treeIn->SetBranchAddress("Electron_Py",&Electron_Py,&b_Electron_Py);
+  treeIn->SetBranchAddress("Electron_Pz",&Electron_Pz,&b_Electron_Pz);
+  treeIn->SetBranchAddress("Electron_eta",&Electron_eta,&b_Electron_eta);
+  treeIn->SetBranchAddress("Electron_phi",&Electron_phi,&b_Electron_phi);
+  treeIn->SetBranchAddress("Electron_charge",&Electron_charge,&b_Electron_charge);
+  treeIn->SetBranchAddress("Electron_etaSC",&Electron_etaSC,&b_Electron_etaSC);
+  treeIn->SetBranchAddress("Electron_phiSC",&Electron_phiSC,&b_Electron_phiSC);
+  treeIn->SetBranchAddress("Electron_dxy",&Electron_dxy,&b_Electron_dxy);
+  treeIn->SetBranchAddress("Electron_dz",&Electron_dz,&b_Electron_dz);
+  treeIn->SetBranchAddress("Electron_EnergySC",&Electron_EnergySC,&b_Electron_EnergySC);
+  treeIn->SetBranchAddress("Electron_etSC",&Electron_etSC,&b_Electron_etSC);
   treeIn->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID, &b_Electron_passMediumID);
 
     // GEN leptons
-  treeIn->SetBranchAddress("GENnPair"                                         ,&GENnPair                                         , &b_GENnPair                                         );
-  treeIn->SetBranchAddress("GENLepton_phi"                                    ,&GENLepton_phi                                    , &b_GENLepton_phi                                    );
-  treeIn->SetBranchAddress("GENLepton_eta"                                    ,&GENLepton_eta                                    , &b_GENLepton_eta                                    );
-  treeIn->SetBranchAddress("GENLepton_pT"                                     ,&GENLepton_pT                                     , &b_GENLepton_pT                                     );
-  treeIn->SetBranchAddress("GENLepton_Px"                                     ,&GENLepton_Px                                     , &b_GENLepton_Px                                     );
-  treeIn->SetBranchAddress("GENLepton_Py"                                     ,&GENLepton_Py                                     , &b_GENLepton_Py                                     );
-  treeIn->SetBranchAddress("GENLepton_Pz"                                     ,&GENLepton_Pz                                     , &b_GENLepton_Pz                                     );
-  treeIn->SetBranchAddress("GENLepton_E"                                      ,&GENLepton_E                                      , &b_GENLepton_E                                      );
-  treeIn->SetBranchAddress("GENLepton_mother"                                 ,&GENLepton_mother                                 , &b_GENLepton_mother                                 );
-  treeIn->SetBranchAddress("GENLepton_mother_pT"                              ,&GENLepton_mother_pT                              , &b_GENLepton_mother_pT                              );
-  treeIn->SetBranchAddress("GENLepton_charge"                                 ,&GENLepton_charge                                 , &b_GENLepton_charge                                 );
-  treeIn->SetBranchAddress("GENLepton_status"                                 ,&GENLepton_status                                 , &b_GENLepton_status                                 );
-  treeIn->SetBranchAddress("GENLepton_ID"                                     ,&GENLepton_ID                                     , &b_GENLepton_ID                                     );
-  treeIn->SetBranchAddress("GENLepton_isPrompt"                               ,&GENLepton_isPrompt                               , &b_GENLepton_isPrompt                               );
-  treeIn->SetBranchAddress("GENLepton_isPromptFinalState"                     ,&GENLepton_isPromptFinalState                     , &b_GENLepton_isPromptFinalState                     );
-  treeIn->SetBranchAddress("GENLepton_isTauDecayProduct"                      ,&GENLepton_isTauDecayProduct                      , &b_GENLepton_isTauDecayProduct                      );
-  treeIn->SetBranchAddress("GENLepton_isPromptTauDecayProduct"                ,&GENLepton_isPromptTauDecayProduct                , &b_GENLepton_isPromptTauDecayProduct                );
-  treeIn->SetBranchAddress("GENLepton_isDirectPromptTauDecayProductFinalState",&GENLepton_isDirectPromptTauDecayProductFinalState, &b_GENLepton_isDirectPromptTauDecayProductFinalState);
-  treeIn->SetBranchAddress("GENLepton_isHardProcess"                          ,&GENLepton_isHardProcess                          , &b_GENLepton_isHardProcess                          );
-  treeIn->SetBranchAddress("GENLepton_isLastCopy"                             ,&GENLepton_isLastCopy                             , &b_GENLepton_isLastCopy                             );
-  treeIn->SetBranchAddress("GENLepton_isLastCopyBeforeFSR"                    ,&GENLepton_isLastCopyBeforeFSR                    , &b_GENLepton_isLastCopyBeforeFSR                    );
-  treeIn->SetBranchAddress("GENLepton_isPromptDecayed"                        ,&GENLepton_isPromptDecayed                        , &b_GENLepton_isPromptDecayed                        );
-  treeIn->SetBranchAddress("GENLepton_isDecayedLeptonHadron"                  ,&GENLepton_isDecayedLeptonHadron                  , &b_GENLepton_isDecayedLeptonHadron                  );
-  treeIn->SetBranchAddress("GENLepton_fromHardProcessBeforeFSR"               ,&GENLepton_fromHardProcessBeforeFSR               , &b_GENLepton_fromHardProcessBeforeFSR               );
-  treeIn->SetBranchAddress("GENLepton_fromHardProcessDecayed"                 ,&GENLepton_fromHardProcessDecayed                 , &b_GENLepton_fromHardProcessDecayed                 );
-  treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState"              ,&GENLepton_fromHardProcessFinalState              , &b_GENLepton_fromHardProcessFinalState              );
-  treeIn->SetBranchAddress("GENLepton_isMostlyLikePythia6Status3"             ,&GENLepton_isMostlyLikePythia6Status3             , &b_GENLepton_isMostlyLikePythia6Status3             );
-  treeIn->SetBranchAddress("GENEvt_weight"                                    ,&GENEvt_weight                                    , &b_GENEvt_weight                                    );
-  treeIn->SetBranchAddress("GENEvt_QScale"                                    ,&GENEvt_QScale                                    , &b_GENEvt_QScale                                    );
-  treeIn->SetBranchAddress("GENEvt_x1"                                        ,&GENEvt_x1                                        , &b_GENEvt_x1                                        );
-  treeIn->SetBranchAddress("GENEvt_x2"                                        ,&GENEvt_x2                                        , &b_GENEvt_x2                                        );
-  treeIn->SetBranchAddress("GENEvt_alphaQCD"                                  ,&GENEvt_alphaQCD                                  , &b_GENEvt_alphaQCD                                  );
-  treeIn->SetBranchAddress("GENEvt_alphaQED"                                  ,&GENEvt_alphaQED                                  , &b_GENEvt_alphaQED                                  );
+  treeIn->SetBranchAddress("GENnPair",&GENnPair,&b_GENnPair);
+  treeIn->SetBranchAddress("GENLepton_phi",&GENLepton_phi,&b_GENLepton_phi);
+  treeIn->SetBranchAddress("GENLepton_eta",&GENLepton_eta,&b_GENLepton_eta);
+  treeIn->SetBranchAddress("GENLepton_pT",&GENLepton_pT,&b_GENLepton_pT);
+  treeIn->SetBranchAddress("GENLepton_Px",&GENLepton_Px,&b_GENLepton_Px);
+  treeIn->SetBranchAddress("GENLepton_Py",&GENLepton_Py,&b_GENLepton_Py);
+  treeIn->SetBranchAddress("GENLepton_Pz",&GENLepton_Pz,&b_GENLepton_Pz);
+  treeIn->SetBranchAddress("GENLepton_E",&GENLepton_E ,&b_GENLepton_E);
+  treeIn->SetBranchAddress("GENLepton_mother",&GENLepton_mother,&b_GENLepton_mother);
+  treeIn->SetBranchAddress("GENLepton_mother_pT",&GENLepton_mother_pT,&b_GENLepton_mother_pT);
+  treeIn->SetBranchAddress("GENLepton_charge",&GENLepton_charge,&b_GENLepton_charge);
+  treeIn->SetBranchAddress("GENLepton_status",&GENLepton_status,&b_GENLepton_status);
+  treeIn->SetBranchAddress("GENLepton_ID",&GENLepton_ID,&b_GENLepton_ID);
+  treeIn->SetBranchAddress("GENLepton_isPrompt",&GENLepton_isPrompt,&b_GENLepton_isPrompt);
+  treeIn->SetBranchAddress("GENLepton_isPromptFinalState",&GENLepton_isPromptFinalState,
+			   &b_GENLepton_isPromptFinalState);
+  treeIn->SetBranchAddress("GENLepton_isTauDecayProduct",&GENLepton_isTauDecayProduct,
+			   &b_GENLepton_isTauDecayProduct);
+  treeIn->SetBranchAddress("GENLepton_isPromptTauDecayProduct",
+			   &GENLepton_isPromptTauDecayProduct,
+			   &b_GENLepton_isPromptTauDecayProduct);
+  treeIn->SetBranchAddress("GENLepton_isDirectPromptTauDecayProductFinalState",
+			   &GENLepton_isDirectPromptTauDecayProductFinalState,
+			   &b_GENLepton_isDirectPromptTauDecayProductFinalState);
+  treeIn->SetBranchAddress("GENLepton_isHardProcess",&GENLepton_isHardProcess,
+			   &b_GENLepton_isHardProcess);
+  treeIn->SetBranchAddress("GENLepton_isLastCopy",&GENLepton_isLastCopy,
+			   &b_GENLepton_isLastCopy);
+  treeIn->SetBranchAddress("GENLepton_isLastCopyBeforeFSR",&GENLepton_isLastCopyBeforeFSR,				  &b_GENLepton_isLastCopyBeforeFSR);
+  treeIn->SetBranchAddress("GENLepton_isPromptDecayed",&GENLepton_isPromptDecayed,
+			   &b_GENLepton_isPromptDecayed                        );
+  treeIn->SetBranchAddress("GENLepton_isDecayedLeptonHadron",&GENLepton_isDecayedLeptonHadron,
+			   &b_GENLepton_isDecayedLeptonHadron                  );
+  treeIn->SetBranchAddress("GENLepton_fromHardProcessBeforeFSR",
+			   &GENLepton_fromHardProcessBeforeFSR,
+			   &b_GENLepton_fromHardProcessBeforeFSR);
+  treeIn->SetBranchAddress("GENLepton_fromHardProcessDecayed",
+			   &GENLepton_fromHardProcessDecayed,
+			   &b_GENLepton_fromHardProcessDecayed);
+  treeIn->SetBranchAddress("GENLepton_fromHardProcessFinalState",
+			   &GENLepton_fromHardProcessFinalState,
+			   &b_GENLepton_fromHardProcessFinalState);
+  treeIn->SetBranchAddress("GENLepton_isMostlyLikePythia6Status3",
+			   &GENLepton_isMostlyLikePythia6Status3,
+			   &b_GENLepton_isMostlyLikePythia6Status3);
+  treeIn->SetBranchAddress("GENEvt_weight",&GENEvt_weight,&b_GENEvt_weight);
+  treeIn->SetBranchAddress("GENEvt_QScale",&GENEvt_QScale,&b_GENEvt_QScale);
+  treeIn->SetBranchAddress("GENEvt_x1",&GENEvt_x1,&b_GENEvt_x1);
+  treeIn->SetBranchAddress("GENEvt_x2",&GENEvt_x2,&b_GENEvt_x2);
+  treeIn->SetBranchAddress("GENEvt_alphaQCD",&GENEvt_alphaQCD,&b_GENEvt_alphaQCD);
+  treeIn->SetBranchAddress("GENEvt_alphaQED",&GENEvt_alphaQED,&b_GENEvt_alphaQED);
 
   //Gen others
-  treeIn->SetBranchAddress("nGenOthers",    &nGenOthers,   &b_nGenOthers);
-  treeIn->SetBranchAddress("GenOthers_phi", &GenOthers_phi,&b_GenOthers_phi);
-  treeIn->SetBranchAddress("GenOthers_eta", &GenOthers_eta,&b_GenOthers_eta);
-  treeIn->SetBranchAddress("GenOthers_pT",  &GenOthers_pT, &b_GenOthers_pT);
-  treeIn->SetBranchAddress("GenOthers_Px",  &GenOthers_Px, &b_GenOthers_Px);
-  treeIn->SetBranchAddress("GenOthers_Py",  &GenOthers_Py, &b_GenOthers_Py);
-  treeIn->SetBranchAddress("GenOthers_Pz",  &GenOthers_Pz, &b_GenOthers_Pz);
-  treeIn->SetBranchAddress("GenOthers_E",   &GenOthers_E,  &b_GenOthers_E );
-  treeIn->SetBranchAddress("GenOthers_ID",  &GenOthers_ID, &b_GenOthers_ID);
-  treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess, &b_GenOthers_isHardProcess); 
-  treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState, &b_GenOthers_isPromptFinalState); 
+  treeIn->SetBranchAddress("nGenOthers",&nGenOthers,&b_nGenOthers);
+  treeIn->SetBranchAddress("GenOthers_phi",&GenOthers_phi,&b_GenOthers_phi);
+  treeIn->SetBranchAddress("GenOthers_eta",&GenOthers_eta,&b_GenOthers_eta);
+  treeIn->SetBranchAddress("GenOthers_pT",&GenOthers_pT,&b_GenOthers_pT);
+  treeIn->SetBranchAddress("GenOthers_Px",&GenOthers_Px,&b_GenOthers_Px);
+  treeIn->SetBranchAddress("GenOthers_Py",&GenOthers_Py,&b_GenOthers_Py);
+  treeIn->SetBranchAddress("GenOthers_Pz",&GenOthers_Pz,&b_GenOthers_Pz);
+  treeIn->SetBranchAddress("GenOthers_E",&GenOthers_E,&b_GenOthers_E );
+  treeIn->SetBranchAddress("GenOthers_ID",&GenOthers_ID,&b_GenOthers_ID);
+  treeIn->SetBranchAddress("GenOthers_isHardProcess",&GenOthers_isHardProcess,
+			   &b_GenOthers_isHardProcess); 
+  treeIn->SetBranchAddress("GenOthers_isPromptFinalState",&GenOthers_isPromptFinalState,
+			   &b_GenOthers_isPromptFinalState); 
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
