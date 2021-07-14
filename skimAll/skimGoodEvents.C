@@ -205,7 +205,9 @@ bool PassHLT(DecayMode lepType)
 	else if(lepType==MODE_MUMU) signalHLTType = signalHLTMuon;
 	//If not an electron or muon channel, we don't want to cut, so return true
 	else return true; 
-	for(int iHLT=0; iHLT < pHLT_trigName->size(); iHLT++){
+	
+	int nTriggers = pHLT_trigName->size();
+	for(int iHLT=0;iHLT<nTriggers;iHLT++){
 		TString trigName = pHLT_trigName->at(iHLT);
 		if(trigName.CompareTo(signalHLTType)==0 && HLT_trigFired[iHLT]==1)
 			passHLT = true;
