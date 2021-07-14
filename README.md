@@ -13,3 +13,6 @@ The DYLL samples are split into electron (EE), muon (MuMu), and tau lepton (TauT
 
 ## 3. Skim All
 This is the final skimming step. This step takes each sample, including those that have had their masses truncated and their leptons split into different samples, and removes unwanted information to decrease the size of the files. 
+
+## 4. Combine Skims
+In this final step, all of the skimmed files in each directory are combined into one file and placed in a directory in the storage area. Each directory can contain up to more than a thousand files, and by combining into one big files, organization becomes easier. 
