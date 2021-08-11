@@ -5,15 +5,15 @@
 # It then moves them from the current directory to the storage area
 
 directories=(
-#	DYLL_M10to50/DYLL_M10to50/EE/v1
-#	DYLL_M10to50/DYLL_M10to50/MuMu/v1
-#	DYLL_M10to50/DYLL_M10to50/TauTau/v1
-#	DYLL_M10to50/DYLL_M10to50/EE/v2
-#	DYLL_M10to50/DYLL_M10to50/MuMu/v2
-#	DYLL_M10to50/DYLL_M10to50/TauTau/v2
-#	DYLL_M10to50/DYLL_M10to50/EE/ext1v1
-#	DYLL_M10to50/DYLL_M10to50/MuMu/ext1v1
-#	DYLL_M10to50/DYLL_M10to50/TauTau/ext1v1
+	DYLL_M10to50/DYLL_M10to50/EE/v1
+	DYLL_M10to50/DYLL_M10to50/MuMu/v1
+	DYLL_M10to50/DYLL_M10to50/TauTau/v1
+	DYLL_M10to50/DYLL_M10to50/EE/v2
+	DYLL_M10to50/DYLL_M10to50/MuMu/v2
+	DYLL_M10to50/DYLL_M10to50/TauTau/v2
+	DYLL_M10to50/DYLL_M10to50/EE/ext1v1
+	DYLL_M10to50/DYLL_M10to50/MuMu/ext1v1
+	DYLL_M10to50/DYLL_M10to50/TauTau/ext1v1
 	DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/EE/base
 	DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/MuMu/base
 	DYLL_M50toInf/DYLL_M50toInf_truncated_M50To100/TauTau/base
@@ -86,15 +86,15 @@ directories=(
 	crab_DoubleEG_RunHver3
 )
 output_file=(
-#	DYLL_M10to50_EE_v1
-#	DYLL_M10to50_MuMu_v1
-#	DYLL_M10to50_TauTau_v1
-#	DYLL_M10to50_EE_v2
-#	DYLL_M10to50_MuMu_v2
-#	DYLL_M10to50_TauTau_v2
-#	DYLL_M10to50_EE_ext1v1
-#	DYLL_M10to50_MuMu_ext1v1
-#	DYLL_M10to50_TauTau_ext1v1
+	DYLL_M10to50_EE_v1
+	DYLL_M10to50_MuMu_v1
+	DYLL_M10to50_TauTau_v1
+	DYLL_M10to50_EE_v2
+	DYLL_M10to50_MuMu_v2
+	DYLL_M10to50_TauTau_v2
+	DYLL_M10to50_EE_ext1v1
+	DYLL_M10to50_MuMu_ext1v1
+	DYLL_M10to50_TauTau_ext1v1
 	DYLL_M50To100_EE
 	DYLL_M50To100_MuMu
 	DYLL_M50To100_TauTau

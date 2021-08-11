@@ -81,6 +81,9 @@ void filterOnDyDecay(TString pathToNtupleArea,
   //
   // Set up branches for input tree
   //
+  treeIn->SetBranchAddress("Muon_Inner_pT",&Muon_Inner_pT,&b_Muon_Inner_pT);
+  treeIn->SetBranchAddress("vtxTrkProb",&pvtxTrkProb);
+
   treeIn->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
   treeIn->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
   treeIn->SetBranchAddress("PVz",&PVz,&b_PVz);
@@ -321,6 +324,7 @@ void configureOutTree(TTree*treeOut,DecayMode lepType){
 	  treeOut->Branch("nMuon",&nMuon,"nMuon/I");
 	  treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
 	  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
+	  treeOut->Branch("Muon_Inner_pT",&Muon_Inner_pT,"Muon_Inner_pT[nMuon]/D");
 	  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
 	  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
 	  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
@@ -363,6 +367,7 @@ void configureOutTree(TTree*treeOut,DecayMode lepType){
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
   treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+  treeOut->Branch("vtxTrkProb",&pvtxTrkProb);
   treeOut->Branch("PVz",&PVz,"PVz/D");
 
   treeOut->Branch("runNum",&runNum,"runNum/I");

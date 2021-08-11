@@ -20,6 +20,7 @@ int    nMuon;
 int    Nmuons;
 double PVz;
 double Muon_pT[MPSIZE];
+double Muon_Inner_pT[MPSIZE];
 double Muon_Px[MPSIZE];
 double Muon_Py[MPSIZE];
 double Muon_Pz[MPSIZE];
@@ -56,6 +57,9 @@ std::vector<double>*pvtxTrkChi2 = &vtxTrkChi2;
 
 std::vector<double> vtxTrkNdof;
 std::vector<double>*pvtxTrkNdof = &vtxTrkNdof;
+
+std::vector<double> vtxTrkProb;
+std::vector<double>*pvtxTrkProb = &vtxTrkProb;
 
 // Electron quantities
 double Electron_Energy[MPSIZE];
@@ -204,6 +208,7 @@ TBranch*b_nMuon;
 TBranch*b_Nmuons;
 TBranch*b_PVz;
 TBranch*b_Muon_pT;
+TBranch*b_Muon_Inner_pT;
 TBranch*b_Muon_Px;
 TBranch*b_Muon_Py;
 TBranch*b_Muon_Pz;

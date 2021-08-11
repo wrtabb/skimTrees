@@ -18,7 +18,8 @@ const TString treeNameFull = TString::Format("%s/%s",rootDirName.Data(), treeNam
 
 const TString signalHLTEle = "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*";
 //Muon trigger used here is one of several possibilities, so it may need to change
-const TString signalHLTMuon = "HLT_IsoMu24_v*";
+const TString signalHLTMuon1 = "HLT_IsoMu24_v*";
+const TString signalHLTMuon2 = "HLT_IsoTkMu24_v*";
 const float ptMin = 15;
 const float etaMax = 2.4;
 
@@ -142,7 +143,11 @@ void skimGoodEvents(TString pathToFileIn,
       // save only the general quantities but empty the electrons array
       if( preserveEventCount ){
 	if(lepType==MODE_EE)Nelectrons = 0;
-        else if(lepType==MODE_MUMU)Nmuons = 0;
+        else if(lepType==MODE_MUMU)nMuon = 0;
+	else {
+		Nelectrons = 0;
+		nMuon = 0;
+	}
 	treeOut->Fill();
       }
     } else {
@@ -199,28 +204,36 @@ void skimGoodEvents(TString pathToFileIn,
 bool PassHLT(DecayMode lepType)
 {
 	bool passHLT = false;
-	TString signalHLTType; 
-	//Set HLT cut to use for muon or electron channel
-	if(lepType==MODE_EE) signalHLTType = signalHLTEle;
-	else if(lepType==MODE_MUMU) signalHLTType = signalHLTMuon;
-	//If not an electron or muon channel, we don't want to cut, so return true
-	else return true; 
-	
 	int nTriggers = pHLT_trigName->size();
 	for(int iHLT=0;iHLT<nTriggers;iHLT++){
 		TString trigName = pHLT_trigName->at(iHLT);
-		if(trigName.CompareTo(signalHLTType)==0 && HLT_trigFired[iHLT]==1)
-			passHLT = true;
-	}
+		if(lepType==MODE_EE){
+			if(trigName.CompareTo(signalHLTEle)==0 && HLT_trigFired[iHLT]==1)
+				passHLT = true;
+		}//end if leptypeEE
+		else if(lepType==MODE_MUMU){
+			if((trigName.CompareTo(signalHLTMuon1)==0 ||
+			    trigName.CompareTo(signalHLTMuon2)==0 ) && HLT_trigFired[iHLT]==1)
+				passHLT = true;
+		}//end if leptypeEE
+		else{
+			if((trigName.CompareTo(signalHLTEle)==0 || 
+			   trigName.CompareTo(signalHLTMuon1)==0 ||
+			   trigName.CompareTo(signalHLTMuon2)==0) 
+			   && HLT_trigFired[iHLT]==1)
+				passHLT = true;
+		}//end if leptypeEE
+	}//end for loop
 	return passHLT;
 }   
 
 void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 {
-  if(lepType==MODE_MUMU||lepType==MODE_TAUTAU||lepType==MODE_NONE){ 
+  if(lepType!=MODE_EE){ 
 	  tree->Branch("nMuon",&nMuon,"nMuon/I");
 	  tree->Branch("Nmuons",&Nmuons,"Nmuons/I");
 	  tree->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
+  	  tree->Branch("Muon_Inner_pT",&Muon_Inner_pT,"Muon_Inner_pT[nMuon]/D");
 	  tree->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
 	  tree->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
 	  tree->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
@@ -240,7 +253,7 @@ void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 	  tree->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
   }
 
-  if(lepType==MODE_EE||lepType==MODE_TAUTAU||lepType==MODE_NONE){
+  if(lepType!=MODE_MUMU){
 	  tree->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
 	  tree->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
 	  tree->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
@@ -262,6 +275,7 @@ void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
   tree->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   tree->Branch("vtxTrkChi2", &vtxTrkChi2);
   tree->Branch("vtxTrkNdof", &vtxTrkNdof);
+  tree->Branch("vtxTrkProb",&pvtxTrkProb);
   tree->Branch("PVz",&PVz,"PVz/D");
 
   tree->Branch("_prefiringweight", &_prefiringweight,"_prefiringweight/D");
@@ -323,6 +337,7 @@ void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 	  tree->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
 	  tree->SetBranchAddress("PVz",&PVz,&b_PVz);
 	  tree->SetBranchAddress("Muon_pT",&Muon_pT,&b_Muon_pT);
+	  tree->SetBranchAddress("Muon_Inner_pT",&Muon_Inner_pT,&b_Muon_Inner_pT);
 	  tree->SetBranchAddress("Muon_Px",&Muon_Px,&b_Muon_Px);
 	  tree->SetBranchAddress("Muon_Py",&Muon_Py,&b_Muon_Py);
 	  tree->SetBranchAddress("Muon_Pz",&Muon_Pz,&b_Muon_Pz);
@@ -363,6 +378,7 @@ void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
   tree->SetBranchAddress("vtxTrkCkt2Pt", &pvtxTrkCkt2Pt);
   tree->SetBranchAddress("vtxTrkChi2",   &pvtxTrkChi2);
   tree->SetBranchAddress("vtxTrkNdof",   &pvtxTrkNdof);
+  tree->SetBranchAddress("vtxTrkProb",&pvtxTrkProb);
 
   tree->SetBranchAddress("_prefiringweight", &_prefiringweight,     &b__prefiringweight);
   tree->SetBranchAddress("_prefiringweightup", &_prefiringweightup,   &b__prefiringweightup);

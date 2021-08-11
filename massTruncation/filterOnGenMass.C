@@ -8,7 +8,7 @@
 #include "TSystem.h"
 #include "TLorentzVector.h"
 #include "TPRegexp.h"
-#include "../include/DYTreeVars.h"
+#include "DYTreeVars.h"
 
 // Constants
 const bool useSmallEventNumber = false;
@@ -71,6 +71,10 @@ void filterOnGenMass(TString pathToNtupleArea,
   // Set up branches for input tree
   //
 
+  //New branches
+  treeIn->SetBranchAddress("Muon_Inner_pT",&Muon_Inner_pT,&b_Muon_Inner_pT);
+  treeIn->SetBranchAddress("vtxTrkProb",&pvtxTrkProb);
+
   //Muons
   treeIn->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
   treeIn->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
@@ -85,6 +89,8 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeIn->SetBranchAddress("Muon_dxy",&Muon_dxy,&b_Muon_dxy);
   treeIn->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
   treeIn->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
+
+  //Muon Isolation Variables
   treeIn->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04, 
                            &b_Muon_PfChargedHadronIsoR04);
   treeIn->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04, 
@@ -214,17 +220,17 @@ void filterOnGenMass(TString pathToNtupleArea,
   //Muons
   treeOut->Branch("nMuon",&nMuon,"nMuon/I");
   treeOut->Branch("Nmuons",&Nmuons,"Nmuons/I");
-  treeOut->Branch("PVz",&PVz,"PVz/D");
-  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT/D");
-  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px/D");
-  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py/D");
-  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz/D");
-  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta/D");
-  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi/D");
-  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge/I");
-  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy/D");
-  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz/D");
-  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID/I");
+  treeOut->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
+  treeOut->Branch("Muon_Inner_pT",&Muon_Inner_pT,"Muon_Inner_pT[nMuon]/D");
+  treeOut->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
+  treeOut->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
+  treeOut->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
+  treeOut->Branch("Muon_eta",&Muon_eta,"Muon_eta[nMuon]/D");
+  treeOut->Branch("Muon_phi",&Muon_phi,"Muon_phi[nMuon]/D");
+  treeOut->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
+  treeOut->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
+  treeOut->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
+  treeOut->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID[nMuon]/I");
 
   treeOut->Branch("Muon_PfChargedHadronIsoR04", &Muon_PfChargedHadronIsoR04, 
                  "Muon_PfChargedHadronIsoR04/D");
@@ -237,8 +243,10 @@ void filterOnGenMass(TString pathToNtupleArea,
   treeOut->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
   treeOut->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   treeOut->Branch("vtxTrkChi2", &vtxTrkChi2);
-  treeOut->Branch("vtxTrkNdof", &vtxTrkNdof);
+  treeOut->Branch("vtxTrkNdof",&vtxTrkNdof);
+  treeOut->Branch("vtxTrkProb",&pvtxTrkProb);
 
+  treeOut->Branch("PVz",&PVz,"PVz/D");
   treeOut->Branch("runNum",&runNum,"runNum/I");
   treeOut->Branch("evtNum",&evtNum,"evtNum/l");
   treeOut->Branch("lumiBlock",&lumiBlock,"lumiBlock/I");
