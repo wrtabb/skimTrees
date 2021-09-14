@@ -17,7 +17,6 @@ const TString treeName = "DYTree";
 const TString treeNameFull = TString::Format("%s/%s",rootDirName.Data(), treeName.Data());
 
 const TString signalHLTEle = "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*";
-//Muon trigger used here is one of several possibilities, so it may need to change
 const TString signalHLTMuon1 = "HLT_IsoMu24_v*";
 const TString signalHLTMuon2 = "HLT_IsoTkMu24_v*";
 const float ptMin = 15;
@@ -29,6 +28,7 @@ enum DecayMode {
   MODE_TAUTAU,
   MODE_NONE
 };
+
 void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo);
 void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo);
 bool PassHLT(DecayMode lepType);
@@ -118,7 +118,12 @@ void skimGoodEvents(TString pathToFileIn,
     // loose kinematic cuts
     int nGoodLeptons = 0;
 
-    	if(lepType!=MODE_MUMU){
+
+	// If the lepton type is not muons, then fill with electron branches
+	// If the lepton type is not electron, then fill with muon branches
+	// For data, lepton type will be NONE, and so the branches for both
+	// Get filled
+    	if(lepType==MODE_EE){
 	    for(int iLep=0;iLep<Nelectrons;iLep++){
 	      if( Electron_pT[iLep] > ptMin && abs(Electron_eta[iLep]) < etaMax
 		  && Electron_passMediumID[iLep]==1 ) {
@@ -126,7 +131,7 @@ void skimGoodEvents(TString pathToFileIn,
 	      }
 	    } // end loop over electrons
 	}//end if MODE_EE
-	else if(lepType!=MODE_EE){
+	else if(lepType==MODE_MUMU){
 	    for(int iLep=0;iLep<Nmuons;iLep++){
 	      if( Muon_pT[iLep] > ptMin && abs(Muon_eta[iLep]) < etaMax
 		  && Muon_passTightID[iLep]==1 ) {
@@ -208,21 +213,20 @@ bool PassHLT(DecayMode lepType)
 	for(int iHLT=0;iHLT<nTriggers;iHLT++){
 		TString trigName = pHLT_trigName->at(iHLT);
 		if(lepType==MODE_EE){
-			if(trigName.CompareTo(signalHLTEle)==0 && HLT_trigFired[iHLT]==1)
-				passHLT = true;
+			if(trigName.CompareTo(signalHLTEle)==0 && 
+			   HLT_trigFired[iHLT]==1) passHLT = true;
 		}//end if leptypeEE
 		else if(lepType==MODE_MUMU){
 			if((trigName.CompareTo(signalHLTMuon1)==0 ||
-			    trigName.CompareTo(signalHLTMuon2)==0 ) && HLT_trigFired[iHLT]==1)
-				passHLT = true;
-		}//end if leptypeEE
+			    trigName.CompareTo(signalHLTMuon2)==0) && 
+			    HLT_trigFired[iHLT]==1) passHLT = true;
+		}//end if leptypeMuMu
 		else{
-			if((trigName.CompareTo(signalHLTEle)==0 || 
-			   trigName.CompareTo(signalHLTMuon1)==0 ||
-			   trigName.CompareTo(signalHLTMuon2)==0) 
-			   && HLT_trigFired[iHLT]==1)
-				passHLT = true;
-		}//end if leptypeEE
+			if((trigName.CompareTo(signalHLTMuon1)==0 ||
+			    trigName.CompareTo(signalHLTMuon2)==0 ||
+			    trigName.CompareTo(signalHLTEle)==0) && 
+			    HLT_trigFired[iHLT]==1) passHLT = true;
+		} 
 	}//end for loop
 	return passHLT;
 }   
