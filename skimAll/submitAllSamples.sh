@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ntuplesGeneralLocation="/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6"
-skimTag="0001"
+skimTag="MuMu"
 
 # This name will be part of log file names, so it should be appropriate
 sampleShortName=(
