@@ -77,12 +77,13 @@ void skimGoodEvents(TString pathToFileIn,
   }
 
   //Determine lepton type
-  DecayMode lepType;
-  TBranch*testEle = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nelectrons"); 
-  TBranch*testMuon = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nmuons"); 
-  if(testEle && !testMuon) lepType = MODE_EE;
-  else if(testMuon && !testEle) lepType = MODE_MUMU;
-  else lepType = MODE_NONE;
+  DecayMode lepType = MODE_EE;
+//  TBranch*testEle = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nelectrons"); 
+//  TBranch*testMuon = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nmuons"); 
+//  if(testEle && !testMuon) lepType = MODE_EE;
+//  else if(testMuon && !testEle) lepType = MODE_MUMU;
+//  else lepType = MODE_NONE;
+
 
   configureInputTree(treeIn,lepType,hasGenInfo);
 
@@ -149,10 +150,6 @@ void skimGoodEvents(TString pathToFileIn,
       if( preserveEventCount ){
 	if(lepType==MODE_EE)Nelectrons = 0;
         else if(lepType==MODE_MUMU)nMuon = 0;
-	else {
-		Nelectrons = 0;
-		nMuon = 0;
-	}
 	treeOut->Fill();
       }
     } else {
@@ -233,7 +230,7 @@ bool PassHLT(DecayMode lepType)
 
 void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 {
-  if(lepType!=MODE_EE){ 
+  if(lepType==MODE_MUMU){ 
 	  tree->Branch("nMuon",&nMuon,"nMuon/I");
 	  tree->Branch("Nmuons",&Nmuons,"Nmuons/I");
 	  tree->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
@@ -257,7 +254,7 @@ void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 	  tree->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
   }
 
-  if(lepType!=MODE_MUMU){
+  if(lepType==MODE_EE){
 	  tree->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
 	  tree->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
 	  tree->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
@@ -336,7 +333,7 @@ return;
 
 void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 {
-  if(lepType!=MODE_EE){ 
+  if(lepType==MODE_MUMU){ 
 	  tree->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
 	  tree->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
 	  tree->SetBranchAddress("PVz",&PVz,&b_PVz);
@@ -359,7 +356,7 @@ void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 	  tree->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
 	  tree->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
   }
-  if(lepType!=MODE_MUMU){
+  if(lepType==MODE_EE){
   	  tree->SetBranchAddress("Nelectrons", &Nelectrons, &b_Nelectrons);
 	  tree->SetBranchAddress("Electron_Energy",&Electron_Energy,&b_Electron_Energy);
 	  tree->SetBranchAddress("Electron_pT",&Electron_pT,&b_Electron_pT);
