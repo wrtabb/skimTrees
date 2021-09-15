@@ -1,0 +1,10 @@
+WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
+Info in <TUnixSystem::ACLiC>: creating shared library /var/lib/condor/execute/dir_28921/./processHadd_C.so
+input_line_13:2:15: error: use of undeclared identifier 'ttbar_M700to1000'
+ (processHadd(ttbar_M700to1000, ttbar_M700to1000.root))
+              ^
+input_line_13:2:33: error: use of undeclared identifier 'ttbar_M700to1000'
+ (processHadd(ttbar_M700to1000, ttbar_M700to1000.root))
+                                ^
+Error in <HandleInterpreterException>: Error evaluating expression (processHadd(ttbar_M700to1000, ttbar_M700to1000.root)).
+Execution of your code was aborted.

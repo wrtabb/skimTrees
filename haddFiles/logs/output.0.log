@@ -1,0 +1,23 @@
+Start processing at  Tue Aug 24 16:47:20 UTC 2021
+/var/lib/condor/execute/dir_28921
+total 36
+-rw-r--r-- 1 wrtabb hep  688 Aug 24 16:47 ProcessHadd.py
+-rw-r--r-- 1 wrtabb hep    0 Aug 24 16:47 _condor_stderr
+-rw-r--r-- 1 wrtabb hep   84 Aug 24 16:47 _condor_stdout
+-rwxr-xr-x 1 wrtabb hep  448 Aug 24 16:47 condor_exec.exe
+-rw-r--r-- 1 wrtabb hep    0 Aug 24 16:47 docker_stderror
+-rw-r--r-- 1 wrtabb hep 1133 Aug 24 16:47 processHadd.C
+drwxrwxrwt 2 wrtabb hep 4096 Aug 24 16:47 tmp
+drwxrwxrwt 3 wrtabb hep 4096 Aug 24 16:47 var
+-rw------- 1 wrtabb hep 9917 Aug 24 16:47 x509up_u5512
+Set up environment
+/var/lib/condor/execute/dir_28921
+Run the tree analysis script
+ProcessHadd.py ttbar_M700to1000 ttbar_M700to1000.root 79
+File location: ttbar_M700to1000
+Ouput file: ttbar_M700to1000.root
+processHadd.C+(ttbar_M700to1000,ttbar_M700to1000.root)
+b"   ------------------------------------------------------------\n  | Welcome to ROOT 6.14/09                http://root.cern.ch |\n  |                               (c) 1995-2018, The ROOT Team |\n  | Built for linuxx8664gcc                                    |\n  | From tag , 22 November 2018                                |\n  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q' |\n   ------------------------------------------------------------\n\n\nProcessing processHadd.C+(ttbar_M700to1000,ttbar_M700to1000.root)...\n"
+Any errors?
+None
+Ending processing at  Tue Aug 24 16:48:16 UTC 2021
