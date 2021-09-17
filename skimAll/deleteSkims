@@ -8,7 +8,7 @@
 # Remove the comment on line 97 to use this
 
 base_directory=/mnt/hadoop/user/uscms01/pnfs/unl.edu/data4/cms/store/user/wtabb/DrellYan_13TeV_2016/v2p6/
-skim_name=/skims_0001
+skim_name=/skims_EE
 
 file_list=(
 	DYLL_M10to50/DYLL_M10to50/EE/v1

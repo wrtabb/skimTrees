@@ -22,16 +22,9 @@ const TString signalHLTMuon2 = "HLT_IsoTkMu24_v*";
 const float ptMin = 15;
 const float etaMax = 2.4;
 
-enum DecayMode {
-  MODE_EE,
-  MODE_MUMU,
-  MODE_TAUTAU,
-  MODE_NONE
-};
-
-void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo);
-void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo);
-bool PassHLT(DecayMode lepType);
+void configureInputTree(TTree*tree,bool hasGenInfo);
+void configureOutputTree(TTree*tree,bool hasGenInfo);
+bool PassHLT();
 
 // Main function
 void skimGoodEvents(TString pathToFileIn,
@@ -76,16 +69,7 @@ void skimGoodEvents(TString pathToFileIn,
     printf("No GEN info is found in the input file, so it won't be saved in the output root files\n");
   }
 
-  //Determine lepton type
-  DecayMode lepType = MODE_EE;
-//  TBranch*testEle = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nelectrons"); 
-//  TBranch*testMuon = (TBranch*)treeIn->GetListOfBranches()->FindObject("Nmuons"); 
-//  if(testEle && !testMuon) lepType = MODE_EE;
-//  else if(testMuon && !testEle) lepType = MODE_MUMU;
-//  else lepType = MODE_NONE;
-
-
-  configureInputTree(treeIn,lepType,hasGenInfo);
+  configureInputTree(treeIn,hasGenInfo);
 
   // Note: we cannot write directly to hadoop, the file system does not support
   // writing of a root file from a script. So instead, we create it locally
@@ -97,7 +81,7 @@ void skimGoodEvents(TString pathToFileIn,
   dirOut->cd();
   TTree*treeOut = new TTree(treeName, "Skimmed tree");
 
-  configureOutputTree(treeOut,lepType,hasGenInfo);
+  configureOutputTree(treeOut,hasGenInfo);
 
   // 
   // Loop over events
@@ -114,33 +98,18 @@ void skimGoodEvents(TString pathToFileIn,
     treeIn->GetEntry(iEvent);
     // Check if this event passes the skim selection criteria
     // HLT check
-    bool passHLT = PassHLT(lepType);
+    bool passHLT = PassHLT();
     // Check if this event has at least two electrons that pass ID and
     // loose kinematic cuts
     int nGoodLeptons = 0;
 
 
-	// If the lepton type is not muons, then fill with electron branches
-	// If the lepton type is not electron, then fill with muon branches
-	// For data, lepton type will be NONE, and so the branches for both
-	// Get filled
-    	if(lepType==MODE_EE){
-	    for(int iLep=0;iLep<Nelectrons;iLep++){
-	      if( Electron_pT[iLep] > ptMin && abs(Electron_eta[iLep]) < etaMax
-		  && Electron_passMediumID[iLep]==1 ) {
-		nGoodLeptons++;
-	      }
-	    } // end loop over electrons
-	}//end if MODE_EE
-	else if(lepType==MODE_MUMU){
-	    for(int iLep=0;iLep<Nmuons;iLep++){
-	      if( Muon_pT[iLep] > ptMin && abs(Muon_eta[iLep]) < etaMax
-		  && Muon_passTightID[iLep]==1 ) {
-		nGoodLeptons++;
-	      }
-	    } // end loop over electrons
-	}//end if MODE_MUMU
-
+    for(int iLep=0;iLep<Nelectrons;iLep++){
+      if( Electron_pT[iLep] > ptMin && abs(Electron_eta[iLep]) < etaMax
+	  && Electron_passMediumID[iLep]==1 ) {
+	nGoodLeptons++;
+      }
+    } // end loop over electrons
     bool passEnoughGoodLeptons = false;
     if(nGoodLeptons>=2) passEnoughGoodLeptons = true;
 
@@ -148,8 +117,7 @@ void skimGoodEvents(TString pathToFileIn,
       // Event fails the skimming criteria, but if event count is needed for normalization, 
       // save only the general quantities but empty the electrons array
       if( preserveEventCount ){
-	if(lepType==MODE_EE)Nelectrons = 0;
-        else if(lepType==MODE_MUMU)nMuon = 0;
+	Nelectrons = 0;
 	treeOut->Fill();
       }
     } else {
@@ -203,75 +171,36 @@ void skimGoodEvents(TString pathToFileIn,
   return;
 }
 
-bool PassHLT(DecayMode lepType)
+bool PassHLT()
 {
 	bool passHLT = false;
 	int nTriggers = pHLT_trigName->size();
 	for(int iHLT=0;iHLT<nTriggers;iHLT++){
 		TString trigName = pHLT_trigName->at(iHLT);
-		if(lepType==MODE_EE){
-			if(trigName.CompareTo(signalHLTEle)==0 && 
-			   HLT_trigFired[iHLT]==1) passHLT = true;
-		}//end if leptypeEE
-		else if(lepType==MODE_MUMU){
-			if((trigName.CompareTo(signalHLTMuon1)==0 ||
-			    trigName.CompareTo(signalHLTMuon2)==0) && 
-			    HLT_trigFired[iHLT]==1) passHLT = true;
-		}//end if leptypeMuMu
-		else{
-			if((trigName.CompareTo(signalHLTMuon1)==0 ||
-			    trigName.CompareTo(signalHLTMuon2)==0 ||
-			    trigName.CompareTo(signalHLTEle)==0) && 
-			    HLT_trigFired[iHLT]==1) passHLT = true;
-		} 
+		if(trigName.CompareTo(signalHLTEle)==0 && 
+		   HLT_trigFired[iHLT]==1) passHLT = true;
 	}//end for loop
 	return passHLT;
 }   
 
-void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
+void configureOutputTree(TTree*tree,bool hasGenInfo)
 {
-  if(lepType==MODE_MUMU){ 
-	  tree->Branch("nMuon",&nMuon,"nMuon/I");
-	  tree->Branch("Nmuons",&Nmuons,"Nmuons/I");
-	  tree->Branch("Muon_pT",&Muon_pT,"Muon_pT[nMuon]/D");
-  	  tree->Branch("Muon_Inner_pT",&Muon_Inner_pT,"Muon_Inner_pT[nMuon]/D");
-	  tree->Branch("Muon_Px",&Muon_Px,"Muon_Px[nMuon]/D");
-	  tree->Branch("Muon_Py",&Muon_Py,"Muon_Py[nMuon]/D");
-	  tree->Branch("Muon_Pz",&Muon_Pz,"Muon_Pz[nMuon]/D");
-	  tree->Branch("Muon_eta",&Muon_eta,"Muon_eta[nMuon]/D");
-	  tree->Branch("Muon_phi",&Muon_phi,"Muon_phi[nMuon]/D");
-	  tree->Branch("Muon_charge",&Muon_charge,"Muon_charge[nMuon]/I");
-	  tree->Branch("Muon_dxy",&Muon_dxy,"Muon_dxy[nMuon]/D");
-	  tree->Branch("Muon_dz",&Muon_dz,"Muon_dz[nMuon]/D");
-	  tree->Branch("Muon_passTightID",&Muon_passTightID,"Muon_passTightID[nMuon]/I");
-
-	  tree->Branch("Muon_PfChargedHadronIsoR04", &Muon_PfChargedHadronIsoR04,
-			 "Muon_PfChargedHadronIsoR04[nMuon]/D");
-	  tree->Branch("Muon_PfNeutralHadronIsoR04", &Muon_PfNeutralHadronIsoR04,
-			 "Muon_PfNeutralHadronIsoR04[nMuon]/D");
-	  tree->Branch("Muon_PfGammaIsoR04", &Muon_PfGammaIsoR04, "Muon_PfGammaIsoR04[nMuon]/D");
-	  tree->Branch("Muon_PFSumPUIsoR04", &Muon_PFSumPUIsoR04, "Muon_PFSumPUIsoR04[nMuon]/D");
-	  tree->Branch("Muon_trkiso", &Muon_trkiso, "Muon_trkiso[nMuon]/D");
-  }
-
-  if(lepType==MODE_EE){
-	  tree->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
-	  tree->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
-	  tree->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
-	  tree->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
-	  tree->Branch("Electron_Py", &Electron_Py, "Electron_Py[Nelectrons]/D");
-	  tree->Branch("Electron_Pz", &Electron_Pz, "Electron_Pz[Nelectrons]/D");
-	  tree->Branch("Electron_eta", &Electron_eta, "Electron_eta[Nelectrons]/D");
-	  tree->Branch("Electron_phi", &Electron_phi, "Electron_phi[Nelectrons]/D");
-	  tree->Branch("Electron_charge", &Electron_charge, "Electron_charge[Nelectrons]/I");
-	  tree->Branch("Electron_etaSC", &Electron_etaSC, "Electron_etaSC[Nelectrons]/D");
-	  tree->Branch("Electron_phiSC", &Electron_phiSC, "Electron_phiSC[Nelectrons]/D");
-	  tree->Branch("Electron_dxy", &Electron_dxy, "Electron_dxy[Nelectrons]/D");
-	  tree->Branch("Electron_dz", &Electron_dz, "Electron_dz[Nelectrons]/D");
-	  tree->Branch("Electron_EnergySC", &Electron_EnergySC, "Electron_EnergySC[Nelectrons]/D");
-	  tree->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
-	  tree->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
-  }
+  tree->Branch("Nelectrons", &Nelectrons,"Nelectrons/I");
+  tree->Branch("Electron_Energy", &Electron_Energy, "Electron_Energy[Nelectrons]/D");
+  tree->Branch("Electron_pT", &Electron_pT, "Electron_pT[Nelectrons]/D");
+  tree->Branch("Electron_Px", &Electron_Px, "Electron_Px[Nelectrons]/D");
+  tree->Branch("Electron_Py", &Electron_Py, "Electron_Py[Nelectrons]/D");
+  tree->Branch("Electron_Pz", &Electron_Pz, "Electron_Pz[Nelectrons]/D");
+  tree->Branch("Electron_eta", &Electron_eta, "Electron_eta[Nelectrons]/D");
+  tree->Branch("Electron_phi", &Electron_phi, "Electron_phi[Nelectrons]/D");
+  tree->Branch("Electron_charge", &Electron_charge, "Electron_charge[Nelectrons]/I");
+  tree->Branch("Electron_etaSC", &Electron_etaSC, "Electron_etaSC[Nelectrons]/D");
+  tree->Branch("Electron_phiSC", &Electron_phiSC, "Electron_phiSC[Nelectrons]/D");
+  tree->Branch("Electron_dxy", &Electron_dxy, "Electron_dxy[Nelectrons]/D");
+  tree->Branch("Electron_dz", &Electron_dz, "Electron_dz[Nelectrons]/D");
+  tree->Branch("Electron_EnergySC", &Electron_EnergySC, "Electron_EnergySC[Nelectrons]/D");
+  tree->Branch("Electron_etSC", &Electron_etSC, "Electron_etSC[Nelectrons]/D");
+  tree->Branch("Electron_passMediumID", &Electron_passMediumID, "Electron_passMediumID[Nelectrons]/O");
   tree->Branch("vtxTrkCkt1Pt", &vtxTrkCkt1Pt);
   tree->Branch("vtxTrkCkt2Pt", &vtxTrkCkt2Pt);
   tree->Branch("vtxTrkChi2", &vtxTrkChi2);
@@ -331,49 +260,24 @@ void configureOutputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
 return;
 }
 
-void configureInputTree(TTree*tree,DecayMode lepType,bool hasGenInfo)
+void configureInputTree(TTree*tree,bool hasGenInfo)
 {
-  if(lepType==MODE_MUMU){ 
-	  tree->SetBranchAddress("nMuon",&nMuon,&b_nMuon);
-	  tree->SetBranchAddress("Nmuons",&Nmuons,&b_Nmuons);
-	  tree->SetBranchAddress("PVz",&PVz,&b_PVz);
-	  tree->SetBranchAddress("Muon_pT",&Muon_pT,&b_Muon_pT);
-	  tree->SetBranchAddress("Muon_Inner_pT",&Muon_Inner_pT,&b_Muon_Inner_pT);
-	  tree->SetBranchAddress("Muon_Px",&Muon_Px,&b_Muon_Px);
-	  tree->SetBranchAddress("Muon_Py",&Muon_Py,&b_Muon_Py);
-	  tree->SetBranchAddress("Muon_Pz",&Muon_Pz,&b_Muon_Pz);
-	  tree->SetBranchAddress("Muon_eta",&Muon_eta,&b_Muon_eta);
-	  tree->SetBranchAddress("Muon_phi",&Muon_phi,&b_Muon_phi);
-	  tree->SetBranchAddress("Muon_charge",&Muon_charge,&b_Muon_charge);
-	  tree->SetBranchAddress("Muon_dxy",&Muon_dxy,&b_Muon_dxy);
-	  tree->SetBranchAddress("Muon_dz",&Muon_dz,&b_Muon_dz);
-	  tree->SetBranchAddress("Muon_passTightID",&Muon_passTightID,&b_Muon_passTightID);
-	  tree->SetBranchAddress("Muon_PfChargedHadronIsoR04", Muon_PfChargedHadronIsoR04,
-				   &b_Muon_PfChargedHadronIsoR04);
-	  tree->SetBranchAddress("Muon_PfNeutralHadronIsoR04", Muon_PfNeutralHadronIsoR04,
-				   &b_Muon_PfNeutralHadronIsoR04);
-	  tree->SetBranchAddress("Muon_PfGammaIsoR04", Muon_PfGammaIsoR04, &b_Muon_PfGammaIsoR04);
-	  tree->SetBranchAddress("Muon_PFSumPUIsoR04", Muon_PFSumPUIsoR04, &b_Muon_PFSumPUIsoR04);
-	  tree->SetBranchAddress("Muon_trkiso", Muon_trkiso, &b_Muon_trkiso);
-  }
-  if(lepType==MODE_EE){
-  	  tree->SetBranchAddress("Nelectrons", &Nelectrons, &b_Nelectrons);
-	  tree->SetBranchAddress("Electron_Energy",&Electron_Energy,&b_Electron_Energy);
-	  tree->SetBranchAddress("Electron_pT",&Electron_pT,&b_Electron_pT);
-	  tree->SetBranchAddress("Electron_Px",&Electron_Px,&b_Electron_Px);
-	  tree->SetBranchAddress("Electron_Py",&Electron_Py,&b_Electron_Py);
-	  tree->SetBranchAddress("Electron_Pz",&Electron_Pz,&b_Electron_Pz);
-	  tree->SetBranchAddress("Electron_eta",&Electron_eta,&b_Electron_eta);
-	  tree->SetBranchAddress("Electron_phi",&Electron_phi,&b_Electron_phi);
-	  tree->SetBranchAddress("Electron_charge",&Electron_charge,&b_Electron_charge);
-	  tree->SetBranchAddress("Electron_etaSC",&Electron_etaSC,&b_Electron_etaSC);
-	  tree->SetBranchAddress("Electron_phiSC",&Electron_phiSC,&b_Electron_phiSC);
-	  tree->SetBranchAddress("Electron_dxy",&Electron_dxy,&b_Electron_dxy);
-	  tree->SetBranchAddress("Electron_dz",&Electron_dz,&b_Electron_dz);
-	  tree->SetBranchAddress("Electron_EnergySC",&Electron_EnergySC,&b_Electron_EnergySC);
-	  tree->SetBranchAddress("Electron_etSC",&Electron_etSC,&b_Electron_etSC);
-	  tree->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID,&b_Electron_passMediumID);
-  }
+  tree->SetBranchAddress("Nelectrons", &Nelectrons, &b_Nelectrons);
+  tree->SetBranchAddress("Electron_Energy",&Electron_Energy,&b_Electron_Energy);
+  tree->SetBranchAddress("Electron_pT",&Electron_pT,&b_Electron_pT);
+  tree->SetBranchAddress("Electron_Px",&Electron_Px,&b_Electron_Px);
+  tree->SetBranchAddress("Electron_Py",&Electron_Py,&b_Electron_Py);
+  tree->SetBranchAddress("Electron_Pz",&Electron_Pz,&b_Electron_Pz);
+  tree->SetBranchAddress("Electron_eta",&Electron_eta,&b_Electron_eta);
+  tree->SetBranchAddress("Electron_phi",&Electron_phi,&b_Electron_phi);
+  tree->SetBranchAddress("Electron_charge",&Electron_charge,&b_Electron_charge);
+  tree->SetBranchAddress("Electron_etaSC",&Electron_etaSC,&b_Electron_etaSC);
+  tree->SetBranchAddress("Electron_phiSC",&Electron_phiSC,&b_Electron_phiSC);
+  tree->SetBranchAddress("Electron_dxy",&Electron_dxy,&b_Electron_dxy);
+  tree->SetBranchAddress("Electron_dz",&Electron_dz,&b_Electron_dz);
+  tree->SetBranchAddress("Electron_EnergySC",&Electron_EnergySC,&b_Electron_EnergySC);
+  tree->SetBranchAddress("Electron_etSC",&Electron_etSC,&b_Electron_etSC);
+  tree->SetBranchAddress("Electron_passMediumID",&Electron_passMediumID,&b_Electron_passMediumID);
 
   tree->SetBranchAddress("vtxTrkCkt1Pt", &pvtxTrkCkt1Pt);
   tree->SetBranchAddress("vtxTrkCkt2Pt", &pvtxTrkCkt2Pt);
