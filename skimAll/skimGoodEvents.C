@@ -102,17 +102,12 @@ void skimGoodEvents(TString pathToFileIn,
     // loose kinematic cuts
     int nGoodLeptons = 0;
 
-
-	// If the lepton type is not muons, then fill with electron branches
-	// If the lepton type is not electron, then fill with muon branches
-	// For data, lepton type will be NONE, and so the branches for both
-	// Get filled
-	for(int iLep=0;iLep<Nmuons;iLep++){
-		if( Muon_pT[iLep] > ptMin && abs(Muon_eta[iLep]) < etaMax
-			&& Muon_passTightID[iLep]==1 ) {
-			nGoodLeptons++;
-		}
-	} // end loop over electrons
+    for(int iLep=0;iLep<nMuon;iLep++){
+	if( Muon_pT[iLep] > ptMin && abs(Muon_eta[iLep]) < etaMax
+		&& Muon_passTightID[iLep]==1 ) {
+		nGoodLeptons++;
+	}
+    } // end loop over electrons
 
     bool passEnoughGoodLeptons = false;
     if(nGoodLeptons>=2) passEnoughGoodLeptons = true;

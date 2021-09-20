@@ -5,9 +5,6 @@
 # It then moves them from the current directory to the storage area
 
 directories=(
-	ZToEE_M2300to3500
-	ttbar
-	ttbarBackup
 	ttbar_truncated_M0To700
 	ttbarBackup_truncated_M0To700
 	ttbar_M700to1000
@@ -25,19 +22,8 @@ directories=(
 	SingleMuon_Run2016G
 	SingleMuon_Run2016Hver2
 	SingleMuon_Run2016Hver3
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
 )
 output_file=(
-	ZToEE_M2300to3500
-	ttbar
-	ttbarBackup
 	ttbar_truncated_M0To700
 	ttbarBackup_truncated_M0To700
 	ttbar_M700to1000
@@ -55,14 +41,6 @@ output_file=(
 	SingleMuon_Run2016G
 	SingleMuon_Run2016Hver2
 	SingleMuon_Run2016Hver3
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
 )
 root_suffix='.root'
  
