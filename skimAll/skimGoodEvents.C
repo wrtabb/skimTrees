@@ -112,7 +112,7 @@ void skimGoodEvents(TString pathToFileIn,
     bool passEnoughGoodLeptons = false;
     if(nGoodLeptons>=2) passEnoughGoodLeptons = true;
 
-    if( ! (passHLT && passEnoughGoodLeptons) ) {
+    if(!(passHLT && passEnoughGoodLeptons)){
       // Event fails the skimming criteria, but if event count is needed for normalization, 
       // save only the general quantities but empty the electrons array
       if( preserveEventCount ){

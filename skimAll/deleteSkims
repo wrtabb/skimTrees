@@ -82,14 +82,6 @@ file_list=(
 	SingleMuon_Run2016G
 	SingleMuon_Run2016Hver2
 	SingleMuon_Run2016Hver3
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
 )
 
 for index in ${!file_list[*]}; do
