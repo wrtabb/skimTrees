@@ -34,16 +34,6 @@ directories=(
 	WW
 	WZ
 	ZZ
-	ZToEE_M50to120
-	ZToEE_M120to200
-	ZToEE_M200to400
-	ZToEE_M400to800
-	ZToEE_M800to1400
-	ZToEE_M1400to2300
-	ZToEE_M2300to3500
-	ZToEE_M3500to4500
-	ZToEE_M4500to6000
-	ZToEE_M6000toInf
 	ttbar
 	ttbarBackup
 	ttbar_truncated_M0To700
@@ -63,14 +53,6 @@ directories=(
 	SingleMuon_Run2016G
 	SingleMuon_Run2016Hver2
 	SingleMuon_Run2016Hver3
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
 )
 output_file=(
 	DYLL_M10to50_MuMu_v1
@@ -102,16 +84,6 @@ output_file=(
 	WW
 	WZ
 	ZZ
-	ZToEE_M50to120
-	ZToEE_M120to200
-	ZToEE_M200to400
-	ZToEE_M400to800
-	ZToEE_M800to1400
-	ZToEE_M1400to2300
-	ZToEE_M2300to3500
-	ZToEE_M3500to4500
-	ZToEE_M4500to6000
-	ZToEE_M6000toInf
 	ttbar
 	ttbarBackup
 	ttbar_truncated_M0To700
@@ -131,14 +103,6 @@ output_file=(
 	SingleMuon_Run2016G
 	SingleMuon_Run2016Hver2
 	SingleMuon_Run2016Hver3
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
 )
 root_suffix='.root'
  
