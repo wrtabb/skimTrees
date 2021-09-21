@@ -34,16 +34,6 @@ directories=(
 	WW
 	WZ
 	ZZ
-	ZToEE_M50to120
-	ZToEE_M120to200
-	ZToEE_M200to400
-	ZToEE_M400to800
-	ZToEE_M800to1400
-	ZToEE_M1400to2300
-	ZToEE_M2300to3500
-	ZToEE_M3500to4500
-	ZToEE_M4500to6000
-	ZToEE_M6000toInf
 	ttbar
 	ttbarBackup
 	ttbar_truncated_M0To700
@@ -55,14 +45,6 @@ directories=(
 	WJetsToLNu_amcatnlo
 	WJetsToLNu_amcatnlo_ext
 	WJetsToLNu_amcatnlo_ext2v5
-	SingleMuon_Run2016B
-	SingleMuon_Run2016C
-	SingleMuon_Run2016D
-	SingleMuon_Run2016E
-	SingleMuon_Run2016F
-	SingleMuon_Run2016G
-	SingleMuon_Run2016Hver2
-	SingleMuon_Run2016Hver3
 	crab_DoubleEG_RunB
 	crab_DoubleEG_RunC
 	crab_DoubleEG_RunD
@@ -102,16 +84,6 @@ output_file=(
 	WW
 	WZ
 	ZZ
-	ZToEE_M50to120
-	ZToEE_M120to200
-	ZToEE_M200to400
-	ZToEE_M400to800
-	ZToEE_M800to1400
-	ZToEE_M1400to2300
-	ZToEE_M2300to3500
-	ZToEE_M3500to4500
-	ZToEE_M4500to6000
-	ZToEE_M6000toInf
 	ttbar
 	ttbarBackup
 	ttbar_truncated_M0To700
@@ -123,14 +95,6 @@ output_file=(
 	WJetsToLNu_amcatnlo
 	WJetsToLNu_amcatnlo_ext
 	WJetsToLNu_amcatnlo_ext2v5
-	SingleMuon_Run2016B
-	SingleMuon_Run2016C
-	SingleMuon_Run2016D
-	SingleMuon_Run2016E
-	SingleMuon_Run2016F
-	SingleMuon_Run2016G
-	SingleMuon_Run2016Hver2
-	SingleMuon_Run2016Hver3
 	crab_DoubleEG_RunB
 	crab_DoubleEG_RunC
 	crab_DoubleEG_RunD

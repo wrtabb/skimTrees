@@ -94,5 +94,5 @@ file_list=(
 
 for index in ${!file_list[*]}; do
 	echo "Removing directory: ${file_list[$index]}${skim_name}"
-#	rm -r ${base_directory}${file_list[$index]}${skim_name}
+	rm -r ${base_directory}${file_list[$index]}${skim_name}
 done
