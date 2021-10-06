@@ -114,7 +114,7 @@ void skimGoodEvents(TString pathToFileIn,
 
     if(!(passHLT && passEnoughGoodLeptons)){
       // Event fails the skimming criteria, but if event count is needed for normalization, 
-      // save only the general quantities but empty the electrons array
+      // save only the general quantities but empty the muon array
       if( preserveEventCount ){
         nMuon = 0;
 	treeOut->Fill();

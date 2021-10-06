@@ -5,42 +5,10 @@
 # It then moves them from the current directory to the storage area
 
 directories=(
-	ttbar_truncated_M0To700
-	ttbarBackup_truncated_M0To700
-	ttbar_M700to1000
-	ttbar_M1000toInf
-	ST_tW
-	ST_tbarW
-	WJetsToLNu_amcatnlo
 	WJetsToLNu_amcatnlo_ext
-	WJetsToLNu_amcatnlo_ext2v5
-	SingleMuon_Run2016B
-	SingleMuon_Run2016C
-	SingleMuon_Run2016D
-	SingleMuon_Run2016E
-	SingleMuon_Run2016F
-	SingleMuon_Run2016G
-	SingleMuon_Run2016Hver2
-	SingleMuon_Run2016Hver3
 )
 output_file=(
-	ttbar_truncated_M0To700
-	ttbarBackup_truncated_M0To700
-	ttbar_M700to1000
-	ttbar_M1000toInf
-	ST_tW
-	ST_tbarW
-	WJetsToLNu_amcatnlo
 	WJetsToLNu_amcatnlo_ext
-	WJetsToLNu_amcatnlo_ext2v5
-	SingleMuon_Run2016B
-	SingleMuon_Run2016C
-	SingleMuon_Run2016D
-	SingleMuon_Run2016E
-	SingleMuon_Run2016F
-	SingleMuon_Run2016G
-	SingleMuon_Run2016Hver2
-	SingleMuon_Run2016Hver3
 )
 root_suffix='.root'
  
