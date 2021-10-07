@@ -6,9 +6,11 @@
 
 directories=(
 	WJetsToLNu_amcatnlo_ext
+	WJetsToLNu_amcatnlo_ext2v5
 )
 output_file=(
 	WJetsToLNu_amcatnlo_ext
+	WJetsToLNu_amcatnlo_ext2v5
 )
 root_suffix='.root'
  
