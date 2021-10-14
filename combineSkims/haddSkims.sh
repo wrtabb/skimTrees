@@ -53,6 +53,16 @@ directories=(
 	crab_DoubleEG_RunG
 	crab_DoubleEG_RunHver2
 	crab_DoubleEG_RunHver3
+        QCDEMEnriched_Pt20to30
+        QCDEMEnriched_Pt30to50
+        QCDEMEnriched_Pt50to80
+        QCDEMEnriched_Pt50to80_ext1
+        QCDEMEnriched_Pt80to120
+        QCDEMEnriched_Pt80to120_ext1
+        QCDEMEnriched_Pt120to170
+        QCDEMEnriched_Pt120to170_ext1
+        QCDEMEnriched_Pt170to300
+        QCDEMEnriched_Pt300toInf
 )
 output_file=(
 	DYLL_M10to50_EE_v1
@@ -103,6 +113,16 @@ output_file=(
 	crab_DoubleEG_RunG
 	crab_DoubleEG_RunHver2
 	crab_DoubleEG_RunHver3
+        QCDEMEnriched_Pt20to30
+        QCDEMEnriched_Pt30to50
+        QCDEMEnriched_Pt50to80
+        QCDEMEnriched_Pt50to80_ext1
+        QCDEMEnriched_Pt80to120
+        QCDEMEnriched_Pt80to120_ext1
+        QCDEMEnriched_Pt120to170
+        QCDEMEnriched_Pt120to170_ext1
+        QCDEMEnriched_Pt170to300
+        QCDEMEnriched_Pt300toInf
 )
 root_suffix='.root'
  

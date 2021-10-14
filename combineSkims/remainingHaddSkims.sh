@@ -5,40 +5,28 @@
 # It then moves them from the current directory to the storage area
 
 directories=(
-	ttbarBackup_truncated_M0To700
-	ttbar_M700to1000
-	ttbar_M1000toInf
-	ST_tW
-	ST_tbarW
-	WJetsToLNu_amcatnlo
-	WJetsToLNu_amcatnlo_ext
-	WJetsToLNu_amcatnlo_ext2v5
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
+        QCDEMEnriched_Pt20to30
+        QCDEMEnriched_Pt30to50
+        QCDEMEnriched_Pt50to80
+        QCDEMEnriched_Pt50to80_ext1
+        QCDEMEnriched_Pt80to120
+        QCDEMEnriched_Pt80to120_ext1
+        QCDEMEnriched_Pt120to170
+        QCDEMEnriched_Pt120to170_ext1
+        QCDEMEnriched_Pt170to300
+        QCDEMEnriched_Pt300toInf
 )
 output_file=(
-	ttbarBackup_truncated_M0To700
-	ttbar_M700to1000
-	ttbar_M1000toInf
-	ST_tW
-	ST_tbarW
-	WJetsToLNu_amcatnlo
-	WJetsToLNu_amcatnlo_ext
-	WJetsToLNu_amcatnlo_ext2v5
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
+        QCDEMEnriched_Pt20to30
+        QCDEMEnriched_Pt30to50
+        QCDEMEnriched_Pt50to80
+        QCDEMEnriched_Pt50to80_ext1
+        QCDEMEnriched_Pt80to120
+        QCDEMEnriched_Pt80to120_ext1
+        QCDEMEnriched_Pt120to170
+        QCDEMEnriched_Pt120to170_ext1
+        QCDEMEnriched_Pt170to300
+        QCDEMEnriched_Pt300toInf
 )
 root_suffix='.root'
  
