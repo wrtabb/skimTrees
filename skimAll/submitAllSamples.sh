@@ -45,14 +45,14 @@ sampleShortName=(
 	WJetsToLNu
 	WJetsToLNu_ext
 	WJetsToLNu_ext2v5
-	DoubleEG_RunB
-	DoubleEG_RunC
-	DoubleEG_RunD
-	DoubleEG_RunE
-	DoubleEG_RunF
-	DoubleEG_RunG
-	DoubleEG_RunHver2
-	DoubleEG_RunHver3
+	SingleMuon_Run2016B
+        SingleMuon_Run2016C
+        SingleMuon_Run2016D
+        SingleMuon_Run2016E
+        SingleMuon_Run2016F
+        SingleMuon_Run2016G
+        SingleMuon_Run2016Hver2
+        SingleMuon_Run2016Hver3
 	QCDMuEnriched_Pt15to20
 	QCDMuEnriched_Pt20to30
 	QCDMuEnriched_Pt20toInf
@@ -120,14 +120,14 @@ sampleLocation=(
 	WJetsToLNu_amcatnlo
 	WJetsToLNu_amcatnlo_ext
 	WJetsToLNu_amcatnlo_ext2v5
-	crab_DoubleEG_RunB
-	crab_DoubleEG_RunC
-	crab_DoubleEG_RunD
-	crab_DoubleEG_RunE
-	crab_DoubleEG_RunF
-	crab_DoubleEG_RunG
-	crab_DoubleEG_RunHver2
-	crab_DoubleEG_RunHver3
+	SingleMuon_Run2016B
+        SingleMuon_Run2016C
+        SingleMuon_Run2016D
+        SingleMuon_Run2016E
+        SingleMuon_Run2016F
+        SingleMuon_Run2016G
+        SingleMuon_Run2016Hver2
+        SingleMuon_Run2016Hver3
 	QCDMuEnriched_Pt15to20
 	QCDMuEnriched_Pt20to30
 	QCDMuEnriched_Pt20toInf
