@@ -242,6 +242,11 @@ void configureOutputTree(TTree*tree,bool hasGenInfo)
 		tree->Branch("GENEvt_alphaQCD",&GENEvt_alphaQCD,"GENEvt_alphaQCD/D");
 		tree->Branch("GENEvt_alphaQED",&GENEvt_alphaQED,"GENEvt_alphaQED/D");
 
+		tree->Branch("GENLepton_Px",&GENLepton_Px,"GENLepton_Px[GENnPair]/D");
+		tree->Branch("GENLepton_Py",&GENLepton_Py,"GENLepton_Py[GENnPair]/D");
+		tree->Branch("GENLepton_Pz",&GENLepton_Pz,"GENLepton_Pz[GENnPair]/D");
+		tree->Branch("GENLepton_E",&GENLepton_E,"GENLepton_E[GENnPair]/D");
+
 		tree->Branch("GENLepton_eta",&GENLepton_eta,"GENLepton_eta[GENnPair]/D");
 		tree->Branch("GENLepton_phi",&GENLepton_phi,"GENLepton_phi[GENnPair]/D");
 		tree->Branch("GENLepton_pT",&GENLepton_pT,"GENLepton_pT[GENnPair]/D");
