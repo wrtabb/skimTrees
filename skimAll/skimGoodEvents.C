@@ -320,6 +320,10 @@ void configureInputTree(TTree*tree,bool hasGenInfo)
 
 	if(hasGenInfo){
 		tree->SetBranchAddress("GENnPair",&GENnPair,&b_GENnPair);
+		tree->SetBranchAddress("GENLepton_Px",  &GENLepton_Px, &b_GENLepton_Px);
+		tree->SetBranchAddress("GENLepton_Py",  &GENLepton_Py, &b_GENLepton_Py);
+		tree->SetBranchAddress("GENLepton_Pz",  &GENLepton_Pz, &b_GENLepton_Pz);
+		tree->SetBranchAddress("GENLepton_E",   &GENLepton_E,  &b_GENLepton_E );
 		tree->SetBranchAddress("GENEvt_weight",&GENEvt_weight,&b_GENEvt_weight);
 		tree->SetBranchAddress("GENEvt_QScale",&GENEvt_QScale,&b_GENEvt_QScale);
 		tree->SetBranchAddress("GENEvt_x1",&GENEvt_x1,&b_GENEvt_x1);
