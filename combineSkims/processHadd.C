@@ -4,7 +4,7 @@ void processHadd(TString sample,TString output_file)
 {
 	TString file_location = base_directory;	
 	file_location += sample;
-	file_location += "/*.root";
+	file_location += "/skims_EE/*.root";
 	TString hadd_execute = "hadd -f ";
 	hadd_execute += output_file;
 	hadd_execute += ".root ";
