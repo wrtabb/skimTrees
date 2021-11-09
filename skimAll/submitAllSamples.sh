@@ -311,10 +311,10 @@ preserveEventCount=(
 	true	# QCDMuEnriched_Pt1000toInf_ext1
 )       
         
-for indetruex in ${!sampleLocation[*]}; do 
-    condtrueor_submit \
-	truesampleShortName=${sampleShortName[$index]} \
-	truentuplesGeneralLocation=${ntuplesGeneralLocation} \
+for index in ${!sampleLocation[*]}; do 
+    condor_submit \
+	sampleShortName=${sampleShortName[$index]} \
+	ntuplesGeneralLocation=${ntuplesGeneralLocation} \
 	sampleLocation=${sampleLocation[$index]} \
 	skimTag=${skimTag} \
 	numberOfSections=${numberOfSections[$index]} \
